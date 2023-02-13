@@ -12,16 +12,23 @@ package edu.esprit.entities;
 public class Reservation {
      private int id_res ; 
      private int id_event ; 
-     private int id_user ; 
+     private int user_id ; 
      private String name; 
 
     public Reservation() {
     }
-
-    public Reservation(int id_res, int id_event, int id_user, String name) {
+    
+     public Reservation( int id_event, int user_id, String name) {
+        
+        this.id_event = id_event;
+        this.user_id = user_id;
+        this.name = name;
+    }
+    
+    public Reservation(int id_res, int id_event, int user_id, String name) {
         this.id_res = id_res;
         this.id_event = id_event;
-        this.id_user = id_user;
+        this.user_id = user_id;
         this.name = name;
     }
 
@@ -41,13 +48,15 @@ public class Reservation {
         this.id_event = id_event;
     }
 
-    public int getId_user() {
-        return id_user;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
+
+    
 
     public String getName() {
         return name;
@@ -59,12 +68,12 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Reservation{" + "name=" + name + '}';
+        return "Reservation{" + "id_event=" + id_event + ", user_id=" + user_id + ", name=" + name + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 7;
         return hash;
     }
 
@@ -83,14 +92,11 @@ public class Reservation {
         if (this.id_res != other.id_res) {
             return false;
         }
-        if (this.id_event != other.id_event) {
-            return false;
-        }
-        if (this.id_user != other.id_user) {
-            return false;
-        }
         return true;
+    }
+
+    
     }
      
      
-}
+

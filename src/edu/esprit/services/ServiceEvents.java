@@ -30,10 +30,10 @@ public class ServiceEvents implements IService<Events> {
         try {
             String req = "INSERT INTO `events`(`name`, `date_event`, `location`, `user_id`,`categorie`,) VALUES (?,?,?,?,?)";
             PreparedStatement pso = cnx.prepareStatement(req);
-            pso.setString(1, e.getName());
-            pso.setDate(2, e.getDate_event());
-            pso.setString(3, e.getLocation());
-            pso.setInt(4,e.getUser_id() );
+            pso.setString(2, e.getName());
+            pso.setDate(3, e.getDate_event());
+            pso.setString(4, e.getLocation());
+            pso.setInt(5,e.getUser_id() );
             pso.setString(6, e.getCategorie());
             pso.executeUpdate();
             System.out.println("event created !");
