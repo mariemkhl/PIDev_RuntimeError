@@ -17,7 +17,7 @@ public interface IService<T> {
 
     public void supprimer(int id_event);
 
-    public void modifier(T e);
+    public void modifier(T e,int i);
 
     public List<T> getAll();
 

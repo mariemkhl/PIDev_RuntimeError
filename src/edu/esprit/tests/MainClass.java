@@ -18,9 +18,18 @@ public class MainClass {
     public static void main (String [] args){
     MyConnection myconnection = new MyConnection();
        
-        Date  Date = null ; 
-        // Events e1 = new Events ("Music", Date,"Bardo");
+       java.sql.Date date= new java.sql.Date(120, 01, 21);
+       Events e1 = new Events ("Music",date,"Bardo",5,"online");
+       Events e2 = new Events ("theatre",date,"Centre ville",7,"theatre");
+       Events e3 = new Events ("Paint",date,"Lac", 10, "salle_exposition_des_tableaux");
           ServiceEvents se = new ServiceEvents();   
-     //     se.ajouter(e1);
+      // se.ajouter(e1);
+       //se.ajouter(e2);
+           //se.ajouter(e3);
+
+        //se.supprimer(5);
+     //se.modifier(e2,4);
+       //  System.out.println(se.getAll());
+        System.out.println(se.getOneById(6));
 }
 }

@@ -27,14 +27,16 @@ public class ServiceEvents implements IService<Events> {
 
     @Override
     public void ajouter(Events e) {
+        
         try {
-            String req = "INSERT INTO `events`(`name`, `date_event`, `location`, `user_id`,`categorie`,) VALUES (?,?,?,?,?)";
+            String req = "INSERT INTO `events`(`name`, `date_event`, `location`, `user_id`,`categorie`) VALUES (?,?,?,?,?);";
             PreparedStatement pso = cnx.prepareStatement(req);
-            pso.setString(2, e.getName());
-            pso.setDate(3, e.getDate_event());
-            pso.setString(4, e.getLocation());
-            pso.setInt(5,e.getUser_id() );
-            pso.setString(6, e.getCategorie());
+            pso.setString(1, e.getName());
+            pso.setDate(2, e.getDate_event());
+            pso.setString(3, e.getLocation());
+            pso.setInt(4,e.getUser_id() );
+            pso.setString(5, e.getCategorie());
+            Date  Date = new Date(120, 01, 21) ; 
             pso.executeUpdate();
             System.out.println("event created !");
         } catch (SQLException ex) {
@@ -56,9 +58,9 @@ public class ServiceEvents implements IService<Events> {
     }
 
     @Override
-    public void modifier(Events e) {
+    public void modifier(Events e,int i) {
         try {
-            String req2 = "UPDATE `events` SET `name`='" + e.getName() + "',`date_event`='" + e.getDate_event() + "',`location`='" + e.getLocation() + ",`categorie`='"+e.getCategorie()+ "' WHERE `id_event` = " + e.getId_event();
+            String req2 = "UPDATE `events` SET `name`='" + e.getName() + "',`date_event`='" + e.getDate_event() + "',`location`='" + e.getLocation() + "',`categorie`='"+e.getCategorie()+ "' WHERE `id_event` =' " + i+"';";
             Statement st = cnx.createStatement();
             st.executeUpdate(req2);
             System.out.println("Event Updated ! ");
