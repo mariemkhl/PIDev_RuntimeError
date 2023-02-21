@@ -5,32 +5,48 @@
  */
 package edu.esprit.entities;
 
+import edu.esprit.services.ServiceEvents;
+import java.util.Objects;
+
+
+
 /**
  *
  * @author ASUS
  */
 public class Reservation {
-     private int id_res ; 
-     private int id_event ; 
-     private int user_id ; 
-     private String name; 
+
+    private int id_res;
+    private Events event ;
+    private int id_user;
+    private String name;
+   private int nbplace ;
+    ServiceEvents se = new ServiceEvents();
+   
 
     public Reservation() {
     }
-    
-     public Reservation( int id_event, int user_id, String name) {
-        
-        this.id_event = id_event;
-        this.user_id = user_id;
+
+    public Reservation(Events event,int id_event, int id_user, String name) {
+        this.event = event;
+        this.id_user = id_user;
         this.name = name;
     }
     
-    public Reservation(int id_res, int id_event, int user_id, String name) {
+
+    public Reservation(int id_res, Events event, int id_user, String name) {
         this.id_res = id_res;
-        this.id_event = id_event;
-        this.user_id = user_id;
+        this.event = event;
+        this.id_user = id_user;
         this.name = name;
     }
+
+   
+
+ 
+    
+
+    
 
     public int getId_res() {
         return id_res;
@@ -40,23 +56,25 @@ public class Reservation {
         this.id_res = id_res;
     }
 
-    public int getId_event() {
-        return id_event;
+    public Events getEvent() {
+        return event;
     }
 
-    public void setId_event(int id_event) {
-        this.id_event = id_event;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setEvent(Events event) {
+        this.event = event;
     }
 
     
+
+    
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setUser_id(int id_user) {
+        this.id_user = id_user;
+    }
 
     public String getName() {
         return name;
@@ -65,11 +83,22 @@ public class Reservation {
     public void setName(String name) {
         this.name = name;
     }
+     public int getNbplace() {
+        return nbplace;
+    }
+
+    public void setNbplace(int nbplace) {
+        this.nbplace = nbplace;}
 
     @Override
     public String toString() {
-        return "Reservation{" + "id_event=" + id_event + ", user_id=" + user_id + ", name=" + name + '}';
+        return "Reservation{" + "event=" + event + ", id_user=" + id_user + ", name=" + name + ", nbplace=" + nbplace + '}';
     }
+
+   
+
+    
+
 
     @Override
     public int hashCode() {
@@ -92,11 +121,15 @@ public class Reservation {
         if (this.id_res != other.id_res) {
             return false;
         }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
         return true;
     }
 
-    
-    }
-     
-     
+   
+   
+   
+   }
+
 

@@ -6,6 +6,7 @@
 package edu.esprit.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -17,9 +18,9 @@ public class Events {
     private String name ; 
     private Date date_event ; 
     private String location ;
-    private int user_id ; 
+    private int id_user ; 
     private String categorie ;
-    
+      private LocalDate date;
     
 
     private enum categorie {
@@ -31,11 +32,11 @@ public class Events {
 
     
 
-    public Events(String name, Date date_event, String location, int user_id, String categorie) {
+    public Events(String name, Date date_event, String location, int id_user, String categorie) {
         this.name = name;
         this.date_event = date_event;
         this.location = location;
-        this.user_id = user_id;
+        this.id_user =id_user ;
         this.categorie = categorie;
     }
 
@@ -44,7 +45,7 @@ public class Events {
         this.name = name;
         this.date_event = date_event;
         this.location = location;
-        this.user_id = user_id;
+        this.id_user = id_user;
         this.categorie = categorie;
     }
    
@@ -81,12 +82,12 @@ public class Events {
         this.location = location;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getId_user() {
+        return id_user;
     }
 
-//    public void setUser_id(int user_id) {
-//        this.user_id = user_id;
+   public void setId_user(int id_user) {
+       this.id_user = id_user;}
 
     public String getCategorie() {
         return categorie;
@@ -98,7 +99,7 @@ public class Events {
 
     @Override
     public String toString() {
-        return "Events{" + "name=" + name + ", date_event=" + date_event + ", location=" + location + ", user_id=" + user_id + ", categorie=" + categorie + '}';
+        return "Events{" + "name=" + name + ", date_event=" + date_event + ", location=" + location + ", id_user=" + id_user + ", categorie=" + categorie + '}';
     }
 
     
@@ -109,11 +110,13 @@ public class Events {
     public int hashCode() {
         int hash = 7;
         hash = 13 * hash + this.id_event;
-        hash = 13 * hash + this.user_id;
+        hash = 13 * hash + this.id_user;
         return hash;
     }
 
     @Override
+
+    
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -128,10 +131,21 @@ public class Events {
         if (this.id_event != other.id_event) {
             return false;
         }
-        if (this.user_id != other.user_id) {
+        if (this.id_user != other.id_user) {
+            return false;
+        }
+        if (!Objects.equals(this.location, other.location)) {
+            return false;
+        }
+        if (!Objects.equals(this.date_event, other.date_event)) {
             return false;
         }
         return true;
+    }
+    
+    
+    
+   
     }
     
     
@@ -139,4 +153,4 @@ public class Events {
      
     
     
-}
+
