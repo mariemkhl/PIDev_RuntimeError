@@ -24,7 +24,7 @@ public class MyConnection {
    
     
 
-    public MyConnection(){
+    private MyConnection(){
         try{
             cnx = DriverManager.getConnection(URL, USER, PWD);
             System.out.println("Connected To DB");

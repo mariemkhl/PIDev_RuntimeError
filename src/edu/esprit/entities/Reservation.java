@@ -21,7 +21,6 @@ public class Reservation {
     private int id_user;
     private String name;
    private int nbplace ;
-    ServiceEvents se = new ServiceEvents();
    
 
     public Reservation() {

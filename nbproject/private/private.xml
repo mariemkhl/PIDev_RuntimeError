@@ -4,10 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/services/ServiceEvents.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/utils/MyConnection.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/tests/EventsMain.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/services/ServiceReservation.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/entities/Reservation.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/entities/Events.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/services/InterfaceRes.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/AjouterEvents.fxml</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/AjouterEventsController.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/tests/MainClass.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/services/IService.java</file>
         </group>

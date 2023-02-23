@@ -79,7 +79,7 @@ public class ServiceEvents implements IService<Events> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Events e = new Events(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getInt(5), rs.getString(6));
+                Events e = new Events(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getInt(5), rs.getString(6) , rs.getInt(7));
                 //  (rs.getInt(1), rs.getString("name"), rs.getDate(3), rs.getString("location"),rs.getInt(1));
                 list.add(e);
             }
@@ -98,7 +98,7 @@ public class ServiceEvents implements IService<Events> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Events e1 = new Events(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getInt(5), rs.getString(6));
+                Events e1 = new Events(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getInt(5), rs.getString(6),rs.getInt(7));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

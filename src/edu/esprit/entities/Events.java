@@ -14,41 +14,50 @@ import java.util.Objects;
  * @author ASUS
  */
 public class Events {
-    private int id_event  ;
-    private String name ; 
-    private Date date_event ; 
-    private String location ;
-    private int id_user ; 
-    private String categorie ;
-      private LocalDate date;
-    
+
+    private int id_event;
+    private String name;
+    private Date date_event;
+    private String location;
+    private int id_user;
+    private String categorie;
+    private int nbplacetotal;
 
     private enum categorie {
-       online,cinematic,literature,theatre,salle_exposition_des_tableaux, salle_exposition_des_sculpture 
+        online, cinematic, literature, theatre, salle_exposition_des_tableaux, salle_exposition_des_sculpture
     };
 
     public Events() {
     }
 
-    
-
-    public Events(String name, Date date_event, String location, int id_user, String categorie) {
+    public Events(String name, Date date_event, String location, int id_user, String categorie, int nbplacetotal) {
         this.name = name;
         this.date_event = date_event;
         this.location = location;
-        this.id_user =id_user ;
+        this.id_user = id_user;
         this.categorie = categorie;
+        this.nbplacetotal = nbplacetotal;
     }
 
-    public Events(int id_event, String name, Date date_event, String location, int user_id, String categorie) {
+    public Events(int id_event, String name, Date date_event, String location, int user_id, String categorie, int nbplacetotal) {
         this.id_event = id_event;
         this.name = name;
         this.date_event = date_event;
         this.location = location;
         this.id_user = id_user;
         this.categorie = categorie;
+        this.nbplacetotal = nbplacetotal;
     }
-   
+    
+    public Events( String tfName, String tfLocation , int nbplace){
+    
+    this.name=tfName;
+    this.location=tfLocation; 
+    this.nbplacetotal=nbplace;
+    
+    
+    
+    }
 
     public int getId_event() {
         return id_event;
@@ -57,7 +66,6 @@ public class Events {
 //    public void setId_event(int id_event) {
 //        this.id_event = id_event;
 //    }
-
     public String getName() {
         return name;
     }
@@ -86,8 +94,9 @@ public class Events {
         return id_user;
     }
 
-   public void setId_user(int id_user) {
-       this.id_user = id_user;}
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
 
     public String getCategorie() {
         return categorie;
@@ -97,15 +106,20 @@ public class Events {
         this.categorie = categorie;
     }
 
-    @Override
-    public String toString() {
-        return "Events{" + "name=" + name + ", date_event=" + date_event + ", location=" + location + ", id_user=" + id_user + ", categorie=" + categorie + '}';
+    public int getNbplacetotal() {
+        return nbplacetotal;
     }
 
-    
+    public void setNbplacetotal(int nbplacetotal) {
+        this.nbplacetotal = nbplacetotal;
+    }
+
+    @Override
+    public String toString() {
+        return "Events{" + "name=" + name + ", date_event=" + date_event + ", location=" + location + ", id_user=" + id_user + ", categorie=" + categorie + ", nbplacetotal=" + nbplacetotal + '}';
+    }
 
 //    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -116,7 +130,6 @@ public class Events {
 
     @Override
 
-    
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -142,15 +155,5 @@ public class Events {
         }
         return true;
     }
-    
-    
-    
-   
-    }
-    
-    
-     
-     
-    
-    
 
+}
