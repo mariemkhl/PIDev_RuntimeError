@@ -9,6 +9,7 @@ import edu.artisty.entities.Category;
 import edu.artisty.entities.Collection;
 import edu.artisty.entities.Product;
 import edu.artisty.main.FXMain;
+import edu.artisty.services.CategoryService;
 import edu.artisty.services.ProductService;
 import edu.artisty.utiles.DataSource;
 import java.awt.Graphics;
@@ -128,8 +129,19 @@ public class AjouterProductController implements Initializable {
      */
     Connection cnx = DataSource.getInstance().getCnx();
     ProductService ProdServ = new ProductService();
+    CategoryService CatServ = new CategoryService();
     @FXML
     private Button AddProdBtn;
+    @FXML
+    private Button ModifBtn;
+    @FXML
+    private Button SuppBtn;
+    @FXML
+    private Button CollecWindow;
+    @FXML
+    private Button VersCatBtn;
+    @FXML
+    private Button RechercheBtn;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -142,7 +154,7 @@ public class AjouterProductController implements Initializable {
         PrixColumn.setCellValueFactory(new PropertyValueFactory<>("prix"));
         
         imgProdColumn.setCellValueFactory(new PropertyValueFactory<>("img"));
-        
+       
         
      
         catProdColumn.setCellValueFactory(new PropertyValueFactory<>("cat_p"));
@@ -150,7 +162,10 @@ public class AjouterProductController implements Initializable {
         IdProdColumn.setCellValueFactory(new PropertyValueFactory<>("id_p"));
         ProductTable.setItems(listProduct);
         
-        //CategorieBox.getItems().add(rs.getString("nom")); 
+        Category c = new Category();
+        List<Category> cat = CatServ.getNames();
+        ObservableList<Category> CategoryList = FXCollections.observableArrayList(cat);
+        CategorieBox.setItems(CategoryList);
         
     }    
     
@@ -219,29 +234,33 @@ public class AjouterProductController implements Initializable {
     return;
            }
      
-     if (CatProd.getText().isEmpty()) {
-            Alert alert = new Alert(AlertType.ERROR);
-    alert.setTitle("Error");
-    alert.setHeaderText(null);
-    alert.setContentText("Please enter a Category .");
-    alert.showAndWait();
-    return;
-           }
-       if (UserProd.getText().isEmpty()) {
-            Alert alert = new Alert(AlertType.ERROR);
-    alert.setTitle("Error");
-    alert.setHeaderText(null);
-    alert.setContentText("Please enter a Category .");
-    alert.showAndWait();
-    return;
-           }
+//     if (CatProd.getText().isEmpty()) {
+//            Alert alert = new Alert(AlertType.ERROR);
+//    alert.setTitle("Error");
+//    alert.setHeaderText(null);
+//    alert.setContentText("Please enter a Category .");
+//    alert.showAndWait();
+//    return;
+ //          }
+//       if (UserProd.getText().isEmpty()) {
+//            Alert alert = new Alert(AlertType.ERROR);
+//    alert.setTitle("Error");
+//    alert.setHeaderText(null);
+//    alert.setContentText("Please enter a Category .");
+//    alert.showAndWait();
+//    return;
+  //         }
      
         p.setNom(NomProd.getText());
         p.setDescription(DescProd.getText());
         p.setPrix(Double.valueOf(PrixProd.getText()));
         p.setImg(file.getAbsoluteFile());
-        p.setCat_p(Integer.valueOf(CatProd.getText()));
-        p.setCat_p(Integer.valueOf(UserProd.getText()));
+       // Category v =(Category) CategorieBox.getValue();
+       Category c = (Category) CategorieBox.getValue();
+       int id = c.getId_cat();
+      //  p.setCat_p(id);
+      //  p.setCat_p((Integer.valueOf(UserProd.getText())));
+        
         
         ProdServ.ajouter(p);
         reset();
@@ -337,8 +356,8 @@ public class AjouterProductController implements Initializable {
         Double prix=p.getPrix();
         
         
-         p.setCat_p(Integer.parseInt(CatProd.getText()));
-        int cat=p.getCat_p();
+         p.setCat_p((Integer.parseInt(CatProd.getText())));
+        Category cat=p.getCat_p();
         
          p.setUser_id(Integer.parseInt(UserProd.getText()));
         int user=p.getUser_id();
@@ -372,6 +391,7 @@ public class AjouterProductController implements Initializable {
         
     }
     
+    @FXML
     public void AfficheCategory(Event event){
          try {
               Parent loader = FXMLLoader.load(getClass().getResource("../gui/AjouterCategory.fxml"));   
@@ -385,23 +405,25 @@ public class AjouterProductController implements Initializable {
         
     }
     
-    public void RemplirComboBox(){
+    @FXML
+    public void AfficheProducts(Event event){
          try {
-            String req = "SELECT * FROM `category`";
-            Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(req);
-            while (rs.next()) {
-               // Category t = new Category(rs.getInt(1), rs.getString("nom"));
-               //String nom = rs.getString("nom").toString();
-               CategorieBox.getItems().add(rs.getString("nom"));
-               
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+              Parent loader = FXMLLoader.load(getClass().getResource("../gui/ListProduct.fxml"));   
+              Scene scene = new Scene(loader, 800, 600);
+              Stage stage= new Stage();
+              stage.setScene(scene);
+              stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        
     }
     
+
+ 
     
+    
+    @FXML
      public void RechercherProduit(){
          
          
@@ -409,9 +431,9 @@ public class AjouterProductController implements Initializable {
          Product p= new Product();
          if(ProdServ.RechercherProduit(x)==true){
          
-         // Product product = ProdServ.getOneById(x);
-          //List<Product> col = ProdServ.getAll();
-         // ObservableList<Product> productList = FXCollections.observableArrayList(product);
+         Product product = ProdServ.getOneById(x);
+        // List<Product> col = ProdServ.getAll();
+         ObservableList<Product> productList = FXCollections.observableArrayList(product);
           //List<Product> col = (List<Product>) ProdServ.getOneById(x);
          // ObservableList<Product> listProduct = FXCollections.observableArrayList(col);
           nomProdColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -421,7 +443,7 @@ public class AjouterProductController implements Initializable {
         catProdColumn.setCellValueFactory(new PropertyValueFactory<>("cat_p"));
         userIdProdColumn.setCellValueFactory(new PropertyValueFactory<>("user_id"));
         IdProdColumn.setCellValueFactory(new PropertyValueFactory<>("id_p"));
-        // ProductTable.setItems(productList);
+         ProductTable.setItems(productList);
          
         Alert alert = new Alert(AlertType.INFORMATION, "Produit deja existant !, Voulez vous fermer la fenetre?", ButtonType.YES, ButtonType.NO);
             alert.setTitle("Verification de l'existance du produit");
@@ -441,6 +463,8 @@ public class AjouterProductController implements Initializable {
          }
          reset();
      }
+     
+     
         
     
 }

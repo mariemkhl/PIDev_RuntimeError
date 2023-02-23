@@ -20,7 +20,7 @@
       <Label layoutX="10.0" layoutY="225.0" text="User" />
       <TextField fx:id="NomProd" layoutX="102.0" layoutY="49.0" />
       <TextField fx:id="PrixProd" layoutX="102.0" layoutY="163.0" />
-      <TextField fx:id="CatProd" layoutX="102.0" layoutY="200.0" />
+      <TextField fx:id="CatProd" layoutX="58.0" layoutY="402.0" />
       <TextField fx:id="UserProd" layoutX="102.0" layoutY="233.0" />
       <TextArea fx:id="DescProd" layoutX="102.0" layoutY="83.0" prefHeight="67.0" prefWidth="149.0" />
       <ImageView fx:id="ImgView" fitHeight="118.0" fitWidth="149.0" layoutX="102.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" />
@@ -46,7 +46,8 @@
       <Label layoutX="72.0" layoutY="16.0" text="id" />
       <Button fx:id="CollecWindow" layoutX="569.0" layoutY="12.0" mnemonicParsing="false" onAction="#AfficheCollection" prefHeight="25.0" prefWidth="92.0" text="--&gt;Collection" />
       <Button fx:id="VersCatBtn" layoutX="569.0" layoutY="46.0" mnemonicParsing="false" onAction="#AfficheCategory" prefHeight="25.0" prefWidth="92.0" text="--&gt;Category" />
-      <ComboBox fx:id="CategorieBox" layoutX="91.0" layoutY="394.0" prefWidth="150.0" />
+      <ComboBox fx:id="CategorieBox" layoutX="102.0" layoutY="197.0" prefWidth="150.0" />
       <Button fx:id="RechercheBtn" layoutX="171.0" layoutY="20.0" mnemonicParsing="false" onAction="#RechercherProduit" prefHeight="25.0" prefWidth="76.0" text="Rechercher" />
+      <Button fx:id="AfficheProduct" layoutX="465.0" layoutY="8.0" mnemonicParsing="false" onAction="#AfficheProducts" text="AfficheProduct" />
    </children>
 </AnchorPane>

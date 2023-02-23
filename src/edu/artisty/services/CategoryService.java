@@ -96,4 +96,23 @@ try {
         return list;
     }
     
+    
+     public List<Category> getNames() {
+ List<Category> list = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `category`";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Category c = new Category( rs.getInt(1),rs.getString("nom"));
+                list.add(c);
+                System.out.println(list);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+    
 }

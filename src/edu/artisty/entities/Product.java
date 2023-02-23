@@ -20,13 +20,13 @@ public class Product {
     public String description;
     public double prix;
     public File img;
-    public int cat_p;
+    public Category cat_p;
     public int user_id;
 
     public Product() {
     }
 
-    public Product(String nom, String description, double prix, int cat_p, int user_id) {
+    public Product(String nom, String description, double prix, Category cat_p, int user_id) {
         this.nom = nom;
         this.description = description;
         this.prix = prix;
@@ -35,7 +35,7 @@ public class Product {
     }
     
 
-    public Product(String nom, String description, double prix, File img, int cat_p, int user_id) {
+    public Product(String nom, String description, double prix, File img, Category cat_p, int user_id) {
         this.nom = nom;
         this.description = description;
         this.prix = prix;
@@ -44,7 +44,7 @@ public class Product {
         this.user_id = user_id;
     }
 
-    public Product(int id_p, String nom, String description, double prix, File img, int cat_p, int user_id) {
+    public Product(int id_p, String nom, String description, double prix, File img, Category cat_p, int user_id) {
         this.id_p = id_p;
         this.nom = nom;
         this.description = description;
@@ -94,17 +94,15 @@ public class Product {
         this.img = img;
     }
 
-   
-
-
-    public int getCat_p() {
+    public Category getCat_p() {
         return cat_p;
     }
 
-    public void setCat_p(int cat_p) {
+    public void setCat_p(Category cat_p) {
         this.cat_p = cat_p;
     }
 
+   
     public int getUser_id() {
         return user_id;
     }
