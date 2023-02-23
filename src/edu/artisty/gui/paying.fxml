@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="704.0" prefWidth="1023.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.PayingController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#002427" height="704.0" stroke="BLACK" strokeType="INSIDE" width="164.0" />
+      <Text layoutX="394.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finalisation : Paiment">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <Line endX="492.0" endY="173.0" layoutX="72.0" layoutY="6.0" startX="492.0" startY="605.0" />
+      <Text layoutX="299.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paiment en espèces">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font></Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="219.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le montant total ">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
+      <Label fx:id="prix_totcash" layoutX="468.0" layoutY="205.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Text layoutX="287.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notre livreur va vous contacter dans les trois jours prochains. Gardez votre téléphone avec vous" textAlignment="CENTER" wrappingWidth="155.9999888241291">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="conf_carte" layoutX="742.0" layoutY="549.0" mnemonicParsing="false" onAction="#valider_carte" style="-fx-background-color: #678263;" text="Confirmer" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Text layoutX="614.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CV code">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="614.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'expiration">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="614.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom sur la carte">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="614.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numéro sur la carte">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="695.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paiment par carte">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="impression" layoutX="410.0" layoutY="641.0" mnemonicParsing="false" onAction="#imprimer" style="-fx-background-color: #678263;" text="Cliquez ici pour imprimer votre reçu" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="num_carte" layoutX="792.0" layoutY="208.0" prefHeight="31.0" prefWidth="198.0" />
+      <TextField fx:id="nom_carte" layoutX="792.0" layoutY="262.0" prefHeight="31.0" prefWidth="198.0" />
+      <TextField fx:id="CV_code" layoutX="794.0" layoutY="379.0" prefHeight="31.0" prefWidth="198.0" />
+      <DatePicker layoutX="794.0" layoutY="318.0" prefHeight="31.0" prefWidth="198.0" />
+      <Text layoutX="610.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le montant total ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="prix_totcarte" layoutX="848.0" layoutY="438.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="conf_cash" layoutX="313.0" layoutY="549.0" mnemonicParsing="false" onAction="#valider_cash" style="-fx-background-color: #678263;" text="Confirmer" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="118.0" layoutX="23.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

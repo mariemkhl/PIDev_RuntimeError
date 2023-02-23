@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="552.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AfficherCommandeController">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="213.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Les informations de votre commande" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Label layoutX="189.0" layoutY="110.0" text="L'Id de la commande">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="189.0" layoutY="171.0" text="Votre userId">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="189.0" layoutY="238.0" text="La méthode de paiment">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="189.0" layoutY="312.0" text="Le montant total à payer">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="idcommande" layoutX="566.0" layoutY="110.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="userid" layoutX="566.0" layoutY="171.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="meth_paiment" layoutX="566.0" layoutY="238.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="prix_tot" layoutX="566.0" layoutY="312.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Button fx:id="supprimer" layoutX="513.0" layoutY="395.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: #678263;" text="Supprimer" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="modifier" layoutX="215.0" layoutY="395.0" mnemonicParsing="false" onAction="#modifier" style="-fx-background-color: #678263;" text="Update" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="passer_paiment" layoutX="325.0" layoutY="476.0" mnemonicParsing="false" onAction="#passer_paiment" style="-fx-background-color: #678263;" text="passer au paiment" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#002427" height="552.0" layoutX="-3.0" stroke="BLACK" strokeType="INSIDE" width="155.0" />
+      <ImageView fitHeight="150.0" fitWidth="131.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
