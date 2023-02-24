@@ -5,6 +5,13 @@
         <group>
             <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/gui/AfficherArticleFXML.fxml</file>
             <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/gui/AfficherArticleFXMLController.java</file>
+            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/services/CommentaireService.java</file>
+            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/entities/Commentaire.java</file>
+            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/tests/MainClass.java</file>
+            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/services/IService.java</file>
+            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/entities/Article.java</file>
+            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/services/ArticleService.java</file>
+            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/utils/DataSource.java</file>
         </group>
     </open-files>
 </project-private>

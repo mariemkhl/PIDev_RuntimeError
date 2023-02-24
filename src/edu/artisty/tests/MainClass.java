@@ -11,6 +11,7 @@ import edu.artisty.utils.DataSource;
 import java.sql.Date;
 import edu.artisty.entities.Article;
 import edu.artisty.entities.Commentaire;
+import java.util.List;
 
 /**
  *
@@ -22,10 +23,33 @@ public class MainClass {
 
         DataSource ds = new DataSource();
 
-        Article article = new Article(5, "new article",Date.valueOf("2023-02-07"), "salut", 3, "image", "livre", 3);
-        ArticleService a = new ArticleService();
+       // Article article = new Article(5, "new article",Date.valueOf("2023-02-07"), "salut", 3, "image", "livre", 3);
+        //ArticleService a = new ArticleService();
         //a.ajouter(article);
-        a.supprimer(7);
+       // a.supprimer(7);
+       
+       
+        
+//***********************filtrage***********************************//
+    // Call the filtrerMotsInappropries method
+  //  a.filtrerMotsInappropries();
+    
+
+//****************************chercher article**********************************//
+
+ ArticleService articleService = new ArticleService();
+    
+    // Chercher les articles ayant "new" dans leur titre
+    List<Article> articlesWithTitleNew = articleService.chercherArticle("Title 1", null);
+    
+    System.out.println("Articles avec le titre 'Title 1':");
+    System.out.println("----------------------------------");
+    articlesWithTitleNew.forEach((article) -> {
+        System.out.println(article);
+        });
+    System.out.println();
+
+
 
         //articleService.ajouter(article);
         //  Article article = new Article(3,"mariemkl",Date.valueOf("2023-02-07"),"hello",0,"image","livre",1);
@@ -43,6 +67,8 @@ public class MainClass {
         // commentaireService.ajouter(c);
         //commentaireService.modifier(c);
         //commentaireService.supprimer(2);
+        
+        
     }
 
 }

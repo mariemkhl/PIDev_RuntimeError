@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import edu.artisty.entities.Article;
 import edu.artisty.utils.DataSource;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -120,4 +123,53 @@ public class ArticleService implements IService<Article> {
     public boolean afficher() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public void filtrerMotsInappropries() {
+        List<String> motsInappropries = Arrays.asList("drogue", "violence", "crime", "kill");
+
+        // Récupérer tous les articles
+        List<Article> articles = getAll();
+
+        // Parcourir chaque article et filtrer les mots inappropriés
+        articles.forEach(article -> {
+            String content = article.getContentArticle();
+            for (String mot : motsInappropries) {
+                String remplacement = "";
+                for (int i = 0; i < mot.length(); i++) {
+                    remplacement += "*";
+                }
+                content = content.replaceAll(mot, remplacement);
+            }
+            article.setContentArticle(content);
+
+            // Mettre à jour l'article dans la base de données
+            String query = "UPDATE ARTICLE SET content_article = ? WHERE id_article = ?";
+            try {
+                PreparedStatement ps = cnx.prepareStatement(query);
+                ps.setString(1, article.getContentArticle());
+                ps.setInt(2, article.getIdArticle());
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        });
+
+        System.out.println("Mots inappropriés filtrés avec succès");
+    } 
+    public List<Article> chercherArticle(String title, String category) {
+    List<Article> articles = getAll();
+    
+    Stream<Article> filteredStream = articles.stream();
+    
+    if (title != null && !title.isEmpty()) {
+        filteredStream = filteredStream.filter(article -> article.getTitreArticle().toLowerCase().contains(title.toLowerCase()));
+    }
+    
+    if (category != null && !category.isEmpty()) {
+        filteredStream = filteredStream.filter(article -> article.getCategoryArticle().toLowerCase().equals(category.toLowerCase()));
+    }
+    
+    return filteredStream.collect(Collectors.toList());
+}
+
 }
