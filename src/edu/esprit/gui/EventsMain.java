@@ -37,7 +37,7 @@ public class EventsMain extends Application {
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
-    }
+    } 
 
     public static void main(String[] args) {
         launch(args);
@@ -45,3 +45,4 @@ public class EventsMain extends Application {
     }
 
 
+ 

@@ -22,35 +22,42 @@
                 <Font size="17.0" />
             </font>
         </Label>
-        <DatePicker fx:id="dpDate" layoutX="222.0" layoutY="227.0" onAction="#getDate_event" prefHeight="43.0" prefWidth="295.0" promptText="Date" />
-        <TextField fx:id="tfName" layoutX="212.0" layoutY="145.0" prefHeight="43.0" prefWidth="295.0" promptText="Name" style="-fx-background-radius: 30;" />
+        <DatePicker fx:id="dpDate" layoutX="360.0" layoutY="237.0" onAction="#getDate_event" prefHeight="43.0" prefWidth="295.0" promptText="Date" />
+        <TextField fx:id="tfName" layoutX="360.0" layoutY="98.0" prefHeight="43.0" prefWidth="295.0" promptText="Name" style="-fx-background-radius: 30;" />
         <TextField fx:id="tfLocation" layoutX="222.0" layoutY="307.0" prefHeight="43.0" prefWidth="295.0" promptText="Location " style="-fx-background-radius: 30;" />
-        <Button fx:id="bntsee" layoutX="202.0" layoutY="519.0" mnemonicParsing="false" onAction="#see_event" style="-fx-background-color: #678263;" text="See Event" textFill="WHITE">
+        <Button fx:id="bntshow" layoutX="238.0" layoutY="519.0" mnemonicParsing="false" onAction="#show_event" style="-fx-background-color: #678263;" text="Show Event" textFill="WHITE">
             <font>
                 <Font name="Britannic Bold" size="17.0" />
             </font>
         </Button>
-        <Button fx:id="btnmodify" layoutX="369.0" layoutY="519.0" mnemonicParsing="false" style="-fx-background-color: #678263;" text="Modify Event" textFill="WHITE">
+        <Button fx:id="btnmodify" layoutX="468.0" layoutY="519.0" mnemonicParsing="false" style="-fx-background-color: #678263;" text="Modify Event" textFill="WHITE">
             <font>
                 <Font name="Britannic Bold" size="17.0" />
             </font>
         </Button>
-        <Button fx:id="btndelete" layoutX="554.0" layoutY="519.0" mnemonicParsing="false" onAction="#delete_event" style="-fx-background-color: #678263;" text="Delete Event " textFill="WHITE">
+        <Button fx:id="btndelete" layoutX="700.0" layoutY="519.0" mnemonicParsing="false" onAction="#delete_event" style="-fx-background-color: #678263;" text="Delete Event " textFill="WHITE">
             <font>
                 <Font name="Britannic Bold" size="17.0" />
             </font>
         </Button>
         <Pane layoutY="-5.0" prefHeight="623.0" prefWidth="194.0" style="-fx-background-color: #002427;" />
         <Separator layoutX="195.0" layoutY="487.0" prefHeight="4.0" prefWidth="678.0" />
-      <Button fx:id="btnrefresh" layoutX="545.0" layoutY="448.0" mnemonicParsing="false" onAction="#refresh_ev" text="Refresh" />
-      <Button fx:id="btnadd" layoutX="391.0" layoutY="448.0" mnemonicParsing="false" onAction="#add_event" text="Add event " />
-      <TextField fx:id="tfnbplace" layoutX="222.0" layoutY="376.0" prefHeight="43.0" prefWidth="295.0" promptText="Number of places" style="-fx-background-radius: 30;" />
-      <ChoiceBox fx:id="choicebox" layoutX="649.0" layoutY="233.0" prefWidth="150.0" />
-      <Label text="Label" />
-      <Label layoutX="649.0" layoutY="188.0" prefHeight="21.0" prefWidth="173.0" text="categorie">
+      <Button fx:id="btnrefresh" layoutX="565.0" layoutY="441.0" mnemonicParsing="false" onAction="#refresh_ev" style="-fx-background-color: #678263;" text="Refresh" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="Britannic Bold" size="17.0" />
+         </font></Button>
+      <Button fx:id="btnadd" layoutX="391.0" layoutY="441.0" mnemonicParsing="false" onAction="#add_event" style="-fx-background-color: #678263;" text="Add event " textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="17.0" />
+         </font></Button>
+      <TextField fx:id="tfnbplace" layoutX="565.0" layoutY="307.0" prefHeight="43.0" prefWidth="295.0" promptText="Number of places" style="-fx-background-radius: 30;" />
+      <Label text="Label" />
+      <ChoiceBox fx:id="Mychoicebox" layoutX="564.0" layoutY="377.0" prefHeight="31.0" prefWidth="295.0" />
+      <Label fx:id="Mylabel" layoutX="268.0" layoutY="381.0" prefHeight="31.0" prefWidth="183.0" text="Select Category">
+         <font>
+            <Font name="Baskerville Old Face" size="21.0" />
          </font>
       </Label>
+      <TextField fx:id="tfuser" layoutX="360.0" layoutY="167.0" prefHeight="43.0" prefWidth="295.0" promptText="User ID" style="-fx-background-radius: 30;" />
     </children>
 </AnchorPane>

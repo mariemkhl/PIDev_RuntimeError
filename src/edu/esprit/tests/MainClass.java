@@ -24,19 +24,22 @@ public class MainClass {
         MyConnection myconnection = MyConnection.getInstance();
 
         java.sql.Date date = new java.sql.Date(123, 02, 25);
-        Events e1 = new Events("Music", date, "Bardo", 5, "online",50);
-        Events e2 = new Events("theatre", date, "Centre ville", 7, "theatre",50);
-        Events e3 = new Events("Paint", date, "Lac", 10, "salle exposition des tableaux",50);
-        Events e4 = new Events("Gallerie", date, "Lac", 10, "salle exposition des tableaux",50);
+        Events e1 = new Events("Music", date, "Bardo", 5, "online",50,45);
+        Events e2 = new Events("theatre", date, "Centre ville", 7, "theatre",50,45);
+        Events e3 = new Events("Paint", date, "Lac", 10, "salle exposition des tableaux",50,45);
+        Events e4 = new Events("Gallerie", date, "Lac", 10, "salle exposition des tableaux",50,45);
         ServiceEvents se = new ServiceEvents();
-        // se.ajouter(e4);
+        
+        se.participer(10, 6, 54);
+        
+    //     se.ajouter(e4);
         // se.ajouter(e2);
         //se.ajouter(e3);
        // se.supprimer(4);
         //se.supprimer(5);
-        se.modifier(e2,5);
+       //2 se.modifier(e2,5);
         //   System.out.println(se.getAll());
-        //System.out.println(se.getOneById(6));
+        System.out.println(se.getOneById(6));
         // List<Events> liste =se.getAll();
 //        List<Events> findeventsByLocation = se.findeventsByLocation("Lac");
 //        System.out.println("events is : " + findeventsByLocation);

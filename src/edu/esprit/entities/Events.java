@@ -21,7 +21,9 @@ public class Events {
     private String location;
     private int id_user;
     private String categorie;
-    private int nbplacetotal;
+    private int nbplacetotal ;
+    private int nbplaceres ; 
+    
 
     private enum categorie {
         online, cinematic, literature, theatre, salle_exposition_des_tableaux, salle_exposition_des_sculpture
@@ -30,16 +32,17 @@ public class Events {
     public Events() {
     }
 
-    public Events(String name, Date date_event, String location, int id_user, String categorie, int nbplacetotal) {
+    public Events(String name, Date date_event, String location, int id_user, String categorie, int nbplacetotal, int nbplaceres ) {
         this.name = name;
         this.date_event = date_event;
         this.location = location;
         this.id_user = id_user;
         this.categorie = categorie;
         this.nbplacetotal = nbplacetotal;
+          this.nbplaceres = nbplaceres;
     }
 
-    public Events(int id_event, String name, Date date_event, String location, int user_id, String categorie, int nbplacetotal) {
+    public Events(int id_event, String name, Date date_event, String location, int user_id, String categorie, int nbplacetotal, int nbplaceres ) {
         this.id_event = id_event;
         this.name = name;
         this.date_event = date_event;
@@ -47,13 +50,17 @@ public class Events {
         this.id_user = id_user;
         this.categorie = categorie;
         this.nbplacetotal = nbplacetotal;
+        this.nbplaceres = nbplaceres;
     }
     
-    public Events( String tfName, String tfLocation , int nbplace){
+    public Events( String tfName, int tfuser,Date dpDate,String tfLocation , int nbplace,String myCategory){
     
     this.name=tfName;
+    this.id_user= tfuser;
+    this.date_event= dpDate ;
     this.location=tfLocation; 
     this.nbplacetotal=nbplace;
+   this.categorie = myCategory;
     
     
     
@@ -114,10 +121,22 @@ public class Events {
         this.nbplacetotal = nbplacetotal;
     }
 
+    public int getNbplaceres() {
+        return nbplaceres;
+    }
+
+    public void setNbplaceres(int nbplaceres) {
+        this.nbplaceres = nbplaceres;
+    }
+
     @Override
     public String toString() {
-        return "Events{" + "name=" + name + ", date_event=" + date_event + ", location=" + location + ", id_user=" + id_user + ", categorie=" + categorie + ", nbplacetotal=" + nbplacetotal + '}';
+        return "Events{" + "name=" + name + ", date_event=" + date_event + ", location=" + location + ", id_user=" + id_user + ", categorie=" + categorie + ", nbplacetotal=" + nbplacetotal + ", nbplaceres=" + nbplaceres + '}';
     }
+    
+    
+ 
+    
 
 //    }
     @Override
