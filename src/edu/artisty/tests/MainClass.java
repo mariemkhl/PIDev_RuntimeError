@@ -22,6 +22,8 @@ public class MainClass {
     public static void main(String[] args) {
 
         DataSource ds = new DataSource();
+  
+
 
        // Article article = new Article(5, "new article",Date.valueOf("2023-02-07"), "salut", 3, "image", "livre", 3);
         //ArticleService a = new ArticleService();
@@ -37,17 +39,17 @@ public class MainClass {
 
 //****************************chercher article**********************************//
 
- ArticleService articleService = new ArticleService();
-    
-    // Chercher les articles ayant "new" dans leur titre
-    List<Article> articlesWithTitleNew = articleService.chercherArticle("Title 1", null);
-    
-    System.out.println("Articles avec le titre 'Title 1':");
-    System.out.println("----------------------------------");
-    articlesWithTitleNew.forEach((article) -> {
-        System.out.println(article);
-        });
-    System.out.println();
+// ArticleService articleService = new ArticleService();
+//    
+//    // Chercher les articles ayant "new" dans leur titre
+//    List<Article> articlesWithTitleNew = articleService.chercherArticle("Title 1", null);
+//    
+//    System.out.println("Articles avec le titre 'Title 1':");
+//    System.out.println("----------------------------------");
+//    articlesWithTitleNew.forEach((article) -> {
+//        System.out.println(article);
+//        });
+//    System.out.println();
 
 
 
