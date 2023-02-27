@@ -20,7 +20,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="837.0" prefWidth="1276.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AfficherArticleFXMLController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
@@ -41,11 +40,11 @@
                            </font>
                         </Label>
                         <Line endX="108.0" layoutX="109.0" layoutY="152.0" startX="-100.0" stroke="#f2eeee" />
-                        <Button fx:id="home_btn" alignment="CENTER" layoutX="6.0" layoutY="187.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="213.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="      Home" textFill="WHITE" />
+                        <Button fx:id="home_btn" alignment="CENTER" layoutX="6.0" layoutY="187.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="56.0" prefWidth="213.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="      Home" textFill="WHITE" />
                         <FontAwesomeIconView fill="WHITE" glyphName="HOME" layoutX="26.0" layoutY="221.0" size="1.5em" />
-                        <Button fx:id="blog_btn" alignment="CENTER" layoutX="21.0" layoutY="243.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="198.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="    Blog" textFill="WHITE" />
+                        <Button fx:id="blog_btn" alignment="CENTER" layoutX="21.0" layoutY="243.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="56.0" prefWidth="198.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="    Blog" textFill="WHITE" />
                         <FontAwesomeIconView fill="WHITE" glyphName="COMMENT" layoutX="26.0" layoutY="278.0" size="1.5em" text="" />
-                        <Button fx:id="comments_btn" alignment="CENTER" layoutX="16.0" layoutY="297.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="197.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="      Comments" textFill="WHITE" />
+                        <Button fx:id="comments_btn" alignment="CENTER" layoutX="16.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="56.0" prefWidth="197.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="      Comments" textFill="WHITE" />
                         <FontAwesomeIconView fill="WHITE" glyphName="ENVELOPE" layoutX="28.0" layoutY="329.0" size="1.2em" />
                         <Button fx:id="logoutbtn" layoutX="14.0" layoutY="792.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="42.0" stylesheets="@dashboardDesign.css">
                            <styleClass>
@@ -59,92 +58,95 @@
                               <Font name="Tahoma Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Button layoutX="59.0" layoutY="489.0" mnemonicParsing="false" text="Button" />
                      </children>
                   </AnchorPane>
                </left>
                <center>
                   <AnchorPane fx:id="home_form" prefHeight="718.0" prefWidth="1041.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="10.0" layoutY="42.0" prefHeight="200.0" prefWidth="1018.0" stylesheets="@dashboardDesign.css">
-                           <styleClass>
-                              <String fx:value="white-bg" />
-                              <String fx:value="shadow" />
-                           </styleClass>
+                        <AnchorPane fx:id="home_form" prefHeight="837.0" prefWidth="1048.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="173.0" prefWidth="304.0" stylesheets="@dashboardDesign.css">
+                              <AnchorPane layoutX="15.0" layoutY="354.0" prefHeight="456.0" prefWidth="1018.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
-                                    <String fx:value="nav-form" />
-                                    <String fx:value="card" />
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
                                  </styleClass>
-                                 <children>
-                                    <Label layoutX="95.0" layoutY="122.0" prefHeight="24.0" prefWidth="114.0" text="LIKES" textFill="WHITE">
-                                       <font>
-                                          <Font name="Tahoma Bold" size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <FontAwesomeIconView fill="WHITE" glyphName="ANGELLIST" layoutX="21.0" layoutY="98.0" size="80" />
-                                    <Label fx:id="home_likes" alignment="TOP_RIGHT" layoutX="176.0" layoutY="14.0" prefHeight="24.0" prefWidth="114.0" text="0" textFill="WHITE">
-                                       <font>
-                                          <Font name="Tahoma Bold" size="29.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="348.0" layoutY="14.0" prefHeight="173.0" prefWidth="304.0" styleClass="card" stylesheets="@dashboardDesign.css">
-                                 <children>
-                                    <Label layoutX="72.0" layoutY="122.0" prefHeight="37.0" prefWidth="178.0" text="CATEGORY" textFill="WHITE">
-                                       <font>
-                                          <Font name="Tahoma Bold" size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <FontAwesomeIconView fill="WHITE" glyphName="LIST" layoutX="14.0" layoutY="99.0" size="75" wrappingWidth="85.0" />
-                                    <Label fx:id="total_category" alignment="TOP_RIGHT" layoutX="168.0" layoutY="16.0" prefHeight="24.0" prefWidth="114.0" text="0" textFill="WHITE">
-                                       <font>
-                                          <Font name="Tahoma Bold" size="29.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane layoutX="686.0" layoutY="14.0" prefHeight="173.0" prefWidth="304.0" styleClass="card" stylesheets="@dashboardDesign.css">
-                                 <children>
-                                    <Label layoutX="17.0" layoutY="122.0" prefHeight="37.0" prefWidth="270.0" text="TOTAL BOLGGERS" textFill="WHITE">
-                                       <font>
-                                          <Font name="Tahoma Bold" size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="total_bloggers" alignment="TOP_RIGHT" layoutX="168.0" layoutY="14.0" prefHeight="24.0" prefWidth="114.0" text="0" textFill="WHITE">
-                                       <font>
-                                          <Font name="Tahoma Bold" size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="22.0" layoutY="99.0" size="75" />
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="283.0" prefHeight="456.0" prefWidth="1018.0" stylesheets="@dashboardDesign.css">
-                           <styleClass>
-                              <String fx:value="white-bg" />
-                              <String fx:value="shadow" />
-                           </styleClass>
-                        </AnchorPane>
-                        <AnchorPane layoutX="25.0" layoutY="58.0" prefHeight="709.0" prefWidth="1039.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="687.0" prefWidth="338.0" stylesheets="@dashboardDesign.css">
+                              <AnchorPane layoutX="15.0" layoutY="69.0" prefHeight="200.0" prefWidth="1018.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <AnchorPane layoutX="63.0" layoutY="14.0" prefHeight="219.0" prefWidth="200.0" stylesheets="@dashboardDesign.css">
+                                    <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="173.0" prefWidth="304.0" stylesheets="@dashboardDesign.css">
+                                       <styleClass>
+                                          <String fx:value="nav-form" />
+                                          <String fx:value="card" />
+                                       </styleClass>
+                                       <children>
+                                          <Label layoutX="95.0" layoutY="122.0" prefHeight="24.0" prefWidth="114.0" text="LIKES" textFill="WHITE">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="29.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="ANGELLIST" layoutX="21.0" layoutY="98.0" size="80" />
+                                          <Label fx:id="home_likes" alignment="TOP_RIGHT" layoutX="176.0" layoutY="14.0" prefHeight="24.0" prefWidth="114.0" text="0" textFill="WHITE">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="29.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="348.0" layoutY="14.0" prefHeight="173.0" prefWidth="304.0" styleClass="card" stylesheets="@dashboardDesign.css">
+                                       <children>
+                                          <Label layoutX="72.0" layoutY="122.0" prefHeight="37.0" prefWidth="178.0" text="CATEGORY" textFill="WHITE">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="29.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="LIST" layoutX="14.0" layoutY="99.0" size="75" wrappingWidth="85.0" />
+                                          <Label fx:id="total_category" alignment="TOP_RIGHT" layoutX="168.0" layoutY="16.0" prefHeight="24.0" prefWidth="114.0" text="0" textFill="WHITE">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="29.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="686.0" layoutY="14.0" prefHeight="173.0" prefWidth="304.0" styleClass="card" stylesheets="@dashboardDesign.css">
+                                       <children>
+                                          <Label layoutX="17.0" layoutY="122.0" prefHeight="37.0" prefWidth="270.0" text="TOTAL BOLGGERS" textFill="WHITE">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="29.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="total_bloggers" alignment="TOP_RIGHT" layoutX="168.0" layoutY="14.0" prefHeight="24.0" prefWidth="114.0" text="0" textFill="WHITE">
+                                             <font>
+                                                <Font name="Tahoma Bold" size="29.0" />
+                                             </font>
+                                          </Label>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="22.0" layoutY="99.0" size="75" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="blog_form" prefHeight="837.0" prefWidth="1048.0" visible="false">
+                           <children>
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="810.0" prefWidth="329.0" stylesheets="@dashboardDesign.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <AnchorPane layoutX="63.0" layoutY="14.0" prefHeight="219.0" prefWidth="200.0" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/dashboardDesign.css">
                                        <styleClass>
                                           <String fx:value="white-bg" />
                                           <String fx:value="shadow" />
                                        </styleClass>
                                        <children>
                                           <ImageView fx:id="imageview_article" fitHeight="220.0" fitWidth="200.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
-                                          <Button fx:id="import_image" layoutX="-1.0" layoutY="175.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="201.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/dashboardDesign.css" text="Import" />
+                                          <Button fx:id="import_image" layoutX="-1.0" layoutY="175.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="201.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Import" />
                                        </children>
                                     </AnchorPane>
                                     <Label layoutX="12.0" layoutY="246.0" text="Article Title:" textFill="#156b4e">
@@ -159,8 +161,8 @@
                                        </font>
                                     </Label>
                                     <ComboBox fx:id="category" layoutX="11.0" layoutY="465.0" prefHeight="41.0" prefWidth="271.0" promptText="Choose..." />
-                                    <Button fx:id="update_article" layoutX="13.0" layoutY="570.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="118.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Update" />
-                                    <Button fx:id="clear_fields_article" layoutX="179.0" layoutY="570.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="115.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Clear" />
+                                    <Button fx:id="update_article" layoutX="13.0" layoutY="570.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="118.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Update" />
+                                    <Button fx:id="clear_fields_article" layoutX="179.0" layoutY="570.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="115.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Clear" />
                                     <DatePicker fx:id="date_article" layoutX="14.0" layoutY="372.0" prefHeight="38.0" prefWidth="265.0" promptText="DD MM YYYY" style="-fx-border-color: #002427;" />
                                     <Label layoutX="14.0" layoutY="330.0" prefHeight="27.0" prefWidth="57.0" text="Date:" textFill="#156b4e">
                                        <font>
@@ -169,7 +171,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="372.0" layoutY="12.0" prefHeight="687.0" prefWidth="659.0" stylesheets="@dashboardDesign.css">
+                              <AnchorPane layoutX="372.0" layoutY="12.0" prefHeight="813.0" prefWidth="659.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />
@@ -180,19 +182,19 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="content_article" layoutX="52.0" layoutY="78.0" prefHeight="347.0" prefWidth="551.0" style="-fx-border-color: #156b4e;" />
+                                    <TextField fx:id="content_article1" layoutX="52.0" layoutY="78.0" prefHeight="347.0" prefWidth="551.0" style="-fx-border-color: #156b4e;" />
                                     <Button fx:id="delete_article" layoutX="74.0" layoutY="595.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="112.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Delete" />
-                                    <Button fx:id="add_article" layoutX="72.0" layoutY="507.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="111.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Add" />
-                                    <Button fx:id="show_article" layoutX="453.0" layoutY="507.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="111.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Show Article" />
+                                    <Button fx:id="add_article" layoutX="72.0" layoutY="507.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="111.0" styleClass="login-btn" stylesheets="@LoginDesign.css" text="Add" />
+                                    <Button fx:id="show_article" layoutX="453.0" layoutY="507.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="111.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Show Article" />
                                     <ScrollBar layoutX="575.0" layoutY="87.0" orientation="VERTICAL" prefHeight="327.0" prefWidth="18.0" />
                                     <ScrollBar layoutX="60.0" layoutY="396.0" prefHeight="18.0" prefWidth="512.0" />
                                  </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="305.0" layoutY="176.0" prefHeight="709.0" prefWidth="1039.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="showarticle_form" layoutX="305.0" layoutY="176.0" prefHeight="709.0" prefWidth="1039.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="23.0" layoutY="14.0" prefHeight="202.0" prefWidth="176.0" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/dashboardDesign.css">
+                              <AnchorPane layoutX="23.0" layoutY="14.0" prefHeight="202.0" prefWidth="176.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />
@@ -202,7 +204,7 @@
                                     <Button layoutY="154.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="200.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Import" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="257.0" layoutY="19.0" prefHeight="672.0" prefWidth="765.0" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/dashboardDesign.css">
+                              <AnchorPane layoutX="257.0" layoutY="19.0" prefHeight="785.0" prefWidth="767.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />
@@ -233,7 +235,7 @@
                               </AnchorPane>
                               <Button fx:id="like" layoutX="46.0" layoutY="262.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="160.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" />
                               <Button fx:id="dislike" layoutX="46.0" layoutY="341.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="160.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" />
-                              <Button fx:id="comments" layoutX="46.0" layoutY="424.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="160.0" styleClass="login-btn" stylesheets="@LoginDesign.css" />
+                              <Button fx:id="comments" layoutX="46.0" layoutY="424.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="52.0" prefWidth="160.0" styleClass="login-btn" stylesheets="@LoginDesign.css" />
                               <FontAwesomeIconView fill="WHITE" glyphName="THUMBS_ALT_UP" layoutX="109.0" layoutY="302.0" size="40" text="" />
                               <FontAwesomeIconView fill="WHITE" glyphName="THUMBS_ALT_DOWN" layoutX="109.0" layoutY="383.0" size="40" text="" />
                               <FontAwesomeIconView fill="WHITE" glyphName="COMMENT" layoutX="106.0" layoutY="464.0" size="40" />
@@ -254,8 +256,10 @@
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
                            </styleClass>
+                        </AnchorPane>
+                        <AnchorPane fx:id="comment_form" layoutX="333.0" layoutY="255.0" prefHeight="837.0" prefWidth="1048.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="231.0" prefWidth="988.0" stylesheets="@dashboardDesign.css">
+                              <AnchorPane layoutX="46.0" layoutY="73.0" prefHeight="231.0" prefWidth="988.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />
@@ -338,7 +342,7 @@
                                     </Button>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="25.0" layoutY="254.0" prefHeight="428.0" prefWidth="988.0" stylesheets="@dashboardDesign.css">
+                              <AnchorPane layoutX="46.0" layoutY="355.0" prefHeight="428.0" prefWidth="988.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />

@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -152,9 +153,78 @@ public class AfficherArticleFXMLController implements Initializable {
 
     @FXML
     private Button delete_comment;
+    @FXML
+    private AnchorPane showarticle_form;
+
+    @FXML
+    public void switchForm(ActionEvent event) {
+
+        if (event.getSource() == home_btn) {
+            home_form.setVisible(true);
+            blog_form.setVisible(false);
+            comment_form.setVisible(false);
+            showarticle_form.setVisible(false);
+
+            home_btn.setStyle("-fx-background-color: #3796a7; -fx-text-fill: #fff; -fx-border-width: 0px;");
+            blog_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+            comments_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+//
+//            dashboardNC();
+//            dashboardTI();
+//            dashboardTIncome();
+//            dashboardNOCCChart();
+//            dashboardICC();
+        } else if (event.getSource() == blog_btn) {
+            home_form.setVisible(false);
+            blog_form.setVisible(true);
+            comment_form.setVisible(false);
+            showarticle_form.setVisible(false);
+
+            home_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+            blog_btn.setStyle("-fx-background-color: #3796a7; -fx-text-fill: #fff; -fx-border-width: 0px;");
+            comments_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+//
+//            availableFDShowData();
+//            availableFDSearch();
+        } else if (event.getSource() == comments_btn) {
+            home_form.setVisible(false);
+            blog_form.setVisible(false);
+            comment_form.setVisible(true);
+            showarticle_form.setVisible(false);
+
+            home_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+            blog_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+            comments_btn.setStyle("-fx-background-color: #3796a7; -fx-text-fill: #fff; -fx-border-width: 0px;");
+
+//
+//            orderProductId();
+//            orderProductName();
+//            orderSpinner();
+//            orderDisplayData();
+//            orderDisplayTotal();
+        } else if (event.getSource() == show_article) {
+            home_form.setVisible(false);
+            blog_form.setVisible(false);
+            comment_form.setVisible(false);
+            showarticle_form.setVisible(true);
+
+        } else if (event.getSource() == comments) {
+            home_form.setVisible(false);
+            blog_form.setVisible(false);
+            comment_form.setVisible(true);
+            showarticle_form.setVisible(false);
+        }
+
+    }
 
     private double x = 0;
     private double y = 0;
+    @FXML
+    private AnchorPane blog_form;
+    @FXML
+    private TextField content_article1;
+    @FXML
+    private AnchorPane comment_form;
 
     @FXML
     public void logout() {
@@ -166,11 +236,11 @@ public class AfficherArticleFXMLController implements Initializable {
             Optional<ButtonType> option = alert.showAndWait();
 
             if (option.get().equals(ButtonType.OK)) {
-                
+
                 logoutbtn.getScene().getWindow().hide();
                 //LINK YOUR LOGIN FORM
 
-                Parent root = FXMLLoader.load(getClass().getResource(""));
+                Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
