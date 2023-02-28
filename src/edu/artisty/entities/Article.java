@@ -23,8 +23,21 @@ public class Article {
     // TODO
     private int idUser;
 
+          
     public Article() {
     }
+
+    public Article(String titreArticle, Date dateArticle, String contentArticle, String imageArticle, String categoryArticle) {
+        this.titreArticle = titreArticle;
+        this.dateArticle = dateArticle;
+        this.contentArticle = contentArticle;
+        this.imageArticle = imageArticle;
+        this.categoryArticle = categoryArticle;
+        
+    }
+
+    
+    
 
     public Article(String titreArticle, Date dateArticle, String contentArticle, int nbrLikesArticle, String imageArticle, String categoryArticle, int idUser) {
         this.titreArticle = titreArticle;
@@ -47,6 +60,10 @@ public class Article {
         this.idUser = idUser;
     }
 
+    public Article(int aInt, String string, Date date, String string0, String string1, String string2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdArticle() {
         return idArticle;
     }
@@ -66,6 +83,12 @@ public class Article {
     public Date getDateArticle() {
         return dateArticle;
     }
+    
+//    public String setDateArticle(Date dateArticle){
+//        this.dateArticle=dateArticle;
+//        return null;
+//    }
+    
 
     public void setDateArticle(Date dateArticle) {
         this.dateArticle = dateArticle;

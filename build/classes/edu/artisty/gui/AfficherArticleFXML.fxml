@@ -146,7 +146,7 @@
                                        </styleClass>
                                        <children>
                                           <ImageView fx:id="imageview_article" fitHeight="220.0" fitWidth="200.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
-                                          <Button fx:id="import_image" layoutX="-1.0" layoutY="175.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="201.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Import" />
+                                          <Button fx:id="import_image" layoutX="-1.0" layoutY="175.0" mnemonicParsing="false" onAction="#articleImage" prefHeight="46.0" prefWidth="201.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Import" />
                                        </children>
                                     </AnchorPane>
                                     <Label layoutX="12.0" layoutY="246.0" text="Article Title:" textFill="#156b4e">
@@ -160,9 +160,9 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="category" layoutX="11.0" layoutY="465.0" prefHeight="41.0" prefWidth="271.0" promptText="Choose..." />
+                                    <ComboBox fx:id="category" layoutX="11.0" layoutY="465.0" onAction="#availablecategories" prefHeight="41.0" prefWidth="271.0" promptText="Choose..." />
                                     <Button fx:id="update_article" layoutX="13.0" layoutY="570.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="118.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Update" />
-                                    <Button fx:id="clear_fields_article" layoutX="179.0" layoutY="570.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="115.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Clear" />
+                                    <Button fx:id="clear_fields_article" layoutX="179.0" layoutY="570.0" mnemonicParsing="false" onAction="#availableFDClear" prefHeight="55.0" prefWidth="115.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Clear" />
                                     <DatePicker fx:id="date_article" layoutX="14.0" layoutY="372.0" prefHeight="38.0" prefWidth="265.0" promptText="DD MM YYYY" style="-fx-border-color: #002427;" />
                                     <Label layoutX="14.0" layoutY="330.0" prefHeight="27.0" prefWidth="57.0" text="Date:" textFill="#156b4e">
                                        <font>
@@ -184,7 +184,7 @@
                                     </Label>
                                     <TextField fx:id="content_article1" layoutX="52.0" layoutY="78.0" prefHeight="347.0" prefWidth="551.0" style="-fx-border-color: #156b4e;" />
                                     <Button fx:id="delete_article" layoutX="74.0" layoutY="595.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="112.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Delete" />
-                                    <Button fx:id="add_article" layoutX="72.0" layoutY="507.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="111.0" styleClass="login-btn" stylesheets="@LoginDesign.css" text="Add" />
+                                    <Button fx:id="add_article" layoutX="72.0" layoutY="507.0" mnemonicParsing="false" onAction="#articleAdd" prefHeight="54.0" prefWidth="111.0" styleClass="login-btn" stylesheets="@LoginDesign.css" text="Add" />
                                     <Button fx:id="show_article" layoutX="453.0" layoutY="507.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="111.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Show Article" />
                                     <ScrollBar layoutX="575.0" layoutY="87.0" orientation="VERTICAL" prefHeight="327.0" prefWidth="18.0" />
                                     <ScrollBar layoutX="60.0" layoutY="396.0" prefHeight="18.0" prefWidth="512.0" />
@@ -201,7 +201,7 @@
                                  </styleClass>
                                  <children>
                                     <ImageView fitHeight="202.0" fitWidth="200.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Button layoutY="154.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="200.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Import" />
+                                    <Button layoutY="154.0" mnemonicParsing="false" onAction="#articleImage" prefHeight="48.0" prefWidth="200.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Import" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="257.0" layoutY="19.0" prefHeight="785.0" prefWidth="767.0" stylesheets="@dashboardDesign.css">
@@ -217,7 +217,7 @@
                                        </styleClass>
                                     </TextField>
                                     <FontAwesomeIconView fill="#0b919a" glyphName="SEARCH" layoutX="318.0" layoutY="39.0" size="17" />
-                                    <TableView accessibleRole="IMAGE_VIEW" fixedCellSize="1.0" layoutX="4.0" layoutY="79.0" prefHeight="555.0" prefWidth="763.0" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/dashboardDesign.css">
+                                    <TableView fx:id="articletableview" accessibleRole="IMAGE_VIEW" fixedCellSize="1.0" layoutX="4.0" layoutY="79.0" prefHeight="555.0" prefWidth="763.0" stylesheets="@dashboardDesign.css">
                                        <columns>
                                           <TableColumn fx:id="article_col1" prefWidth="90.0" text="Article_ID" />
                                           <TableColumn fx:id="article_col2" prefWidth="99.0" text="Article_Title" />

@@ -85,6 +85,8 @@ Connection cnx = DataSource.getInstance().getCnx();
                     alert.setContentText("Successfully Login !");
                     alert.showAndWait();
                     
+                    GetData.username= username.getText();
+                    
                        //TO HIDE LOGIN FORM 
                     loginBtn.getScene().getWindow().hide();
                     

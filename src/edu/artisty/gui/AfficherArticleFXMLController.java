@@ -1,12 +1,26 @@
 package edu.artisty.gui;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import static com.sun.xml.internal.ws.api.model.wsdl.WSDLBoundOperation.ANONYMOUS.optional;
+import edu.artisty.entities.Article;
+import edu.artisty.utils.DataSource;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,13 +36,19 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import static javax.management.Query.value;
+import java.lang.String;
 
 /**
  * FXML Controller class
@@ -104,22 +124,22 @@ public class AfficherArticleFXMLController implements Initializable {
     private TextField search_article;
 
     @FXML
-    private TableColumn<?, ?> article_col1;
+    private TableColumn<Article, String> article_col1;
 
     @FXML
-    private TableColumn<?, ?> article_col2;
+    private TableColumn<Article, String> article_col2;
 
     @FXML
-    private TableColumn<?, ?> article_col3;
+    private TableColumn<Article, String> article_col3;
 
     @FXML
-    private TableColumn<?, ?> article_col4;
+    private TableColumn<Article, String> article_col4;
 
     @FXML
-    private TableColumn<?, ?> article_col5;
+    private TableColumn<Article, String> article_col5;
 
     @FXML
-    private TableColumn<?, ?> article_col6;
+    private TableColumn<Article, String> article_col6;
 
     @FXML
     private Button like;
@@ -156,6 +176,137 @@ public class AfficherArticleFXMLController implements Initializable {
     @FXML
     private AnchorPane showarticle_form;
 
+    private Image image;
+    @FXML
+    private TableView<Article> articletableview;
+
+//    public AfficherArticleFXMLController() {
+//        this.listcategory = ("livre , artworks");
+//    }
+
+    public ObservableList<Article> articledata() {
+        ObservableList<Article> listData = FXCollections.observableArrayList();
+
+        String sql = "SELECT id_article,titre_article,date_article,content_article,image_article,category_article FROM article";
+        try {
+            Statement ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(sql);
+
+            Article article;
+            while (rs.next()) {
+                article = new Article(rs.getInt("idArticle"),
+                        rs.getString("titreArticle"),
+                        rs.getDate("dateArticle"),
+                        rs.getString("contentArticle"), rs.getString("imageArticle"),
+                        rs.getString("categoryArticle"));
+
+                listData.add(article);
+            }
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+        return listData;
+    }
+
+//    private ObservableList<Article> listData2;
+//    public void articleshowlist() {
+//        listData2 = articledata();
+//        article_col1.setCellFactory(new PropertyValueFactory<>("idArticle"));
+//        article_col2.setCellFactory(new PropertyValueFactory<>("titreArticle"));
+//        article_col3.setCellFactory(new PropertyValueFactory<>("dateArticle"));
+//        article_col4.setCellFactory(new PropertyValueFactory<>("contenteArticle"));
+//        article_col5.setCellFactory(new PropertyValueFactory<>("imageArticle"));
+//        article_col6.setCellFactory(new PropertyValueFactory<>("categoryArticle"));
+//        
+//      articletableview.setItems(listData2);
+//    }
+    Connection cnx = DataSource.getInstance().getCnx();
+//    private PreparedStatement prepare;
+////    private ResultSet result;
+
+    public void articleAdd() throws SQLException {
+        String sql = "INSERT INTO article (titre_article,null,content_article,nbr_likes_article,image_article,category_article) VALUES(?,?,?,?,?,)";
+
+//    Connection cnx = DataSource.getInstance().getCnx();
+        try {
+
+            Alert alert;
+
+            if (titre_article.getText().isEmpty() ) {
+
+                alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill all blank fields");
+                alert.showAndWait();
+
+            } else {
+
+                String checkData = "SELECT titre_article,null,content_article,image_article,category_article FROM article WHERE titre_article='" + titre_article.getText().isEmpty() + "'";
+                try (Statement statement = cnx.createStatement();
+                        ResultSet result = statement.executeQuery(checkData)) {
+                    if (result.next()) {
+                        alert = new Alert(AlertType.ERROR);
+                        alert.setTitle("Error Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("titre article:" + titre_article.getText() + " already exist!");
+                        alert.showAndWait();
+                    } 
+                    // Close the result set.
+                    // Close the statement.
+                }
+            }
+            
+            
+
+        } catch (SQLException e) {
+        }
+
+    }
+    String listcategory[]= {"livre", "artwork"};
+
+    public void availablecategories() {
+        List<String> lists = new ArrayList<>();
+        for (String data : listcategory) {
+            lists.add(data);
+        }
+        ObservableList listData = FXCollections.observableArrayList(lists);
+        category.setItems(listData);
+
+    }
+
+    public void availableFDClear() {
+
+        titre_article.setText("");
+        content_article.setText("");
+        GetData.path = "";
+        imageview_article.setImage(null);
+        category.getSelectionModel().clearSelection();
+
+    }
+
+    @FXML
+    public void articleImage() {
+        FileChooser open = new FileChooser();
+        open.setTitle("Open Image File");
+        open.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.jpg", "*.png"));
+
+        File file = open.showOpenDialog(main_form.getScene().getWindow());
+
+        if (file != null) {
+            GetData.path = file.getAbsolutePath();
+
+            image = new Image(file.toURI().toString(), 200, 220, false, true);
+            imageview_article.setImage(image);
+        }
+    }
+
+    public void displayUsername() {
+        String user = GetData.username;
+        user = user.substring(0, 1).toUpperCase() + user.substring(1);
+        username.setText(user);
+    }
+
     @FXML
     public void switchForm(ActionEvent event) {
 
@@ -183,6 +334,7 @@ public class AfficherArticleFXMLController implements Initializable {
             home_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
             blog_btn.setStyle("-fx-background-color: #3796a7; -fx-text-fill: #fff; -fx-border-width: 0px;");
             comments_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+
 //
 //            availableFDShowData();
 //            availableFDSearch();
@@ -207,6 +359,9 @@ public class AfficherArticleFXMLController implements Initializable {
             blog_form.setVisible(false);
             comment_form.setVisible(false);
             showarticle_form.setVisible(true);
+
+//            articleshowlist();
+            availablecategories();
 
         } else if (event.getSource() == comments) {
             home_form.setVisible(false);
@@ -266,8 +421,7 @@ public class AfficherArticleFXMLController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
         }
     }
 
@@ -304,6 +458,9 @@ public class AfficherArticleFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        slider();
+        displayUsername();
+//        articleshowlist();
+        availablecategories();
     }
 
 }
