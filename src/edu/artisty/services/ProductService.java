@@ -17,7 +17,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,6 +32,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+
 
 /**
  *
@@ -48,22 +52,35 @@ public class ProductService implements IService<Product> {
 
                 try {
 
-                    String req = "INSERT INTO `product`(`nom`, `description`,`prix`,`img`, `cat_p`,`user_id`) VALUES (?,?,?,?,?,?)";
+                    String req = "INSERT INTO `product`(`nom`, `description`,`prix`,`img`, `cat_p`,`user_id`,`url`) VALUES (?,?,?,?,?,?,?)";
                     PreparedStatement ps = cnx.prepareStatement(req);
                     ps.setString(1, t.getNom());
                     ps.setString(2, t.getDescription());
                     ps.setDouble(3, t.getPrix());
 
 //            File imageFile = new File("C:/Users/Nour Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/images.png");
-                    byte[] imageData;
-                    try {
-                        imageData = Files.readAllBytes(t.getImg().toPath());
-                        ps.setBytes(4, imageData);
 
-                    } catch (IOException ex) {
-                        System.err.println(ex.getMessage());
 
-                    }
+
+
+                   // byte[] imageData;
+                   // try {
+                       
+                      
+                         File file = new File( t.getImg().toString());
+
+                         Path path = file.toPath();
+                         String img = path.toString();
+
+                       
+                      //  imageData = Files.readAllBytes(t.getImg().toPath());
+                      //  ps.setBytes(4, imageData);
+                      ps.setString(4,img);
+
+//                    } catch (IOException ex) {
+//                        System.err.println(ex.getMessage());
+//
+//                    }
 
 //    try {
 //         fis=new FileInputStream(file);
@@ -71,10 +88,11 @@ public class ProductService implements IService<Product> {
 //     } catch (FileNotFoundException ex) {
 //        System.err.println(ex.getMessage());
 //     }
-Category c = new Category();
+    Category c = new Category();
 
-                    ps.setInt(5, t.getCat_p().getId_cat());
+                    ps.setString(5, t.getCat_p().getNom());
                     ps.setInt(6, t.getUser_id());
+                    ps.setString(7, t.getUrl());
                     ps.executeUpdate();
                     System.out.println("Product added successfully !");
                 } catch (SQLException ex) {
@@ -103,7 +121,7 @@ Category c = new Category();
     @Override
     public void modifier(Product t) {
         try {
-            String req = "UPDATE `product` SET `nom`='" + t.getNom() + "',`description`='" + t.getDescription() + "',`prix`='" + t.getPrix() + "',`img`='" + t.getImg() + "',`cat_p`='" + t.getCat_p().getId_cat() + "',`user_id`='" + t.getUser_id() + "' WHERE `id_p`= '" + t.getId_p() + "';";
+            String req = "UPDATE `product` SET `nom`='" + t.getNom() + "',`description`='" + t.getDescription() + "',`prix`='" + t.getPrix() + "',`img`='" + t.getImg() + "',`cat_p`='" + t.getCat_p().getNom() + "',`user_id`='" + t.getUser_id() +"',`url`='" + t.getUrl()+ "' WHERE `id_p`= '" + t.getId_p() + "';";
 
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
@@ -154,7 +172,8 @@ Category c = new Category();
                         rs.getDouble(4),
                         file,
                         cat,
-                        rs.getInt(7));
+                        rs.getInt(7),
+                        rs.getString("url"));
                 System.out.println(p);
                 }
             }
@@ -171,7 +190,7 @@ Category c = new Category();
         Product t = new Product();
 
         try {
-            String req = "SELECT * FROM `product`";
+            String req = "SELECT * FROM product";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
 //    try {
@@ -203,34 +222,40 @@ Category c = new Category();
 //        System.out.println(ex.getMessage());
 //    }
             while (rs.next()) {
-                Blob blob;
-                try {
-                    blob = rs.getBlob("img");
-//        byte[] imageBytes = blob.getBytes(1, (int) blob.length());
-//        ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-                    File file = new File("output.png");
-                    try {
-                        FileOutputStream fos = new FileOutputStream(file);
-                        fos.write(blob.getBytes(1, (int) blob.length()));
+             //   Blob blob;
+             String img;
+          //      try {
+                   // blob = rs.getBlob("img");
+                   img=rs.getString("img");
 
-                    } catch (FileNotFoundException ex) {
-                        System.out.println(ex.getMessage());
-                    } catch (IOException ex) {
-                        System.out.println(ex.getMessage());
-                    }
-
-                } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
-                }
+//                    File file = new File("output.png");
+                  //File file = new File("output.png");
+                 // Path path = Paths.get(img);
+                //  File file = path.toFile();
+                  //FileUtils.writeStringToFile(file, img);
+           
+//                    try {
+//                        FileOutputStream fos = new FileOutputStream(file);
+//                        fos.write(blob.getBytes(1, (int) blob.length()));
+//
+//                    } catch (FileNotFoundException ex) {
+//                        System.out.println(ex.getMessage());
+//                    } catch (IOException ex) {
+//                        System.out.println(ex.getMessage());
+//                    }
+//
+//                } catch (SQLException ex) {
+//                    System.out.println(ex.getMessage());
+//                }
                 
-                
-                String req1 = "SELECT * FROM Category WHERE id_cat = ?";//rs.getInt(1)
+               String req1 = "SELECT nom FROM Category WHERE nom = ?";//rs.getInt(1)
                 Statement st1 = cnx.createStatement();
-                ResultSet rs1 = st.executeQuery(req);
+                ResultSet rs1 = st1.executeQuery(req);
                 
                 while(rs1.next()){
                     
-                    Category cat = new Category(rs1.getInt(1),rs1.getNString(2));
+                   
+                    Category cat = new Category(rs1.getNString(2));
                 
                 Product P = new Product(rs.getInt(1),
                         rs.getString("nom"),
@@ -238,11 +263,15 @@ Category c = new Category();
                         rs.getDouble(4),
                         file,
                         cat,
-                        rs.getInt(7));
+                        rs.getInt(7),
+                        rs.getString("url"));
                 list.add(P);
                 System.out.println(list);
                 }
+              
+             
             }
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -274,6 +303,82 @@ Category c = new Category();
         return x;
 
     }
+    
+    
+    
+     public Product getOneByName(String nom) {
+        Product p = null ;
+        try {
+            String req = "SELECT * FROM product";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+
+    while (rs.next()) {
+ 
+                 try{
+               String req1 = "SELECT `nom` FROM `category` WHERE `nom`= "+ nom;
+                Statement st1 = cnx.createStatement();
+                ResultSet rs1 = st1.executeQuery(req1);
+                
+                while(rs1.next()){
+                    
+                  
+                    Category cat = new Category(rs1.getNString(2));
+                
+                Product P = new Product(rs.getInt(1),
+                        rs.getString("nom"),
+                        rs.getString("description"),
+                        rs.getDouble(4),
+                        file,
+                        cat,
+                        rs.getInt(7),
+                        rs.getString("url"));
+               
+                System.out.println(p);
+                }
+                 } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+              
+             return p;
+            }
+                 
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return p;
+       
+    }
+    
+    
+    
+    public boolean RechercherProduitByNom(String nom) {
+        String req = null;
+        boolean x = false;
+
+        try {
+            req = "SELECT * FROM product WHERE nom = ?";
+            PreparedStatement pstmt = this.cnx.prepareStatement(req);
+            pstmt.setString(1, nom);
+            ResultSet rset = pstmt.executeQuery();
+            if (rset.next()) {
+                System.out.println("Produit Existe");
+                x = true;
+            } else {
+                System.out.println("Produit n'existe pas");
+                x = false;
+            }
+        } catch (SQLException var6) {
+            System.err.println(var6.getMessage());
+        }
+        return x;
+
+    }
+    
+    
+
 
     public boolean exists(String nom) throws SQLException {
 
@@ -288,5 +393,22 @@ Category c = new Category();
         return false;
 
     }
+//    public List<String> getNameCat(){
+//        List<String> list = new ArrayList<>();
+//        try{
+//             String req1 = "SELECT nom FROM Category WHERE nom = ?";//rs.getInt(1)
+//                Statement st1 = cnx.createStatement();
+//                ResultSet rs1 = st1.executeQuery(req1);
+//                
+//                while(rs1.next()){
+//                    
+//                    Category cat = new Category(rs1.getNString(2));
+//                }
+//            
+//        }catch{
+//            
+//        }
+//        
+//    }
 
 }

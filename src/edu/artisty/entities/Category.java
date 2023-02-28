@@ -48,14 +48,16 @@ public class Category {
         this.nom = nom;
     }
 
-  
-
-   
-
     @Override
     public String toString() {
         return  nom ;
     }
+
+  
+
+   
+
+   
 
     @Override
     public int hashCode() {

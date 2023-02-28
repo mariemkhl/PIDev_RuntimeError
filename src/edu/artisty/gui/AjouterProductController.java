@@ -20,7 +20,10 @@ import java.awt.image.ImageProducer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.sql.Blob;
 import java.sql.Connection;
@@ -58,6 +61,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -74,7 +78,6 @@ public class AjouterProductController implements Initializable {
     private TextField NomProd;
     @FXML
     private TextField PrixProd;
-    @FXML
     private TextField CatProd;
     @FXML
     private TextField UserProd;
@@ -86,30 +89,23 @@ public class AjouterProductController implements Initializable {
     private Button BrowseBtn;
      @FXML
     private TextArea imgPath;
-    @FXML
     private TextField idp;
      @FXML
     private ComboBox CategorieBox;
+    @FXML
+    private TextField urltxt;
     
      
      
      
      
-      @FXML
     private TableView<Product> ProductTable;
-    @FXML
     private TableColumn<Product, String> nomProdColumn;
-    @FXML
     private TableColumn<Product, String> DescColumn;
-    @FXML
     private TableColumn<Product, Double> PrixColumn;
-    @FXML
     private TableColumn<Product, Image> imgProdColumn;
-    @FXML
     private TableColumn<Product, Integer> catProdColumn;
-    @FXML
     private TableColumn<Product, Integer> userIdProdColumn;
-     @FXML
     private TableColumn<Product, Integer> IdProdColumn;
      
      
@@ -119,6 +115,8 @@ public class AjouterProductController implements Initializable {
     private File file;
     private FileChooser filechooser;
     private Image img;
+        private File selectedFile;
+
     
    
   
@@ -141,31 +139,42 @@ public class AjouterProductController implements Initializable {
     @FXML
     private Button VersCatBtn;
     @FXML
-    private Button RechercheBtn;
+    private Button AfficheProduct;
+    
+    
+    
+    ListProductController lpc = new ListProductController();
+    @FXML
+    private Pane imgview1;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        List<Product> col = ProdServ.getAll();
-        ObservableList<Product> listProduct = FXCollections.observableArrayList(col);
-        nomProdColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        DescColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-        PrixColumn.setCellValueFactory(new PropertyValueFactory<>("prix"));
+        imgview1.getBackground();
+     //  lpc.getSelected(event);
+//int index = -1;
+//        index = lpc.getProductTable().getSelectionModel().getSelectedIndex();
+//        if (index <= -1){
+//            return;
+//        }
+    
+//        NomProd.setText(lpc.getNomProdColumn().getCellData(index).toString());
+//        DescColumn.setText(lpc.getDescColumn().getCellData(index).toString());
+//        PrixProd.setText(lpc.getPrixColumn().getCellData(index).toString());
+//        CatProd.setText(lpc.getCatProdColumn().getCellData(index).toString());
+//        UserProd.setText(lpc.getUserIdProdColumn().getCellData(index).toString());
+//        //pc.getImgView().setSting(imgProdColumn.getCellData(index).toString());
+//        //idp.setText(IdProdColumn.getCellData(index).toString());
+//        urltxt.setText(lpc.getURLColumn().getCellData(index).toString());
         
-        imgProdColumn.setCellValueFactory(new PropertyValueFactory<>("img"));
-       
-        
-     
-        catProdColumn.setCellValueFactory(new PropertyValueFactory<>("cat_p"));
-        userIdProdColumn.setCellValueFactory(new PropertyValueFactory<>("user_id"));
-        IdProdColumn.setCellValueFactory(new PropertyValueFactory<>("id_p"));
-        ProductTable.setItems(listProduct);
         
         Category c = new Category();
         List<Category> cat = CatServ.getNames();
         ObservableList<Category> CategoryList = FXCollections.observableArrayList(cat);
         CategorieBox.setItems(CategoryList);
+        
+        filechooser = new FileChooser();
         
     }    
     
@@ -205,7 +214,8 @@ public class AjouterProductController implements Initializable {
          
      }
      
-    @FXML
+     
+       @FXML
       public void AjouterProduct(Event e) {
 //         if (email.trim().isEmpty()) {
 //    // Show an error message to the user
@@ -234,39 +244,60 @@ public class AjouterProductController implements Initializable {
     return;
            }
      
-//     if (CatProd.getText().isEmpty()) {
-//            Alert alert = new Alert(AlertType.ERROR);
-//    alert.setTitle("Error");
-//    alert.setHeaderText(null);
-//    alert.setContentText("Please enter a Category .");
-//    alert.showAndWait();
-//    return;
- //          }
-//       if (UserProd.getText().isEmpty()) {
-//            Alert alert = new Alert(AlertType.ERROR);
-//    alert.setTitle("Error");
-//    alert.setHeaderText(null);
-//    alert.setContentText("Please enter a Category .");
-//    alert.showAndWait();
-//    return;
-  //         }
+     if (CategorieBox.getValue().toString().isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setHeaderText(null);
+    alert.setContentText("Please enter a Category .");
+    alert.showAndWait();
+    return;
+           }
+       if (UserProd.getText().isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setHeaderText(null);
+    alert.setContentText("Please enter a Category .");
+    alert.showAndWait();
+    return;
+           }
      
         p.setNom(NomProd.getText());
         p.setDescription(DescProd.getText());
         p.setPrix(Double.valueOf(PrixProd.getText()));
         p.setImg(file.getAbsoluteFile());
-       // Category v =(Category) CategorieBox.getValue();
-       Category c = (Category) CategorieBox.getValue();
-       int id = c.getId_cat();
-      //  p.setCat_p(id);
-      //  p.setCat_p((Integer.valueOf(UserProd.getText())));
+        Category c = new Category(CategorieBox.getValue().toString());
+        p.setCat_p(c);
+        p.setUser_id(Integer.valueOf(UserProd.getText()));
+        p.setUrl(urltxt.getText());
+        
+        
+//         String htdocsPath = "C:/xampp/htdocs/img/";
+//                 File destinationFile = new File(htdocsPath + imgPath.getText());
+//            if(selectedFile!=null){
+//                try (InputStream in = new FileInputStream(selectedFile);
+//                 OutputStream out = new FileOutputStream(destinationFile)) {
+//                byte[] buf = new byte[8192];
+//                int length;
+//                while ((length = in.read(buf)) > 0) {
+//                    out.write(buf, 0, length);
+//                }
         
         
         ProdServ.ajouter(p);
-        reset();
-          
+//        reset();
+//          
+//      }        catch (FileNotFoundException ex) {
+//                   Logger.getLogger(AjouterProductController.class.getName()).log(Level.SEVERE, null, ex);
+//               } catch (IOException ex) {
+//                   Logger.getLogger(AjouterProductController.class.getName()).log(Level.SEVERE, null, ex);
+//               }
+     refresh();
+//}
       }
-      
+
+           
+
+            
         public void reset(){
         NomProd.setText("");
         DescProd.setText("");
@@ -279,26 +310,26 @@ public class AjouterProductController implements Initializable {
      
      
      
-        @FXML
-    private void getSelected(MouseEvent event) {
-         int index = -1;
-        index = ProductTable.getSelectionModel().getSelectedIndex();
-        if (index <= -1){
-            return;
-        }
-        
-        NomProd.setText(nomProdColumn.getCellData(index).toString());
-        DescProd.setText(DescColumn.getCellData(index).toString());
-        PrixProd.setText(PrixColumn.getCellData(index).toString());
-        CatProd.setText(catProdColumn.getCellData(index).toString());
-        UserProd.setText(userIdProdColumn.getCellData(index).toString());
-        idp.setText(IdProdColumn.getCellData(index).toString());
-         
-     
-         
-       // ImgView.setImage(imgProdColumn.getCellData(index).toString());
-        
-    }
+//    private void getSelected(MouseEvent event) {
+//         int index = -1;
+//        index = ProductTable.getSelectionModel().getSelectedIndex();
+//        if (index <= -1){
+//            return;
+//        }
+//        
+//        NomProd.setText(nomProdColumn.getCellData(index).toString());
+//        DescProd.setText(DescColumn.getCellData(index).toString());
+//        PrixProd.setText(PrixColumn.getCellData(index).toString());
+//        CatProd.setText(catProdColumn.getCellData(index).toString());
+//        UserProd.setText(userIdProdColumn.getCellData(index).toString());
+//        //idp.setText(IdProdColumn.getCellData(index).toString());
+//     //   URL.setText(userIdProdColumn.getCellData(index).toString());
+//         
+//     
+//         
+//       // ImgView.setImage(imgProdColumn.getCellData(index).toString());
+//        
+//    }
     
     
     
@@ -329,6 +360,7 @@ public class AjouterProductController implements Initializable {
             confirmationDialog.setHeaderText(null);
             confirmationDialog.showAndWait();
     }
+        refresh();
 }
 
     @FXML
@@ -356,11 +388,15 @@ public class AjouterProductController implements Initializable {
         Double prix=p.getPrix();
         
         
-         p.setCat_p((Integer.parseInt(CatProd.getText())));
-        Category cat=p.getCat_p();
+//         p.setCat_p((Integer.parseInt(CatProd.getText())));
+//        Category cat=p.getCat_p();
         
          p.setUser_id(Integer.parseInt(UserProd.getText()));
         int user=p.getUser_id();
+        
+        
+         p.setUrl(urltxt.getText());
+        String url=p.getUrl();
         
 //        p.setImg(ImgView.getText());
 //         String img=p.getImg();
@@ -371,6 +407,7 @@ public class AjouterProductController implements Initializable {
             confirmationDialog.setHeaderText(null);
             confirmationDialog.showAndWait();
         //reset();
+        refresh();
     }
     }
     
@@ -423,7 +460,6 @@ public class AjouterProductController implements Initializable {
  
     
     
-    @FXML
      public void RechercherProduit(){
          
          
@@ -465,6 +501,81 @@ public class AjouterProductController implements Initializable {
      }
      
      
-        
+     
+     private void refresh(){
+         List<Product> stat = ProdServ.getAll();
+        ObservableList<Product> productList = FXCollections.observableArrayList(stat);
+        nomProdColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        DescColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        PrixColumn.setCellValueFactory(new PropertyValueFactory<>("prix"));
+        imgProdColumn.setCellValueFactory(new PropertyValueFactory<>("img"));
+        catProdColumn.setCellValueFactory(new PropertyValueFactory<>("cat_p"));
+        userIdProdColumn.setCellValueFactory(new PropertyValueFactory<>("user_id"));
+         ProductTable.setItems(productList);
+         }
+     
+     
+     
+
+    public TextField getNomProd() {
+        return NomProd;
+    }
+
+    public void setNomProd(TextField NomProd) {
+        this.NomProd = NomProd;
+    }
+
+    public TextField getPrixProd() {
+        return PrixProd;
+    }
+
+    public void setPrixProd(TextField PrixProd) {
+        this.PrixProd = PrixProd;
+    }
+
+    public TextField getCatProd() {
+        return CatProd;
+    }
+
+    public void setCatProd(TextField CatProd) {
+        this.CatProd = CatProd;
+    }
+
+    public TextField getUserProd() {
+        return UserProd;
+    }
+
+    public void setUserProd(TextField UserProd) {
+        this.UserProd = UserProd;
+    }
+
+    public TextArea getDescProd() {
+        return DescProd;
+    }
+
+    public void setDescProd(TextArea DescProd) {
+        this.DescProd = DescProd;
+    }
+
+    public ImageView getImgView() {
+        return ImgView;
+    }
+
+    public void setImgView(ImageView ImgView) {
+        this.ImgView = ImgView;
+    }
+
+    public TextField getUrltxt() {
+        return urltxt;
+    }
+
+    public void setUrltxt(TextField urltxt) {
+        this.urltxt = urltxt;
+    }
+     
+     
+     
+     
+     
     
 }

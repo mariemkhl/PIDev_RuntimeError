@@ -100,11 +100,11 @@ try {
      public List<Category> getNames() {
  List<Category> list = new ArrayList<>();
         try {
-            String req = "SELECT * FROM `category`";
+            String req = "SELECT nom FROM `category`";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Category c = new Category( rs.getInt(1),rs.getString("nom"));
+                Category c = new Category(rs.getString("nom"));
                 list.add(c);
                 System.out.println(list);
             }

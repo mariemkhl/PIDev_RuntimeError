@@ -23,9 +23,9 @@ public class Main {
 
          // Collection c1 = new Collection("music",1,"Prod1");
          //Collection c2 = new Collection(2,"sculpture",2,"Prod2");
-          Collection c3 = new Collection(2,"sculpture",2,"Prod2");
+         // Collection c3 = new Collection(2,"sculpture",2,"Prod2");
          //Troupe t3= new Troupe(3,"TAB",4,"TEST1");
-         CollectionService CS = new CollectionService();
+        // CollectionService CS = new CollectionService();
         // CS.ajouter(c3);
          // CS.supprimer(c3);
          // CS.getAll();
@@ -45,7 +45,9 @@ public class Main {
 //Ps.supprimer(8);
 //Ps.getOneById(1);
 //Ps.getAll();
-Ps.RechercherProduit(23);
+Ps.getOneByName("SS");
+//Ps.RechercherProduitByNom("SS");
+//Ps.RechercherProduit(23);
          
  
     

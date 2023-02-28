@@ -22,6 +22,7 @@ public class Product {
     public File img;
     public Category cat_p;
     public int user_id;
+    public String url;
 
     public Product() {
     }
@@ -53,6 +54,19 @@ public class Product {
         this.cat_p = cat_p;
         this.user_id = user_id;
     }
+
+    public Product(int id_p, String nom, String description, double prix, File img, Category cat_p, int user_id, String url) {
+        this.id_p = id_p;
+        this.nom = nom;
+        this.description = description;
+        this.prix = prix;
+        this.img = img;
+        this.cat_p = cat_p;
+        this.user_id = user_id;
+        this.url = url;
+    }
+    
+    
 
     public int getId_p() {
         return id_p;
@@ -111,11 +125,22 @@ public class Product {
         this.user_id = user_id;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" + "nom=" + nom + ", description=" + description + ", prix=" + prix + ", img=" + img + ", cat_p=" + cat_p + ", user_id=" + user_id + '}';
+    public String getUrl() {
+        return url;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "id_p=" + id_p + ", nom=" + nom + ", description=" + description + ", prix=" + prix + ", img=" + img + ", cat_p=" + cat_p + ", user_id=" + user_id + ", url=" + url + '}';
+    }
+    
+    
+
+  
     
     
     

@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/edu/artisty/gui/AjouterProductController.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>224</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/main/FXMain.java</file>
             <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/main/Main.java</file>
-            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/gui/AjouterCollectionController.java</file>
             <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/gui/AjouterProduct.fxml</file>
-            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/services/IService.java</file>
-            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/entities/Category.java</file>
             <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/services/ProductService.java</file>
+            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/gui/ListProductController.java</file>
             <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/gui/AjouterProductController.java</file>
-            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/services/CollectionService.java</file>
-            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/services/CategoryService.java</file>
-            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/entities/Product.java</file>
+            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/gui/ProductImg.fxml</file>
         </group>
     </open-files>
 </project-private>
