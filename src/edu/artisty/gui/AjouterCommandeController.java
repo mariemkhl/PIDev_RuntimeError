@@ -46,7 +46,7 @@ public class AjouterCommandeController implements Initializable {
 @FXML 
     private ChoiceBox <String> ChoiceBox;
 
-    private final String [] paying_with ={"cash","Card"};
+    private final String [] paying_with ={"cash","Carte"};
  @FXML
     private DatePicker DatePicker;
  @FXML 
@@ -85,6 +85,8 @@ public class AjouterCommandeController implements Initializable {
                 sc.ajouter(c);
                 Alert a = new Alert(Alert.AlertType.INFORMATION, "Commande ajoutée !", ButtonType.OK);
                 a.showAndWait();
+                
+                
                 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherCommande.fxml"));
                 Parent root = loader.load();

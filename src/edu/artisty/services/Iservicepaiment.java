@@ -5,21 +5,17 @@
  */
 package edu.artisty.services;
 
-import java.sql.Date;
 import java.util.List;
 
 /**
  *
- * @author yessmine
- * @param <T>
+ * @author user
+   * @param <T>
  */
-public interface IService <T>{
-    public void ajouter(T c);
-    public void supprimer( int commande);
-    public void modifier(T c, int commande);
-    public List<T> getAll();
+public interface Iservicepaiment <T> {
+      public void ajouter(T p);
+         public List<T> getAll();
     public T getOneById(int commande);
+       
     
-    
-    
- }
+}

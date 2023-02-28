@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.fxml.FXMLLoader;
 
 /**
  * FXML Controller class
@@ -50,11 +51,19 @@ public class AfficherCommandeController implements Initializable {
         try{
   FXMLLoader loader = new FXMLLoader(getClass().getResource("paying.fxml"));
                 Parent root = loader.load();
-                prix_tot.getScene().setRoot(root);}
+                meth_paiment.getScene().setRoot(root);
+                PayingController pc = loader.getController();
+                pc.setMeth_Paiment(meth_paiment.getText());
+                pc.setPrix_Totcarte(Integer.valueOf(prix_tot.getText()));
+                pc.setPrix_Totcash(Integer.valueOf(prix_tot.getText()));
+
+                
+        }
                 
          catch (IOException ex) {
                 Alert a = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.OK);
                 a.showAndWait();
+                
             }    
         }
     
@@ -112,7 +121,8 @@ public class AfficherCommandeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+                // TODO
     }
 
     public void setMeth_Paiment(String meth_paiment) {

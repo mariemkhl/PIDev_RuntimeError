@@ -15,7 +15,7 @@
 <AnchorPane id="AnchorPane" prefHeight="704.0" prefWidth="1023.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.PayingController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#002427" height="704.0" stroke="BLACK" strokeType="INSIDE" width="164.0" />
-      <Text layoutX="394.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finalisation : Paiment">
+      <Text layoutX="410.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finalisation : Paiment">
          <font>
             <Font size="36.0" />
          </font>
@@ -30,7 +30,7 @@
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Label fx:id="prix_totcash" layoutX="468.0" layoutY="205.0" text="Label">
+      <Label fx:id="prix_totcash" layoutX="468.0" layoutY="205.0">
          <font>
             <Font size="18.0" />
          </font></Label>
@@ -77,13 +77,13 @@
       <TextField fx:id="num_carte" layoutX="792.0" layoutY="208.0" prefHeight="31.0" prefWidth="198.0" />
       <TextField fx:id="nom_carte" layoutX="792.0" layoutY="262.0" prefHeight="31.0" prefWidth="198.0" />
       <TextField fx:id="CV_code" layoutX="794.0" layoutY="379.0" prefHeight="31.0" prefWidth="198.0" />
-      <DatePicker layoutX="794.0" layoutY="318.0" prefHeight="31.0" prefWidth="198.0" />
-      <Text layoutX="610.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le montant total ">
+      <DatePicker fx:id="date_ex" layoutX="794.0" layoutY="318.0" prefHeight="31.0" prefWidth="198.0" />
+      <Text layoutX="614.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le montant total ">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Label fx:id="prix_totcarte" layoutX="848.0" layoutY="438.0" text="Label">
+      <Label fx:id="prix_totcarte" layoutX="848.0" layoutY="438.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -98,5 +98,7 @@
             <Image url="@../../../../../../logo.png" />
          </image>
       </ImageView>
+      <Label layoutX="177.0" layoutY="107.0" text="Vous avez choisi de payer par :" />
+      <Label fx:id="meth_paiment" layoutX="427.0" layoutY="107.0" />
    </children>
 </AnchorPane>
