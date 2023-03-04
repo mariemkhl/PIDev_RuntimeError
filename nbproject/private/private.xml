@@ -1,23 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/gui/MainGui.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/gui/dashboardDesign.css</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/gui/AfficherArticleFXMLController.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/entities/Commentaire.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/tests/MainClass.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/gui/AfficherArticleFXML.fxml</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/gui/LoginController.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/services/CommentaireService.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/gui/Login.fxml</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/gui/GetData.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/services/IService.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/entities/Article.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/services/ArticleService.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/utils/DataSource.java</file>
-            <file>file:/C:/Users/User/Desktop/RuntimeError/src/edu/artisty/gui/LoginDesign.css</file>
-        </group>
-    </open-files>
 </project-private>

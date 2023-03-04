@@ -33,10 +33,10 @@ public class CommentaireService implements IService<Commentaire> {
             PreparedStatement ste = cnx.prepareStatement(query);
             ste.setInt(1, commentaire.getArticle().getIdArticle());
             ste.setString(2, commentaire.getContentCommentaire());
-            ste.setDate(3, commentaire.getDateCommentaire());
-            ste.setInt(4, commentaire.getNbLikesCommentaire());
-            ste.setBoolean(5, commentaire.isEtatCommentaire());
-            ste.setInt(6, commentaire.getIdUser());
+            ste.setDate(3,null);
+            ste.setInt(4, 0);
+            ste.setBoolean(5,true);
+            ste.setInt(6,23);
             ste.executeUpdate();
             System.out.println("Commentaire Added Successfully");
         } catch (SQLException e) {

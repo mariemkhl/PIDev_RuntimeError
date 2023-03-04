@@ -59,7 +59,6 @@ public class MainGui extends Application {
         });
 
         stage.initStyle(StageStyle.TRANSPARENT);
-
         stage.setScene(scene);
         stage.show();
     }

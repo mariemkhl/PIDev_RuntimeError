@@ -44,6 +44,15 @@ public class Commentaire {
         this.idUser = idUser;
     }
 
+    public Commentaire(Article article, String contentCommentaire) {
+        this.article = article;
+        this.contentCommentaire = contentCommentaire;
+    }
+
+//      public Commentaire(int aInt, String string) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+
     public int getIdCommentaire() {
         return idCommentaire;
     }

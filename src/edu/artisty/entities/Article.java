@@ -27,6 +27,12 @@ public class Article {
     public Article() {
     }
 
+    public Article(String titreArticle, String contentArticle) {
+        this.titreArticle = titreArticle;
+        this.contentArticle = contentArticle;
+    }
+    
+
     public Article(String titreArticle, Date dateArticle, String contentArticle, String imageArticle, String categoryArticle) {
         this.titreArticle = titreArticle;
         this.dateArticle = dateArticle;

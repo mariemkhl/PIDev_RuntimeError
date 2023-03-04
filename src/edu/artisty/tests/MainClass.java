@@ -19,14 +19,22 @@ import java.util.List;
  */
 public class MainClass {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         DataSource ds = new DataSource();
-  
+//  try {
+//            ArticleService articleService = new ArticleService();
+//            String recipient = "khlifi.mariem@esprit.tn";
+//            articleService.sendMail(recipient);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
 
 
-       // Article article = new Article(5, "new article",Date.valueOf("2023-02-07"), "salut", 3, "image", "livre", 3);
-        //ArticleService a = new ArticleService();
+ Article article = new Article(5, "new article",Date.valueOf("2023-02-07"), "new content ", 3, "image", "livre", 3);
+//Article article= new Article();
+        ArticleService a = new ArticleService();
+        a.shareOnPage(article);
         //a.ajouter(article);
        // a.supprimer(7);
        

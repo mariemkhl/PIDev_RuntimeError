@@ -12,6 +12,4 @@ package edu.artisty.gui;
 public class GetData {
     public static String username;
     public static String path;
-    
-    
 }
