@@ -38,26 +38,33 @@ Connection cnx = DataSource.getInstance().getCnx();
     @Override
     public void supprimer(Category t) {
 try {
-            String req = "DELETE FROM category WHERE id_cat = ? ";
+            String req = "DELETE FROM category WHERE nom = ? ";
             PreparedStatement ste = cnx.prepareStatement(req);
-            ste.setInt(1,t.getId_cat());
+            ste.setString(1,t.getNom());
             ste.executeUpdate();
             System.out.println("Category deleted successfully !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }    }
+        }
 
-    @Override
-    public void modifier(Category t) {
+
+    }
+
+   
+    public void modifier(Category t,String s) {
 try {
-            String req = "UPDATE `category` SET `nom`='" + t.getNom() + "' WHERE `id_cat`= '" + t.getId_cat() + "';";
+           String req = "UPDATE `category` SET `nom`='" + t.getNom() + "' WHERE `nom`= '" + s + "';";
+            //String req = "UPDATE `category` SET nom='" + t.getNom() + "' WHERE nom= '" + t.getNom() + "';";
+           // String req = "UPDATE `category` SET `nom`= ? WHERE `nom`= ? ;";
 
             Statement st = cnx.createStatement();
+           
             st.executeUpdate(req);
             System.out.println("Category updated successfully !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }    }
+        }  
+    }
 
     @Override
     public Category getOneById(int id) {
@@ -114,5 +121,28 @@ try {
 
         return list;
     }
+
+      public Category getOneByName(String nom) {
+ 
+        try {
+            String req = "SELECT * FROM `category` WHERE `nom`='"+nom+"'";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Category c = new Category(rs.getInt(1),rs.getString(2));
+               return c;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return null;
+    }
+
+    @Override
+    public void modifier(Category t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
+

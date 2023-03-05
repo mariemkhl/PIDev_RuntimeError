@@ -15,17 +15,35 @@ import java.util.Objects;
  * @author Nour Benkairia
  */
 public class Product {
-    public int id_p;
-    public String nom;
-    public String description;
-    public double prix;
-    public File img;
-    public Category cat_p;
-    public int user_id;
-    public String url;
+    private int id_p;
+    private String nom;
+    private String description;
+    private double prix;
+    private File img;
+    private Category cat_p;
+    private int user_id;
+    private String url;
 
     public Product() {
     }
+
+    
+    
+    public Product(int id_p, String nom, double prix) {
+        this.id_p = id_p;
+        this.nom = nom;
+        this.prix = prix;
+    }
+
+    public Product(int id_p, String nom, double prix, File img, String url) {
+        this.id_p = id_p;
+        this.nom = nom;
+        this.prix = prix;
+        this.img = img;
+        this.url = url;
+    }
+    
+    
 
     public Product(String nom, String description, double prix, Category cat_p, int user_id) {
         this.nom = nom;

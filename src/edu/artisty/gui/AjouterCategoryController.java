@@ -6,6 +6,7 @@
 package edu.artisty.gui;
 
 import edu.artisty.entities.Category;
+import edu.artisty.entities.Product;
 import edu.artisty.services.CategoryService;
 import java.net.URL;
 import java.util.List;
@@ -16,7 +17,9 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,7 +32,7 @@ import javafx.scene.input.MouseEvent;
  * @author Nour Benkairia
  */
 public class AjouterCategoryController implements Initializable {
-    
+    String old;
     @FXML
     private Button addCatBtn;
     @FXML
@@ -51,7 +54,7 @@ Category collec = new Category();
     public void initialize(URL url, ResourceBundle rb) {
       List<Category> cat = CatServ.getAll();
         ObservableList<Category> listCat = FXCollections.observableArrayList(cat);
-         idCat.setCellValueFactory(new PropertyValueFactory<>("id_cat"));
+         //idCat.setCellValueFactory(new PropertyValueFactory<>("id_cat"));
         nomCat.setCellValueFactory(new PropertyValueFactory<>("nom"));
         CategoryTable.setItems(listCat);
     }
@@ -62,10 +65,12 @@ Category collec = new Category();
         c.setNom(NomCat.getText());
         CatServ.ajouter(c);
         reset();
+         refresh();
 }
      public void reset(){
-        idcat.setText("");
+//        idcat.setText("");
         NomCat.setText("");
+       
         
     }
     
@@ -77,14 +82,15 @@ Category collec = new Category();
         if (index <= -1){
             return;
         }
-        idcat.setText(idCat.getCellData(index).toString());
+        //idcat.setText(idCat.getCellData(index).toString());
         NomCat.setText(nomCat.getCellData(index).toString());
+        old=nomCat.getCellData(index).toString();
         
     }
 
     @FXML
     private void supprimer(javafx.event.ActionEvent event) {
-         Category col= new Category();
+         //Category col= new Category();
 
         
         if (CategoryTable.getSelectionModel().getSelectedItem()== null ){
@@ -97,17 +103,26 @@ Category collec = new Category();
         
         System.out.println( CategoryTable.getSelectionModel().getSelectedItem()) ;
          Category c= new Category();
-//        c.setDepartC(TextDepart.getText());
-//        System.out.println( TextDepart.getText()) ;
-//        c.setArriveeC(TextArrivee.getText());
-//        System.out.println( TextArrivee.getText()) ;
-        int x=Integer.parseInt(idcat.getText());
-        c.setId_cat(x);
+
+        String x=NomCat.getText();
+        c.setNom(x);
         System.out.println(x);
 
         CatServ.supprimer(c);
+         Alert confirmationDialog = new Alert(AlertType.CONFIRMATION, "Êtes-vous sûr de vouloir supprimer le produit ? Cette action est irréversible.", ButtonType.YES, ButtonType.NO);
+            confirmationDialog.setTitle("Confirmation de suppression");
+            confirmationDialog.setHeaderText(null);
+            confirmationDialog.showAndWait();
     }
+        
+        refresh();
 }
+    
+    
+    
+
+    
+    
 
     @FXML
     private void modifier(javafx.event.ActionEvent event) {
@@ -119,17 +134,32 @@ Category collec = new Category();
            alert.showAndWait();
         }else{
         Category c= new Category();
-        int x=Integer.parseInt(idcat.getText());
-        c.setId_cat(x);
+        String x=NomCat.getText();
+        c.setNom(x);
         
-        c.setNom(NomCat.getText());
-        String name=c.getNom();
+//        c.setNom(NomCat.getText());
+//        String name=c.getNom();
        
         
-        CatServ.modifier(c);
+        CatServ.modifier(c,old);
+         Alert confirmationDialog = new Alert(AlertType.CONFIRMATION, "Êtes-vous sûr de vouloir modifier le produit ? Cette action est irréversible.", ButtonType.YES, ButtonType.NO);
+            confirmationDialog.setTitle("Confirmation de modification");
+            confirmationDialog.setHeaderText(null);
+            confirmationDialog.showAndWait();
         reset();
     }
+        refresh();
     }
+    
+    
+     private void refresh(){
+        
+       List<Category> cat = CatServ.getAll();
+        ObservableList<Category> listCategory = FXCollections.observableArrayList(cat);
+         
+        nomCat.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        CategoryTable.setItems(listCategory);
+         }
      
      
      

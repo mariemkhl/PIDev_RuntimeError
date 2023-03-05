@@ -91,7 +91,7 @@ public class ListProductController implements Initializable {
     private TextField prodNameSearchtxt;
     
     
-//   AjouterProductController pc = new AjouterProductController();
+  //AjouterProductController pc = new AjouterProductController();
     
     /**
      * Initializes the controller class.
@@ -121,9 +121,9 @@ public class ListProductController implements Initializable {
           
          
          refresh();
-        //  try {
-             
-              
+//         try {
+//             
+//              
 //              Parent loader = FXMLLoader.load(getClass().getResource("../gui/AjouterProduct.fxml"));   
 //              Scene scene = new Scene(loader, 600, 400);
 //              Stage stage= new Stage();
@@ -145,11 +145,11 @@ public class ListProductController implements Initializable {
 //        //pc.getImgView().setSting(imgProdColumn.getCellData(index).toString());
 //        //idp.setText(IdProdColumn.getCellData(index).toString());
           searchURLtxt.setText(URLColumn.getCellData(index).toString());
-              
+//              
 //             } catch (IOException ex) {
 //                 Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
 //             }
-       
+//       
      
          
        // ImgView.setImage(imgProdColumn.getCellData(index).toString());
@@ -214,8 +214,9 @@ public class ListProductController implements Initializable {
      public void ProductFind(Event event) {
             String s=prodNameSearchtxt.getText();
          Product p= new Product();
-         if(ProdServ.RechercherProduitByNom(s)==true){
          
+         if(ProdServ.getOneByName(s)!=null){
+         System.out.println(ProdServ.getOneByName(s));
          Product product = ProdServ.getOneByName(s);
         // List<Product> col = ProdServ.getAll();
          ObservableList<Product> productList = FXCollections.observableArrayList(product);
@@ -263,66 +264,15 @@ public class ListProductController implements Initializable {
          }
      
 
-    public TableView<Product> getProductTable() {
-        return ProductTable;
-    }
+   
 
-    public void setProductTable(TableView<Product> ProductTable) {
-        this.ProductTable = ProductTable;
-    }
 
-    public TableColumn<Product, String> getNomProdColumn() {
-        return nomProdColumn;
-    }
-
-    public void setNomProdColumn(TableColumn<Product, String> nomProdColumn) {
-        this.nomProdColumn = nomProdColumn;
-    }
-
-    public TableColumn<Product, String> getDescColumn() {
-        return DescColumn;
-    }
-
-    public void setDescColumn(TableColumn<Product, String> DescColumn) {
-        this.DescColumn = DescColumn;
-    }
-
-    public TableColumn<Product, Double> getPrixColumn() {
-        return PrixColumn;
-    }
-
-    public void setPrixColumn(TableColumn<Product, Double> PrixColumn) {
-        this.PrixColumn = PrixColumn;
-    }
-
-    public TableColumn<Product, String> getCatProdColumn() {
-        return catProdColumn;
-    }
-
-    public void setCatProdColumn(TableColumn<Product, String> catProdColumn) {
-        this.catProdColumn = catProdColumn;
-    }
-
-    public TableColumn<Product, Integer> getUserIdProdColumn() {
-        return userIdProdColumn;
-    }
-
-    public void setUserIdProdColumn(TableColumn<Product, Integer> userIdProdColumn) {
-        this.userIdProdColumn = userIdProdColumn;
-    }
-
-    public TableColumn<Product, String> getURLColumn() {
-        return URLColumn;
-    }
-
-    public void setURLColumn(TableColumn<Product, String> URLColumn) {
-        this.URLColumn = URLColumn;
-    }
-
+   
    
 
     
-    
+//    File file=new File("C:\\xampp\\htdocs\\img\\"+a.getImage());
+//        Image img=new Image(file.toURI().toString());
     
 }
 

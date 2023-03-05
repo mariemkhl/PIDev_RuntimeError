@@ -1,73 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="684.0" styleClass="window_Color" stylesheets="@../../../css/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AjouterProductController">
    <children>
-      <Label layoutX="7.0" layoutY="52.0" text="Nom Produit">
-         <font>
-            <Font size="15.0" />
-         </font></Label>
-      <Label layoutX="11.0" layoutY="83.0" text="Description">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <Label layoutX="12.0" layoutY="155.0" text="Prix">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <Label layoutX="9.0" layoutY="307.0" text="Image produit" />
-      <Label layoutX="10.0" layoutY="192.0" text="Category">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <Label layoutX="10.0" layoutY="225.0" text="User">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <TextField fx:id="NomProd" layoutX="102.0" layoutY="49.0" />
-      <TextField fx:id="PrixProd" layoutX="102.0" layoutY="163.0" />
-      <TextField fx:id="UserProd" layoutX="102.0" layoutY="233.0" />
-      <TextArea fx:id="DescProd" layoutX="102.0" layoutY="83.0" prefHeight="67.0" prefWidth="149.0" />
-      <ImageView fx:id="ImgView" fitHeight="129.0" fitWidth="149.0" layoutX="103.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #D1F2EB;" />
-      <Button fx:id="BrowseBtn" layoutX="13.0" layoutY="336.0" mnemonicParsing="false" onAction="#BrowserBtn" prefHeight="67.0" prefWidth="76.0" styleClass="browsBtn_Color" stylesheets="@../../../css/Style.css" text="Browse" />
-      <TextArea fx:id="imgPath" layoutX="265.0" layoutY="386.0" prefHeight="25.0" prefWidth="200.0" />
-      <Label layoutX="265.0" layoutY="366.0" prefHeight="17.0" prefWidth="76.0" text="Image Path" />
-      <Button fx:id="AddProdBtn" layoutX="474.0" layoutY="386.0" mnemonicParsing="false" onAction="#AjouterProduct" prefHeight="38.0" prefWidth="200.0" styleClass="addBtn_Color" stylesheets="@../../../css/Style.css" text="ADD Product" />
-      <Button fx:id="ModifBtn" layoutX="578.0" layoutY="354.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="92.0" styleClass="modifBtn_Color" stylesheets="@../../../css/Style.css" text="Modifier" />
-      <Button fx:id="SuppBtn" layoutX="473.0" layoutY="354.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="25.0" prefWidth="101.0" styleClass="suppBtn_Color" stylesheets="@../../../css/Style.css" text="Supprimer" />
-      <Button fx:id="CollecWindow" layoutX="478.0" layoutY="282.0" mnemonicParsing="false" onAction="#AfficheCollection" prefHeight="25.0" prefWidth="92.0" text="--&gt;Collection" />
-      <Button fx:id="VersCatBtn" layoutX="578.0" layoutY="282.0" mnemonicParsing="false" onAction="#AfficheCategory" prefHeight="25.0" prefWidth="92.0" text="--&gt;Category" />
-      <ComboBox fx:id="CategorieBox" layoutX="102.0" layoutY="197.0" prefWidth="150.0" styleClass="comboCat_Color" stylesheets="@../../../css/Style.css" />
-      <Button fx:id="AfficheProduct" layoutX="320.0" layoutY="246.0" mnemonicParsing="false" onAction="#AfficheProducts" prefHeight="25.0" prefWidth="354.0" styleClass="AfficheProduct-Color" stylesheets="@../../../css/Style.css" text="--&gt;AfficheProduct" />
-      <TextField fx:id="urltxt" layoutX="263.0" layoutY="336.0" prefHeight="25.0" prefWidth="200.0" />
-      <Label layoutX="262.0" layoutY="307.0" text="Réference URL :" />
-      <Pane fx:id="imgview1" layoutX="318.0" layoutY="4.0" prefHeight="235.0" prefWidth="361.0" styleClass="panel_Color" stylesheets="@../../../css/Style.css">
+      <AnchorPane fx:id="anchor1" cache="true" cacheHint="ROTATE" layoutX="211.0" layoutY="6.0" prefHeight="430.0" prefWidth="468.0" style="-fx-background-color: #FDFEFE;" visible="false">
          <children>
-            <ImageView cache="true" cacheHint="QUALITY" fitHeight="251.0" fitWidth="347.0" layoutX="8.0" layoutY="5.0" opacity="0.87" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../Downloads/eays.jpg" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane layoutX="2.0" layoutY="8.0" prefHeight="25.0" prefWidth="302.0" style="-fx-background-color: #ABEBC6;">
-         <children>
-            <Label layoutX="24.0" layoutY="-2.0" prefHeight="17.0" prefWidth="270.0" text="Ajouter votre produit">
+            <TextField fx:id="NomProd" layoutX="146.0" layoutY="36.0" style="-fx-background-radius: 15px;" />
+            <Label layoutX="20.0" layoutY="38.0" text="Nom Produit" textFill="#5499c7">
                <font>
-                  <Font name="Maiandra GD" size="25.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
+            <TextArea fx:id="DescProd" layoutX="146.0" layoutY="81.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-radius: 5px;" />
+            <Label layoutX="22.0" layoutY="75.0" text="Description" textFill="#5499c7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="PrixProd" layoutX="145.0" layoutY="137.0" style="-fx-background-radius: 15px;" />
+            <Label layoutX="22.0" layoutY="124.0" text="Prix" textFill="#5499c7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="CategorieBox" layoutX="146.0" layoutY="174.0" prefWidth="150.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" />
+            <Label layoutX="20.0" layoutY="162.0" text="Category" textFill="#5499c7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="UserProd" layoutX="145.0" layoutY="215.0" style="-fx-background-radius: 15px;" visible="false" />
+            <Label layoutX="12.0" layoutY="392.0" prefHeight="17.0" prefWidth="128.0" text="Réference URL :" textFill="#5499c7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="urltxt" layoutX="136.0" layoutY="392.0" prefHeight="25.0" prefWidth="317.0" style="-fx-background-radius: 15px;" />
+            <Label layoutX="43.0" layoutY="255.0" />
+            <ImageView fx:id="ImgView" fitHeight="96.0" fitWidth="149.0" layoutX="147.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #D1F2EB;" />
+            <Button fx:id="BrowseBtn" layoutX="12.0" layoutY="243.0" mnemonicParsing="false" onAction="#BrowserBtn" prefHeight="25.0" prefWidth="101.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Image" />
+            <TextArea fx:id="imgPath" layoutX="147.0" layoutY="344.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 5px;" />
+            <Label layoutX="6.0" layoutY="332.0" prefHeight="21.0" prefWidth="92.0" text="Image Path" textFill="#5499c7">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="AddProdBtn" layoutX="305.0" layoutY="341.0" mnemonicParsing="false" onAction="#AjouterProduct" opacity="0.89" prefHeight="45.0" prefWidth="149.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="ADD" />
+            <Button fx:id="ModifBtn" layoutX="311.0" layoutY="1.0" mnemonicParsing="false" onAction="#modifier1" prefHeight="26.0" prefWidth="149.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Modifier" />
+            <ImageView fitHeight="220.0" fitWidth="150.0" layoutX="311.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" rotate="1.8">
+               <image>
+                  <Image url="@../image/van.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </ImageView>
          </children>
-      </Pane>
+      </AnchorPane>
+      <AnchorPane prefHeight="441.0" prefWidth="206.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css">
+         <children>
+            <Button fx:id="VersCatBtn" layoutX="4.0" layoutY="362.0" mnemonicParsing="false" onAction="#AfficheCategory" prefHeight="26.0" prefWidth="198.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="--&gt; Category" />
+            <Button fx:id="CollecWindow" layoutX="2.0" layoutY="401.0" mnemonicParsing="false" onAction="#AfficheCollection" prefHeight="26.0" prefWidth="198.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="--&gt; Collection" />
+            <Button fx:id="AfficheProduct" layoutX="7.0" layoutY="320.0" mnemonicParsing="false" onAction="#AfficheProducts" prefHeight="26.0" prefWidth="191.0" style="-fx-background-radius: 15pc;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="--&gt; AfficheProduct" />
+            <Button fx:id="PgalleryBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#listProd" prefHeight="25.0" prefWidth="175.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Gallery" />
+            <Button fx:id="PaddBtn" layoutX="43.0" layoutY="47.0" mnemonicParsing="false" onAction="#addProd" prefHeight="26.0" prefWidth="116.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Add a Product" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchor2" layoutX="207.0" layoutY="1.0" prefHeight="441.0" prefWidth="476.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Label alignment="CENTER" layoutX="12.0" layoutY="7.0" onMouseClicked="#getSelected" prefHeight="45.0" prefWidth="438.0" style="-fx-background-color: #08747c; -fx-background-radius: 15px;" text="Gallery" textFill="#fdfefe">
+               <font>
+                  <Font name="Edwardian Script ITC" size="32.0" />
+               </font>
+            </Label>
+            <ListView fx:id="Plist" layoutX="22.0" layoutY="103.0" onMouseClicked="#getSelected" prefHeight="295.0" prefWidth="425.0" style="-fx-background-radius: 40PX;" />
+            <TextField fx:id="searchURLtxt" layoutX="22.0" layoutY="66.0" prefHeight="25.0" prefWidth="175.0" promptText="URL Reference" style="-fx-background-radius: 50PX;" />
+            <Button fx:id="QRCodeButton" layoutX="207.0" layoutY="66.0" mnemonicParsing="false" onAction="#QRCodeGenerator" prefHeight="26.0" prefWidth="55.0" style="-fx-background-radius: 100px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="QR" />
+            <Button fx:id="deleteBtn1" layoutX="22.0" layoutY="402.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="128.0" style="-fx-background-radius: 100PX;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Delete" />
+            <Button fx:id="updateButton" layoutX="161.0" layoutY="402.0" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="128.0" style="-fx-background-radius: 100PX;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Update" />
+            <TextField fx:id="Searchtxt" layoutX="295.0" layoutY="66.0" prefHeight="25.0" prefWidth="116.0" promptText="Search Product" style="-fx-background-radius: 50PX;" />
+            <Button fx:id="searchBtn" layoutX="416.0" layoutY="66.0" mnemonicParsing="false" onAction="#ProductFind" prefHeight="26.0" prefWidth="55.0" style="-fx-background-radius: 1001PX;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Find" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

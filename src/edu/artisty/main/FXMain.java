@@ -28,7 +28,7 @@ public class FXMain extends Application {
     public void start(Stage primaryStage) {
        try {
               Parent root = FXMLLoader.load(getClass().getResource("../gui/AjouterProduct.fxml"));
-              Scene scene = new Scene(root, 800, 600);   
+              Scene scene = new Scene(root, 700, 450);   
               primaryStage.setTitle("Add Collections");
               primaryStage.setScene(scene);
               primaryStage.show();

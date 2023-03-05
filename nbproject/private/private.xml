@@ -5,20 +5,21 @@
             <url>src/edu/artisty/gui/AjouterProductController.java</url>
             <bookmark id="1">
                 <name/>
-                <line>224</line>
+                <line>409</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/main/FXMain.java</file>
             <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/main/Main.java</file>
-            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/gui/AjouterProduct.fxml</file>
+            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/entities/ProductListCell.java</file>
+            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/main/NewFXMainQR.java</file>
             <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/services/ProductService.java</file>
             <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/gui/ListProductController.java</file>
             <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/gui/AjouterProductController.java</file>
-            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/gui/ProductImg.fxml</file>
+            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/main/NewFXMainRating.java</file>
+            <file>file:/C:/Users/Nour%20Benkairia/Documents/NetBeansProjects/ArtistyProject/src/API/MyAPI.java</file>
         </group>
     </open-files>
 </project-private>

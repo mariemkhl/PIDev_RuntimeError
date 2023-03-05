@@ -33,7 +33,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
-
 /**
  *
  * @author Nour Benkairia
@@ -59,36 +58,28 @@ public class ProductService implements IService<Product> {
                     ps.setDouble(3, t.getPrix());
 
 //            File imageFile = new File("C:/Users/Nour Benkairia/Documents/NetBeansProjects/ArtistyProject/src/edu/artisty/images.png");
+                    // byte[] imageData;
+                    // try {
+                    File file = new File(t.getImg().toString());
 
+                    Path path = file.toPath();
+                    String img = path.toString();
 
-
-
-                   // byte[] imageData;
-                   // try {
-                       
-                      
-                         File file = new File( t.getImg().toString());
-
-                         Path path = file.toPath();
-                         String img = path.toString();
-
-                       
-                      //  imageData = Files.readAllBytes(t.getImg().toPath());
-                      //  ps.setBytes(4, imageData);
-                      ps.setString(4,img);
+                    //  imageData = Files.readAllBytes(t.getImg().toPath());
+                    //  ps.setBytes(4, imageData);
+                    ps.setString(4, img);
 
 //                    } catch (IOException ex) {
 //                        System.err.println(ex.getMessage());
 //
 //                    }
-
 //    try {
 //         fis=new FileInputStream(file);
 //          ps.setBinaryStream(4, fis, file.length());
 //     } catch (FileNotFoundException ex) {
 //        System.err.println(ex.getMessage());
 //     }
-    Category c = new Category();
+                    Category c = new Category();
 
                     ps.setString(5, t.getCat_p().getNom());
                     ps.setInt(6, t.getUser_id());
@@ -117,11 +108,24 @@ public class ProductService implements IService<Product> {
             System.out.println(ex.getMessage());
         }
     }
+    
+    public boolean deleteProduct(int productId) {
+    try {
+        PreparedStatement stmt = cnx.prepareStatement("DELETE FROM product WHERE id_p = ?");
+        stmt.setInt(1, productId);
+        int rowsAffected = stmt.executeUpdate();
+        return rowsAffected == 1; 
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+    
 
     @Override
     public void modifier(Product t) {
         try {
-            String req = "UPDATE `product` SET `nom`='" + t.getNom() + "',`description`='" + t.getDescription() + "',`prix`='" + t.getPrix() + "',`img`='" + t.getImg() + "',`cat_p`='" + t.getCat_p().getNom() + "',`user_id`='" + t.getUser_id() +"',`url`='" + t.getUrl()+ "' WHERE `id_p`= '" + t.getId_p() + "';";
+            String req = "UPDATE `product` SET `nom`='" + t.getNom() + "',`description`='" + t.getDescription() + "',`prix`='" + t.getPrix() + "',`img`='" + t.getImg() + "',`cat_p`='" + t.getCat_p().getNom() + "',`user_id`='" + t.getUser_id() + "',`url`='" + t.getUrl() + "' WHERE `id_p`= '" + t.getId_p() + "';";
 
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
@@ -130,6 +134,37 @@ public class ProductService implements IService<Product> {
             System.out.println(ex.getMessage());
         }
     }
+    
+    
+    public void updateProduct(Product product) {
+    try {
+        PreparedStatement stmt = cnx.prepareStatement("UPDATE product SET nom = ?, description = ?, prix = ?, img = ?, cat_p = ? , user_id = ?, url = ? WHERE id_p = ?");
+        stmt.setString(1, product.getNom());
+        stmt.setString(2, product.getDescription());
+        stmt.setDouble(3, product.getPrix());
+        
+         File file = new File(product.getImg().toString());
+         Path path = file.toPath();
+         String img = path.toString();
+        
+         stmt.setString(4,img);
+        
+        
+       
+        stmt.setString(5, product.getCat_p().getNom());
+        stmt.setDouble(6, product.getUser_id());
+        stmt.setString(7, product.getUrl());
+        stmt.setInt(8, product.getId_p());
+        stmt.executeUpdate();
+         
+    } catch (SQLException e) {
+        e.printStackTrace();
+       
+    }
+}
+
+    
+    
 
     @Override
     public Product getOneById(int id) {
@@ -157,24 +192,24 @@ public class ProductService implements IService<Product> {
                 } catch (SQLException ex) {
                     System.out.println(ex.getMessage());
                 }
-                
-                  String req1 = "SELECT * FROM Category WHERE id_cat = ?";//rs.getInt(1)
+
+                String req1 = "SELECT * FROM Category WHERE id_cat = ?";//rs.getInt(1)
                 Statement st1 = cnx.createStatement();
                 ResultSet rs1 = st.executeQuery(req);
-                
-                while(rs1.next()){
-                    
-                    Category cat = new Category(rs1.getInt(1),rs1.getNString(2));
 
-                p = new Product(rs.getInt(1),
-                        rs.getString("nom"),
-                        rs.getString("description"),
-                        rs.getDouble(4),
-                        file,
-                        cat,
-                        rs.getInt(7),
-                        rs.getString("url"));
-                System.out.println(p);
+                while (rs1.next()) {
+
+                    Category cat = new Category(rs1.getInt(1), rs1.getNString(2));
+
+                    p = new Product(rs.getInt(1),
+                            rs.getString("nom"),
+                            rs.getString("description"),
+                            rs.getDouble(4),
+                            file,
+                            cat,
+                            rs.getInt(7),
+                            rs.getString("url"));
+                    System.out.println(p);
                 }
             }
         } catch (SQLException ex) {
@@ -188,6 +223,7 @@ public class ProductService implements IService<Product> {
     public List<Product> getAll() {
         List<Product> list = new ArrayList<>();
         Product t = new Product();
+        CategoryService cs = new CategoryService();
 
         try {
             String req = "SELECT * FROM product";
@@ -221,19 +257,18 @@ public class ProductService implements IService<Product> {
 //    } catch (IOException ex) {
 //        System.out.println(ex.getMessage());
 //    }
-            while (rs.next()) {
-             //   Blob blob;
-             String img;
-          //      try {
-                   // blob = rs.getBlob("img");
-                   img=rs.getString("img");
+         //   while (rs.next()) {
+                //   Blob blob;
+                //String img;
+                //      try {
+                // blob = rs.getBlob("img");
+                //img = rs.getString("img");
 
 //                    File file = new File("output.png");
-                  //File file = new File("output.png");
-                 // Path path = Paths.get(img);
+                //File file = new File("output.png");
+                // Path path = Paths.get(img);
                 //  File file = path.toFile();
-                  //FileUtils.writeStringToFile(file, img);
-           
+                //FileUtils.writeStringToFile(file, img);
 //                    try {
 //                        FileOutputStream fos = new FileOutputStream(file);
 //                        fos.write(blob.getBytes(1, (int) blob.length()));
@@ -247,39 +282,34 @@ public class ProductService implements IService<Product> {
 //                } catch (SQLException ex) {
 //                    System.out.println(ex.getMessage());
 //                }
-                
-               String req1 = "SELECT nom FROM Category WHERE nom = ?";//rs.getInt(1)
-                Statement st1 = cnx.createStatement();
-                ResultSet rs1 = st1.executeQuery(req);
-                
-                while(rs1.next()){
-                    
-                   
-                    Category cat = new Category(rs1.getNString(2));
-                
-                Product P = new Product(rs.getInt(1),
-                        rs.getString("nom"),
-                        rs.getString("description"),
-                        rs.getDouble(4),
-                        file,
-                        cat,
-                        rs.getInt(7),
-                        rs.getString("url"));
-                list.add(P);
-                System.out.println(list);
+//                String req1 = "SELECT nom FROM Category WHERE nom = ?";//rs.getInt(1)
+//                Statement st1 = cnx.createStatement();
+//                ResultSet rs1 = st1.executeQuery(req);
+                while (rs.next()) {
+
+                    //Category cat = new Category(rs.getNString(2));
+                    File file;
+                    Product P = new Product(rs.getInt(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getDouble(4),
+                            new File(rs.getString(5)),
+                            cs.getOneByName(rs.getString(6)),
+                            rs.getInt(7),
+                            rs.getString(8));
+                    list.add(P);
+                    System.out.println(cs.getOneByName(rs.getString(6)));
+                    System.out.println(list);
                 }
-              
-             
-            }
-            
+
+           // }
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
+        System.out.println(list);
         return list;
     }
-    
-    
 
     public boolean RechercherProduit(int id) {
         String req = null;
@@ -303,82 +333,38 @@ public class ProductService implements IService<Product> {
         return x;
 
     }
-    
-    
-    
-     public Product getOneByName(String nom) {
-        Product p = null ;
+
+    public Product getOneByName(String nom) {
+
+        CategoryService cs = new CategoryService();
         try {
-            String req = "SELECT * FROM product";
+            String req = "SELECT * FROM product WHERE `nom`= '" + nom + "'";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
 
-    while (rs.next()) {
- 
-                 try{
-               String req1 = "SELECT `nom` FROM `category` WHERE `nom`= "+ nom;
-                Statement st1 = cnx.createStatement();
-                ResultSet rs1 = st1.executeQuery(req1);
-                
-                while(rs1.next()){
-                    
-                  
-                    Category cat = new Category(rs1.getNString(2));
-                
+            while (rs.next()) {
+                File file;
+
                 Product P = new Product(rs.getInt(1),
-                        rs.getString("nom"),
-                        rs.getString("description"),
+                        rs.getString(2),
+                        rs.getString(3),
                         rs.getDouble(4),
-                        file,
-                        cat,
+                        new File(rs.getString(5)),
+                        cs.getOneByName(rs.getString(6)),
                         rs.getInt(7),
-                        rs.getString("url"));
-               
-                System.out.println(p);
-                }
-                 } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-              
-             return p;
+                        rs.getString(8));
+
+                return P;
+
             }
-                 
-            
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-        return p;
-       
-    }
-    
-    
-    
-    public boolean RechercherProduitByNom(String nom) {
-        String req = null;
-        boolean x = false;
-
-        try {
-            req = "SELECT * FROM product WHERE nom = ?";
-            PreparedStatement pstmt = this.cnx.prepareStatement(req);
-            pstmt.setString(1, nom);
-            ResultSet rset = pstmt.executeQuery();
-            if (rset.next()) {
-                System.out.println("Produit Existe");
-                x = true;
-            } else {
-                System.out.println("Produit n'existe pas");
-                x = false;
-            }
-        } catch (SQLException var6) {
-            System.err.println(var6.getMessage());
-        }
-        return x;
+        return null;
 
     }
-    
-    
-
 
     public boolean exists(String nom) throws SQLException {
 
