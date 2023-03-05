@@ -6,7 +6,10 @@
 package edu.esprit.services;
 
 import edu.esprit.entities.Events;
+
 import edu.esprit.utils.MyConnection;
+import java.io.File;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -15,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +35,7 @@ public class ServiceEvents implements IService<Events> {
     public void ajouter(Events e) {
 
         try {
-            String req = "INSERT INTO `events`(`name`, `date_event`, `location`, `id_user`,`categorie`, `nbplacetotal`) VALUES (?,?,?,?,?,?);";
+            String req = "INSERT INTO `events`(`name`, `date_event`, `location`, `id_user`,`categorie`, `nbplacetotal`,`img`) VALUES (?,?,?,?,?,?,?);";
             PreparedStatement pso = cnx.prepareStatement(req);
             pso.setString(1, e.getName());
             pso.setDate(2, e.getDate_event());
@@ -39,6 +43,11 @@ public class ServiceEvents implements IService<Events> {
             pso.setInt(4, e.getId_user());
             pso.setString(5, e.getCategorie());
             pso.setInt(6, e.getNbplacetotal());
+            
+            File file = new File (e.getImg().toString());
+            Path path = file.toPath();
+            String img = path.toString();
+              pso.setString(7,img);
             //pso.setInt(7, e.getNbplaceres());
             Date Date = new Date(120, 01, 21);
             pso.executeUpdate();
@@ -47,10 +56,8 @@ public class ServiceEvents implements IService<Events> {
             System.out.println(ex.getMessage());
         }
     }
-    
-    
-    
-      public ObservableList<Events> AfficherEvenement() {
+
+    public ObservableList<Events> AfficherEvenement() {
         ObservableList<Events> myList1 = FXCollections.observableArrayList();
         try {
 
@@ -59,8 +66,8 @@ public class ServiceEvents implements IService<Events> {
             ResultSet rs = st.executeQuery(requete3);
             while (rs.next()) {
                 Events e = new Events();
-               // e.setIdEvent(rs.getInt("idEvent"));
-                 e.setName(rs.getString("name"));
+                // e.setIdEvent(rs.getInt("idEvent"));
+                e.setName(rs.getString("name"));
                 e.setDate_event(rs.getDate("date_event"));
                 e.setLocation(rs.getString("location"));
                 e.setId_user(rs.getInt("id_user"));
@@ -74,9 +81,6 @@ public class ServiceEvents implements IService<Events> {
         }
         return myList1;
     }
-    
-    
-    
 
     @Override
     public void supprimer(int id_event) {
@@ -94,7 +98,7 @@ public class ServiceEvents implements IService<Events> {
     @Override
     public void modifier(Events e, int i) {
         try {
-            String req2 = "UPDATE `events` SET `name`='" + e.getName() + "',`date_event`='" + e.getDate_event() + "',`location`='" + e.getLocation() + "',`categorie`='" + e.getCategorie() + "',`nbplacetotal`='" + e.getNbplacetotal() + "', `nbplaceres`='" + e.getNbplaceres() + "' WHERE `id_event` =' " + i + "';";
+            String req2 = "UPDATE `events` SET `name`='" + e.getName() + "',`date_event`='" + e.getDate_event() + "',`location`='" + e.getLocation() + "',`categorie`='" + e.getCategorie() + "',`nbplacetotal`='" + e.getNbplacetotal() + "' WHERE `id_event` =' " + i + "';";
             Statement st = cnx.createStatement();
             st.executeUpdate(req2);
             System.out.println("Event Updated ! ");
@@ -113,8 +117,8 @@ public class ServiceEvents implements IService<Events> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                Events e = new Events(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
-                //  (rs.getInt(1), rs.getString("name"), rs.getDate(3), rs.getString("location"),rs.getInt(1));
+                Events e = new Events(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7),rs.getString(8));
+                 // (rs.getInt(1), rs.getString("name"), rs.getDate(3), rs.getString("location"),rs.getInt(1));
                 list.add(e);
             }
         } catch (SQLException ex) {
@@ -126,29 +130,26 @@ public class ServiceEvents implements IService<Events> {
 
     @Override
     public Events getOneById(int id_event) {
-   Events e = new Events();
-       String req = "SELECT * FROM `events` ";
-       
+        Events e = new Events();
+        String req = "SELECT * FROM `events` WHERE id_event='" + id_event+ "';";
+
         try {
             Statement ste = cnx.createStatement();
             ResultSet rs = ste.executeQuery(req);
             while (rs.next()) {
-                
+                e.setId_event(rs.getInt("id_event"));
                 e.setName(rs.getString("name"));
                 e.setDate_event(rs.getDate("date_event"));
                 e.setLocation(rs.getString("location"));
                 e.setId_user(rs.getInt("id_user"));
                 e.setCategorie(rs.getString("categorie"));
                 e.setNbplacetotal(rs.getInt("nbplacetotal"));
-                e.setNbplaceres(rs.getInt("nbplaceres"));
+                
             }
-        }
-   catch (SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-            
-       
-        
+
         return e;
     }
 //        Events e = null;
@@ -164,7 +165,6 @@ public class ServiceEvents implements IService<Events> {
 //        }
 //
 //        return e;
-    
 
     public List<Events> findeventsByLocation(String location) {
 
@@ -181,42 +181,50 @@ public class ServiceEvents implements IService<Events> {
         // }
         return findevents;
     }
-    
-    
-    
 
-    public void participer(int id_user, int id_event, int nbplaceres) {
-        int nbplacedispo = 0;
-        int nbplacetotal = 0;
-        try {
-            String req = "SELECT `nbplacetotal`, `nbplaceres` FROM `events` WHERE id_event=" + id_event;
-            PreparedStatement pse = cnx.prepareStatement(req);
-            //   System.out.println("helloo");
-            ResultSet rs = pse.executeQuery(req);
-            
-            if (rs.next()) {
-         
-                System.out.println(nbplacedispo = rs.getInt("nbpalcetotal") - rs.getInt("nbplaceres")); 
-                if (nbplacedispo < nbplacetotal) {
-                    String req1 = "UPDATE events SET nbplaceres = ? WHERE id_event = ? ";
-                       PreparedStatement ps = cnx.prepareStatement(req1);
-                    //      System.out.println("helloo");
-                    ps.setInt(1, rs.getInt("nbplaceres") + 1);
-                    ps.setInt(2, id_event);
-                    ps = cnx.prepareStatement(req1);
-                    ps.executeUpdate();
-                    System.out.println(" You are inscribed for the event");
-                } else {
-                    System.out.println("The number of places is full");
-                }
+    public TreeSet<Events> tripardate(Date date_event) {
+        TreeSet<Events> trievents = null;
+        trievents = this.getAll()
+                .stream()
+                .collect(Collectors
+                        .toCollection(()
+                                -> new TreeSet<>((a, b) -> a.getDate_event().compareTo(b.getDate_event()))));
 
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        return trievents;
 
     }
 
+//    public void participer(int id_user, int id_event, int nbplaceres) {
+//        int nbplacedispo = 0;
+//        int nbplacetotal = 0;
+//        try {
+//            String req = "SELECT `nbplacetotal` FROM `events` WHERE id_event=" + id_event;
+//            PreparedStatement pse = cnx.prepareStatement(req);
+//            //   System.out.println("helloo");
+//            ResultSet rs = pse.executeQuery(req);
+//
+//            if (rs.next()) {
+//
+//                System.out.println(nbplacedispo = rs.getInt("nbpalcetotal") - rs.getInt("nbplaceres"));
+//                if (nbplacedispo < nbplacetotal) {
+//                    String req1 = "UPDATE events SET nbplaceres = ? WHERE id_event = ? ";
+//                    PreparedStatement ps = cnx.prepareStatement(req1);
+//                    //      System.out.println("helloo");
+//                    ps.setInt(1, rs.getInt("nbplaceres") + 1);
+//                    ps.setInt(2, id_event);
+//                    ps = cnx.prepareStatement(req1);
+//                    ps.executeUpdate();
+//                    System.out.println(" You are inscribed for the event");
+//                } else {
+//                    System.out.println("The number of places is full");
+//                }
+//
+//            }
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//
+//    }
 //    public boolean rechercheEvent (Date date_event, String location){
 //     List <Events> List = new ArrayList();
 //    for (Events v :List ){

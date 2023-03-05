@@ -5,6 +5,8 @@
  */
 package edu.esprit.entities;
 
+import edu.esprit.gui.GetData;
+import java.io.File;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -22,7 +24,8 @@ public class Events {
     private int id_user;
     private String categorie;
     private int nbplacetotal ;
-    private int nbplaceres ; 
+    private String  img ; 
+   
     
 
     private enum categorie {
@@ -32,28 +35,30 @@ public class Events {
     public Events() {
     }
 
-    public Events(String name, Date date_event, String location, int id_user, String categorie, int nbplacetotal, int nbplaceres ) {
+    public Events(String name, Date date_event, String location, int id_user, String categorie, int nbplacetotal , String img) {
         this.name = name;
         this.date_event = date_event;
         this.location = location;
         this.id_user = id_user;
         this.categorie = categorie;
         this.nbplacetotal = nbplacetotal;
-          this.nbplaceres = nbplaceres;
+        this.img=img; 
+
     }
 
-    public Events(int id_event, String name, Date date_event, String location, int user_id, String categorie, int nbplacetotal, int nbplaceres ) {
+    public Events(int id_event, String nameEv, Date date_event, String location, int user_id, String categorie, int nbplacetotal, String img) {
         this.id_event = id_event;
-        this.name = name;
+        this.nameEv = nameEv;
         this.date_event = date_event;
         this.location = location;
         this.id_user = id_user;
         this.categorie = categorie;
         this.nbplacetotal = nbplacetotal;
-        this.nbplaceres = nbplaceres;
+          this.img=img; 
+        
     }
     
-    public Events( String tfName, int tfuser,Date dpDate,String tfLocation , int nbplace,String myCategory){
+    public Events( String tfName, int tfuser,Date dpDate,String tfLocation , int nbplace,String myCategory ){
     
     this.name=tfName;
     this.id_user= tfuser;
@@ -61,8 +66,7 @@ public class Events {
     this.location=tfLocation; 
     this.nbplacetotal=nbplace;
    this.categorie = myCategory;
-    
-    
+     this.img=img; 
     
     }
 
@@ -70,14 +74,14 @@ public class Events {
         return id_event;
     }
 
-//    public void setId_event(int id_event) {
-//        this.id_event = id_event;
-//    }
+    public void setId_event(int id_event) {
+        this.id_event = id_event;
+    }
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name ) {
         this.name = name;
     }
 
@@ -121,18 +125,27 @@ public class Events {
         this.nbplacetotal = nbplacetotal;
     }
 
-    public int getNbplaceres() {
-        return nbplaceres;
+    public String getImg() {
+        return img;
     }
 
-    public void setNbplaceres(int nbplaceres) {
-        this.nbplaceres = nbplaceres;
+    public void setImg(String img) {
+        this.img = img;
     }
 
+   
+
+    
+    
+    
     @Override
     public String toString() {
-        return "Events{" + "name=" + name + ", date_event=" + date_event + ", location=" + location + ", id_user=" + id_user + ", categorie=" + categorie + ", nbplacetotal=" + nbplacetotal + ", nbplaceres=" + nbplaceres + '}';
+        return "Events{" + "name=" + name + ", date_event=" + date_event + ", location=" + location + ", id_user=" + id_user + ", categorie=" + categorie + ", nbplacetotal=" + nbplacetotal + '}';
     }
+
+   
+
+ 
     
     
  

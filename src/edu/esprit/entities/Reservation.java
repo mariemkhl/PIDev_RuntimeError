@@ -6,6 +6,7 @@
 package edu.esprit.entities;
 
 import edu.esprit.services.ServiceEvents;
+import java.sql.Date;
 import java.util.Objects;
 
 
@@ -20,28 +21,37 @@ public class Reservation {
     private Events event ;
     private int id_user;
     private String name;
-   private int nbplace ;
+   private Date dateRE ;
    
 
     public Reservation() {
     }
 
-    public Reservation(Events event,int id_event, int id_user, String name) {
+    public Reservation(Events event,int id_event, int id_user, String name,Date dateRE) {
         this.event = event;
         this.id_user = id_user;
         this.name = name;
+          this.dateRE = dateRE;
     }
     
 
-    public Reservation(int id_res, Events event, int id_user, String name) {
+    public Reservation(int id_res, Events event, int id_user, String name,Date dateRE) {
         this.id_res = id_res;
         this.event = event;
         this.id_user = id_user;
         this.name = name;
+          this.dateRE = dateRE;
     }
 
    
-
+ public Reservation( String tfName, int tfuserid , Events tfeventid , Date datepc){
+    
+    this.name=tfName;
+    this.id_user= tfuserid;
+    
+     this.event = tfeventid;
+     this.dateRE=datepc;
+    }
  
     
 
@@ -82,17 +92,29 @@ public class Reservation {
     public void setName(String name) {
         this.name = name;
     }
-     public int getNbplace() {
-        return nbplace;
+//     public int getNbplace() {
+//        return nbplace;
+//    }
+//
+//    public void setNbplace(int nbplace) {
+//        this.nbplace = nbplace;}
+
+    public Date getDateRE() {
+        return dateRE;
     }
 
-    public void setNbplace(int nbplace) {
-        this.nbplace = nbplace;}
+    public void setDateRE(Date dateRE) {
+        this.dateRE = dateRE;
+    }
 
     @Override
     public String toString() {
-        return "Reservation{" + "event=" + event + ", id_user=" + id_user + ", name=" + name + ", nbplace=" + nbplace + '}';
+        return "Reservation{" + "event=" + event + ", id_user=" + id_user + ", name=" + name + ", dateRE=" + dateRE + '}';
     }
+
+    
+
+    
 
    
 
