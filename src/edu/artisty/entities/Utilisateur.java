@@ -11,16 +11,24 @@ package edu.artisty.entities;
  */
 
    public class Utilisateur {
-    private int Id_user;
     private String username;
     private String password;
     private String email;
     private String num_tel;
 
-    public Utilisateur(int Id_user, String username, String password, String email, String num_tel) {
-        this.Id_user = Id_user;
+    public Utilisateur( String username, String password, String email, String num_tel) {
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.num_tel = num_tel;
+    }
+    
+
+    public Utilisateur() {
+    }
+
+    public Utilisateur(String username, String email, String num_tel) {
+        this.username = username;
         this.email = email;
         this.num_tel = num_tel;
     }
@@ -28,9 +36,7 @@ package edu.artisty.entities;
    
 
 
-    public int getId() {
-        return Id_user;
-    }
+
 
     public String getUsername() {
         return username;

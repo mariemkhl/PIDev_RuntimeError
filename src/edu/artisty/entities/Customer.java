@@ -10,7 +10,11 @@ package edu.artisty.entities;
  * @author khoul
  */
 public class Customer extends Utilisateur {
+    String Adresse;
 
+    public Customer() {
+    }
+    
     public String getAdresse() {
         return adresse;
     }
@@ -20,8 +24,8 @@ public class Customer extends Utilisateur {
     }
     String adresse;
 
-    public Customer(int id, String username, String password, String email ,String adresse , String num_tel) {
-        super(id, username, password, email, num_tel);
+    public Customer(String username, String password, String email ,String adresse , String num_tel) {
+        super( username, password, email, num_tel);
         this.adresse=adresse;
     }
 

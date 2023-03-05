@@ -19,7 +19,8 @@ public interface IService <T>{
     public List<T> getAll();
     public T getOneById(int Id_user );
     public boolean RechercherUtilisateur(int Id_user);
-    public boolean emailExists(String email);
+    public void Authentification(String email , String Password)  ;
+    
    
     
 }

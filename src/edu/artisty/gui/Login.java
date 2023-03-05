@@ -6,8 +6,6 @@
 package edu.artisty.gui;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,27 +13,30 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
- * @author khoul
+ * @author ASUS
  */
-public class NewWindow extends Application {
-    
+public class Login extends Application {
+   
+    private double x=0;
+    private double y=0;
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage stage) throws Exception {
         try {
-            Parent root=FXMLLoader.load(getClass().getResource("Inscription.fxml") );
-                    
-                    Scene scene = new Scene(root);
-                    
-                    primaryStage.setTitle("inscription!");
-                    primaryStage.setScene(scene);
-                    primaryStage.show();
+      //  Parent root = FXMLLoader.load(getClass().getResource("Back.fxml"));  
+       Parent root = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+         
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+           System.out.println(ex.getMessage());
         }
     }
 

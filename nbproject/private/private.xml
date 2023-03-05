@@ -3,14 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/main/main.java</file>
-            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/InscriptionController.java</file>
             <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/entities/Artist.java</file>
-            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/NewWindow.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/createuserController.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/SignInController.java</file>
             <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/entities/Utilisateur.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/EditProfilController.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/FXMLhomeController.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/BackController.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/LoginDesign.css</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/Costumer_interfaceController.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/services/Mail.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/Login.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/main/main.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/main/FXMain.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/ForgorCntrl.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/adminController.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/entities/Envoyeremail.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/UserSession.java</file>
             <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/entities/Customer.java</file>
             <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/services/IService.java</file>
             <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/services/ServiceUtilisateur.java</file>
+            <file>file:/C:/Users/khoul/OneDrive/Documents/NetBeansProjects/Artisty1/src/edu/artisty/gui/admin_interface.fxml</file>
         </group>
     </open-files>
 </project-private>

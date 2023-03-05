@@ -13,9 +13,12 @@ public class Artist extends Utilisateur {
     
     String domaine;
 
-    public Artist( int id, String username, String password, String email,String adresse, String num_tel, String domaine) {
-        super(id, username, password, email,  num_tel);
+    public Artist( String username, String password, String email, String num_tel, String domaine) {
+        super(username, password, email,  num_tel);
         this.domaine = domaine;
+    }
+
+    public Artist() {
     }
     
 
