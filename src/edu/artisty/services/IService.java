@@ -5,6 +5,7 @@
  */
 package edu.artisty.services;
 
+import edu.artisty.entities.Commande;
 import java.sql.Date;
 import java.util.List;
 
@@ -15,8 +16,8 @@ import java.util.List;
  */
 public interface IService <T>{
     public void ajouter(T c);
-    public void supprimer( int commande);
-    public void modifier(T c, int commande);
+    public void supprimer( Commande commande);
+    public void modifier(Commande c);
     public List<T> getAll();
     public T getOneById(int commande);
     

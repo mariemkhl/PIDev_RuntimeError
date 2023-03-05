@@ -8,43 +8,47 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AjouterCommandeController">
+<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AjouterCommandeController">
    <children>
-      <Text layoutX="235.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajoutez une commande" textAlignment="CENTER">
+      <Text layoutX="167.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajoutez une commande" textAlignment="CENTER">
          <font>
-            <Font size="24.0" />
+            <Font name="Bauhaus 93" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="ok1" layoutX="341.0" layoutY="395.0" mnemonicParsing="false" onAction="#AjouterCommande" style="-fx-background-color: #678263;" text="OK" />
-      <TextField fx:id="tfuserid" layoutX="438.0" layoutY="131.0" />
-      <Label layoutX="136.0" layoutY="132.0" text="Votre userId">
+      <Button fx:id="ok1" layoutX="431.0" layoutY="393.0" mnemonicParsing="false" onAction="#AjouterCommande" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="OK" />
+      <Label layoutX="226.0" layoutY="130.0" text="Votre userId">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="date" layoutX="136.0" layoutY="202.0" text="La date de création de la commande">
+      <Label fx:id="date" layoutX="226.0" layoutY="200.0" text="La date de création de la commande">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="meth_paiment" layoutX="136.0" layoutY="271.0" text="La méthode de paiment">
+      <Label fx:id="meth_paiment" layoutX="226.0" layoutY="269.0" text="La méthode de paiment">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="134.0" layoutY="332.0" text="Le montant total à payer">
+      <Label layoutX="224.0" layoutY="330.0" text="Le montant total à payer">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <DatePicker fx:id="DatePicker" layoutX="438.0" layoutY="201.0" />
-      <ChoiceBox fx:id="ChoiceBox" layoutX="438.0" layoutY="270.0" prefWidth="150.0" />
-      <TextField fx:id="prix_tot1" layoutX="438.0" layoutY="331.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#002427" height="460.0" stroke="BLACK" strokeType="INSIDE" width="118.0" />
-      <ImageView fitHeight="92.0" fitWidth="118.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../logo.png" />
-         </image>
-      </ImageView>
+      <DatePicker fx:id="DatePicker" layoutX="528.0" layoutY="199.0" />
+      <ChoiceBox fx:id="ChoiceBox" layoutX="528.0" layoutY="268.0" prefWidth="150.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" />
+      <TextField fx:id="prix_tot1" layoutX="528.0" layoutY="329.0" />
+      <Pane layoutX="144.0" layoutY="69.0" prefHeight="9.0" prefWidth="682.0" style="-fx-background-color: #002427;" />
+      <AnchorPane layoutX="-1.0" layoutY="-2.0" prefHeight="497.0" prefWidth="134.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css">
+         <children>
+            <ImageView fitHeight="92.0" fitWidth="118.0" layoutX="19.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="tfuserid" layoutX="528.0" layoutY="115.0" />
    </children>
 </AnchorPane>

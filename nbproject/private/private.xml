@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/services/ServicePaiment.java</file>
-            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/services/Iservicepaiment.java</file>
-            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/services/Paying.java</file>
-            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/entities/PAIMENT.java</file>
-            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/tests/FXMain.java</file>
+            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/services/ServiceCommande.java</file>
+            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/entities/Reclamation.java</file>
+            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/gui/list.fxml</file>
+            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/gui/AfficherCommandeController.java</file>
+            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/gui/ListController.java</file>
             <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/tests/MainClass.java</file>
-            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/gui/PayingController.java</file>
+            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/tests/FXMain.java</file>
+            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/services/ReclamationCRUD.java</file>
+            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/gui/ReclamationController.java</file>
+            <file>file:/C:/Users/user/Desktop/Downloads/Commande/src/edu/artisty/gui/AjouterReclamationController.java</file>
         </group>
     </open-files>
 </project-private>

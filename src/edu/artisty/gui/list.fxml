@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.ListController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="-1.0" layoutY="-14.0" prefHeight="665.0" prefWidth="1126.0">
+         <children>
+            <Button fx:id="quitter1" layoutX="1045.0" layoutY="97.0" mnemonicParsing="false" onAction="#retour1" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="X" textFill="RED" />
+            <Button fx:id="supprimer1" layoutX="962.0" layoutY="587.0" mnemonicParsing="false" onAction="#supprimer1" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Supprimer" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="update1" layoutX="669.0" layoutY="587.0" mnemonicParsing="false" onAction="#update1" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="update" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Text layoutX="155.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vos commandes" textAlignment="CENTER" wrappingWidth="340.40234375">
+               <font>
+                  <Font name="Bauhaus 93" size="36.0" />
+               </font>
+            </Text>
+            <Pane layoutX="149.0" layoutY="71.0" prefHeight="9.0" prefWidth="976.0" style="-fx-background-color: #002427;" />
+            <Button fx:id="ajouter1" layoutX="438.0" layoutY="587.0" mnemonicParsing="false" onAction="#ajouter" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Ajouter" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <AnchorPane layoutY="-1.0" prefHeight="665.0" prefWidth="151.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="131.0" layoutX="15.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ListView fx:id="list" layoutX="402.0" layoutY="170.0" prefHeight="371.0" prefWidth="703.0" />
+            <Button fx:id="refresh" layoutX="934.0" layoutY="97.0" mnemonicParsing="false" onAction="#refresh" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Refresh" />
+            <Label fx:id="lpayment" layoutX="232.0" layoutY="132.0" textFill="WHITE" />
+            <Button fx:id="Find" layoutX="232.0" layoutY="356.0" mnemonicParsing="false" onAction="#rechercher" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="FIND" />
+            <TextField layoutX="165.0" layoutY="301.0" prefHeight="26.0" prefWidth="220.0" promptText="qu'est ce que tu veuc chercher ?" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" />
+            <Button fx:id="affich" layoutX="226.0" layoutY="585.0" mnemonicParsing="false" onAction="#afficher" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="afficher" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

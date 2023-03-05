@@ -19,6 +19,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import com.sun.org.apache.xerces.internal.util.FeatureState;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.TextField; 
@@ -35,13 +37,13 @@ import javafx.scene.control.DatePicker;
  */
 public class AjouterCommandeController implements Initializable {
 @FXML
-    private TextField tfuserid;
+    public TextField tfuserid;
 @FXML 
-    private Label meth_paiment; 
+    public Label meth_paiment; 
 @FXML
     private TextField idcommande;
     @FXML
-    private TextField prix_tot1;
+    public TextField prix_tot1;
 
 @FXML 
     private ChoiceBox <String> ChoiceBox;
@@ -62,8 +64,8 @@ public class AjouterCommandeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ChoiceBox.getItems().addAll(paying_with);
     	ChoiceBox.setOnAction(this::getamount);
-        
-        // TODO
+             
+// TODO
     }
     	public void getamount(ActionEvent event) {
 		
@@ -81,7 +83,12 @@ public class AjouterCommandeController implements Initializable {
                 
                 ServiceCommande sc = new ServiceCommande();
                           
-                Commande c = new Commande( tfuserid.getText(),Integer.valueOf(prix_tot1.getText()));
+// Récupérer la date sélectionnée
+                LocalDate date = DatePicker.getValue();
+
+// Convertir la date en String avec un format spécifique
+                String dateString = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));  
+                Commande c = new Commande( tfuserid.getText(),Integer.valueOf(prix_tot1.getText()),meth_paiment.getText(), dateString);
                 sc.ajouter(c);
                 Alert a = new Alert(Alert.AlertType.INFORMATION, "Commande ajoutée !", ButtonType.OK);
                 a.showAndWait();

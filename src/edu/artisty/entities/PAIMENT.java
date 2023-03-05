@@ -17,11 +17,17 @@ private Date date_ex ;
 private int CV_code ;
 private int commande ;
 private int prix_tot ;
+
+   
 private enum commande {
-  idcommande, prix_tot, userid, payment_date_creation  
-}
+  idcommande, prix_tot, userid, payment,date_creation }
 
-
+ public PAIMENT(int num_carte, String nom_carte, int CV_code) {
+     this.num_carte=num_carte;
+        this.nom_carte= nom_carte;
+        
+        this.CV_code=CV_code;
+    }
     public PAIMENT(int num_carte, String nom_carte, Date date_ex, int CV_code, int prix_tot, int commande) {
         this.num_carte=num_carte;
         this.nom_carte= nom_carte;
@@ -41,13 +47,21 @@ private enum commande {
     
     }
         
+         public PAIMENT(int num_carte, String nom_carte, Date date_ex, int CV_code, int prix_tot) {
+        this.num_carte=num_carte;
+        this.nom_carte= nom_carte;
+        this.date_ex = date_ex;
+        this.CV_code=CV_code;
+        this.prix_tot=prix_tot;
+           
+    }
+        
          public PAIMENT(int num_carte, String nom_carte, int CV_code, int prix_tot) {
         this.num_carte=num_carte;
         this.nom_carte= nom_carte;
         this.CV_code=CV_code;
         this.prix_tot=prix_tot;
-        ;
-    
+           
     }
         
         public PAIMENT() {

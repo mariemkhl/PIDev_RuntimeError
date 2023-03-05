@@ -5,70 +5,66 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="552.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AfficherCommandeController">
+<AnchorPane id="AnchorPane" prefHeight="576.0" prefWidth="969.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AfficherCommandeController">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="213.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Les informations de votre commande" textAlignment="CENTER">
+      <Text layoutX="168.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Les informations de votre commande" textAlignment="CENTER" wrappingWidth="585.40234375">
          <font>
-            <Font size="24.0" />
+            <Font name="Bauhaus 93" size="36.0" />
          </font>
       </Text>
-      <Label layoutX="189.0" layoutY="110.0" text="L'Id de la commande">
+      <Label layoutX="321.0" layoutY="162.0" text="Votre userId" textFill="#08465e">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font></Label>
-      <Label layoutX="189.0" layoutY="171.0" text="Votre userId">
+      <Label layoutX="321.0" layoutY="229.0" text="La méthode de paiment" textFill="#08465e">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font></Label>
-      <Label layoutX="189.0" layoutY="238.0" text="La méthode de paiment">
+      <Label layoutX="321.0" layoutY="303.0" text="Le montant total à payer" textFill="#08465e">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font></Label>
-      <Label layoutX="189.0" layoutY="312.0" text="Le montant total à payer">
+      <Label fx:id="userid" layoutX="698.0" layoutY="162.0" textFill="#08465e">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font></Label>
-      <Label fx:id="idcommande" layoutX="566.0" layoutY="110.0" text="Label">
+      <Label fx:id="meth_paiment" layoutX="698.0" layoutY="229.0" textFill="#08465e">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font></Label>
-      <Label fx:id="userid" layoutX="566.0" layoutY="171.0" text="Label">
+      <Label fx:id="prix_tot" layoutX="698.0" layoutY="303.0" textFill="#08465e">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font></Label>
-      <Label fx:id="meth_paiment" layoutX="566.0" layoutY="238.0" text="Label">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-      <Label fx:id="prix_tot" layoutX="566.0" layoutY="312.0" text="Label">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-      <Button fx:id="supprimer" layoutX="513.0" layoutY="395.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: #678263;" text="Supprimer" textFill="RED">
+      <Button fx:id="voir_plus" layoutX="251.0" layoutY="436.0" mnemonicParsing="false" onAction="#voir_plus" prefHeight="41.0" prefWidth="115.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text=" voir plus" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="modifier" layoutX="215.0" layoutY="395.0" mnemonicParsing="false" onAction="#modifier" style="-fx-background-color: #678263;" text="Update" textFill="WHITE">
+      <Button fx:id="retour" layoutX="739.0" layoutY="436.0" mnemonicParsing="false" onAction="#retour" prefHeight="41.0" prefWidth="98.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Retour" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="passer_paiment" layoutX="325.0" layoutY="476.0" mnemonicParsing="false" onAction="#passer_paiment" style="-fx-background-color: #678263;" text="passer au paiment" textFill="WHITE">
+      <Pane layoutX="152.0" layoutY="83.0" prefHeight="10.0" prefWidth="789.0" style="-fx-background-color: #002427;" />
+      <Button fx:id="passer_paiment" layoutX="471.0" layoutY="501.0" mnemonicParsing="false" onAction="#passer_paiment" prefHeight="41.0" prefWidth="157.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="passer au paiment" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#002427" height="552.0" layoutX="-3.0" stroke="BLACK" strokeType="INSIDE" width="155.0" />
-      <ImageView fitHeight="150.0" fitWidth="131.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../logo.png" />
-         </image>
-      </ImageView>
+      <AnchorPane layoutX="-14.0" layoutY="-4.0" prefHeight="580.0" prefWidth="157.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="131.0" layoutX="26.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

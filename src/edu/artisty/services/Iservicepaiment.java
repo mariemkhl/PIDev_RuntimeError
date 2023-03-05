@@ -14,8 +14,9 @@ import java.util.List;
  */
 public interface Iservicepaiment <T> {
       public void ajouter(T p);
-         public List<T> getAll();
-    public T getOneById(int commande);
+      public void supprimer ( int commande);
+      public List<T> getAll();
+      public T getOneById(int commande);
        
     
 }

@@ -11,10 +11,11 @@ import java.util.Date;
  * @author yessmine
  */
 public class Commande {
-    private int idcommande, prix_tot;
+    private int idcommande;
+    private int prix_tot;
     private String userid ;
     private String payment ; 
-    private Date date_creation ;
+    private String date_creation ;
 
     private enum userid {
     nom, prenom, id
@@ -29,7 +30,7 @@ public class Commande {
     }
     
 
-    public  Commande(int idcommande, int prix_tot, String userid, String payment, Date date_creation) {
+    public  Commande(int idcommande, int prix_tot, String userid, String payment, String date_creation) {
         this.idcommande = idcommande;
         this.prix_tot = prix_tot;
         this.userid = userid;
@@ -48,16 +49,26 @@ public class Commande {
         this.payment=payment;
     }
 
-        public Commande(String userid, int prix_tot) {
+        public Commande(String userid, int prix_tot, String payment, String date_creation) {
         this.userid=userid;
         this.prix_tot=prix_tot;
+        this.payment=payment;
+        this.date_creation = date_creation;
     }
 
-    public Commande(int idcommande, int prix_tot, String userid, String payment) {
+           public Commande(int idcommande, int prix_tot, String payment, String date_creation) {
+        this.idcommande=idcommande;
+        this.prix_tot=prix_tot;
+        this.payment=payment;
+        this.date_creation = date_creation;
+           }
+        
+    public Commande( int prix_tot, String userid, String payment, String date_creation) {
         this.idcommande = idcommande;
         this.prix_tot = prix_tot;
         this.userid = userid;
         this.payment= payment;
+        this.date_creation = date_creation;
     }
 
 
@@ -74,7 +85,7 @@ public class Commande {
         return payment;
     }
 
-    public Date getDate_creation() {
+    public String getDate_creation() {
         return date_creation;
     }
 
@@ -96,7 +107,7 @@ public class Commande {
         this.payment = payment;
     }
 
-    public void setDate_creation(Date date_creation) {
+    public void setDate_creation(String date_creation) {
         this.date_creation = date_creation;
     }
 
