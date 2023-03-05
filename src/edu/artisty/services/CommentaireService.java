@@ -151,6 +151,32 @@ commentaires.forEach(commentaire -> {
 
 System.out.println("Mots inappropriés filtrés avec succès dans les commentaires");
   }
+  
+   public List<Commentaire> getCommentsByArticle(int idArticle) {
+        String query = "SELECT distinct c.content_commentaire,c.date_commentaire, c.id_article, c.nb_likes_commentaire, c.etat_commentaire, c.id_user "
+                + "FROM COMMENTAIRE c JOIN ARTICLE a ON c.id_article =  " + idArticle + "";
+        List<Commentaire> comments = new ArrayList<>();
+        try {
+            Statement ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(query);
+            while (rs.next()) {
+                Commentaire commentaire = new Commentaire();
+               Article article = new Article();
+                ArticleService articleService = new ArticleService();
+               article = articleService.getOneById(rs.getInt("id_article"));
+               commentaire.setArticle(article);
+                commentaire.setContentCommentaire(rs.getString("content_commentaire"));
+                commentaire.setDateCommentaire(rs.getDate("date_commentaire"));
+                commentaire.setNbLikesCommentaire(rs.getInt("nb_likes_commentaire"));
+                commentaire.setEtatCommentaire(rs.getBoolean("etat_commentaire"));
+                commentaire.setIdUser(rs.getInt("id_user"));
+                comments.add(commentaire);
+            }
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+        return comments;
+    }
 
 
 }

@@ -1,5 +1,6 @@
 package edu.artisty.gui;
 
+import com.jfoenix.controls.JFXTextField;
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import static com.sun.xml.internal.ws.api.model.wsdl.WSDLBoundOperation.ANONYMOUS.optional;
 import edu.artisty.entities.Article;
@@ -139,23 +140,6 @@ public class AfficherArticleFXMLController implements Initializable {
     @FXML
     private TextField search_article;
 
-    @FXML
-    private TableColumn<Article, String> article_col1;
-
-    @FXML
-    private TableColumn<Article, String> article_col2;
-
-    @FXML
-    private TableColumn<Article, String> article_col3;
-
-    @FXML
-    private TableColumn<Article, String> article_col4;
-
-    @FXML
-    private TableColumn<Article, String> article_col5;
-
-    @FXML
-    private TableColumn<Article, String> article_col6;
 
     @FXML
     private Button like;
@@ -175,11 +159,14 @@ public class AfficherArticleFXMLController implements Initializable {
     private AnchorPane showarticle_form;
 
     private Image image;
-    @FXML
-    private TableView<Article> articletableview;
-    @FXML
-    private TableColumn<?, ?> updatecol;
     ScrollPane sp = new ScrollPane();
+    
+    @FXML
+    private JFXTextField searchArt;
+    
+    @FXML
+    private Label hiddenIdArticle;
+    
 //    public AfficherArticleFXMLController() {
 //        this.listcategory = ("livre , artworks");
 //    }
@@ -254,10 +241,20 @@ public class AfficherArticleFXMLController implements Initializable {
     private Button dislike1;
     @FXML
     private VBox vboxcomment;
-    @FXML
-    private AnchorPane commentbox;
+//    @FXML
+//    private AnchorPane commentbox;
     @FXML
     private AnchorPane AnP;
+//    @FXML
+//    private TextField txs;
+//    @FXML
+//    private Button btns;
+    @FXML
+    private AnchorPane imageview3;
+    
+    
+    @FXML
+    private Button shareArticleFB;
 
     @FXML
     public void articleAdd() throws SQLException, MalformedURLException {
@@ -299,10 +296,14 @@ public class AfficherArticleFXMLController implements Initializable {
                     alert.setContentText("titre article:" + titre_article.getText() + " already exist!");
                     alert.showAndWait();
                 } else {
+                    
                     ArticleService as = new ArticleService();
 
                     Article ar = new Article(titre_article.getText(), java.sql.Date.valueOf(date_article.getValue()), content_article1.getText(), 0, GetData.path, category.getValue().toString(), 100);
                     as.ajouter(ar);
+                    as.filtrerMotsInappropries();
+                    
+                    
 
                     home_form.setVisible(false);
                     blog_form.setVisible(false);
@@ -427,6 +428,7 @@ public class AfficherArticleFXMLController implements Initializable {
             blog_form.setVisible(false);
             comment_form.setVisible(false);
             showarticle_form.setVisible(false);
+            sp.setVisible(false);
 
             home_btn.setStyle("-fx-background-color: #3796a7; -fx-text-fill: #fff; -fx-border-width: 0px;");
             blog_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
@@ -443,6 +445,7 @@ public class AfficherArticleFXMLController implements Initializable {
             comment_form.setVisible(false);
             showarticle_form.setVisible(false);
             sp.setVisible(false);
+//            commentbox.setVisible(false);
             titre_article.setText("");
             availablecategories();
 
@@ -460,6 +463,7 @@ public class AfficherArticleFXMLController implements Initializable {
             comment_form.setVisible(true);
             showarticle_form.setVisible(false);
             sp.setVisible(false);
+//            commentbox.setVisible(false);
             home_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
             blog_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
             comments_btn.setStyle("-fx-background-color: #3796a7; -fx-text-fill: #fff; -fx-border-width: 0px;");
@@ -475,6 +479,7 @@ public class AfficherArticleFXMLController implements Initializable {
             blog_form.setVisible(false);
             comment_form.setVisible(false);
             showarticle_form.setVisible(false);
+//            commentbox.setVisible(false);
             afficherlesarticle();
 //            articleshowlist();
             availablecategories();
@@ -484,6 +489,15 @@ public class AfficherArticleFXMLController implements Initializable {
             blog_form.setVisible(false);
             comment_form.setVisible(true);
             showarticle_form.setVisible(false);
+//            commentbox.setVisible(false);
+            
+        }else if (event.getSource() == reload) {
+            home_form.setVisible(false);
+            blog_form.setVisible(false);
+            comment_form.setVisible(false);
+            showarticle_form.setVisible(false);
+//            commentbox.setVisible(true);
+            
         }
 
     }
@@ -541,36 +555,7 @@ public class AfficherArticleFXMLController implements Initializable {
         }
     }
 
-    public void close() {
-        System.exit(0);
-    }
 
-    public void minimize() {
-        Stage stage = (Stage) main_form.getScene().getWindow();
-        stage.setIconified(true);
-    }
-
-//    @FXML
-//    private ImageView imageView;
-//    int count;
-//
-//    public void slider() {
-//
-//        ArrayList<Image> images = new ArrayList<>();
-//        images.add(new Image("image1.jpg"));
-//        images.add(new Image("image2.jpg"));
-//        images.add(new Image("image3.jpg"));
-//
-//        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
-//            imageView.setImage(images.get(count));
-//            count++;
-//            if (count == 3) {
-//                count = 0;
-//            }
-//        }));
-//        timeline.setCycleCount(Timeline.INDEFINITE);
-//        timeline.play();
-//    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        slider();
@@ -617,16 +602,20 @@ public class AfficherArticleFXMLController implements Initializable {
     private void afficherlesarticle() throws MalformedURLException {
         main_form.getChildren().removeAll(sp);
         sp.setVisible(true);
-
+           sp.setVisible(true);
+//           btns.setVisible(true);
+//    txs.setVisible(true);
         int x = 360;
         int y = 100;
 
         sp.setLayoutX(350);
-        sp.setLayoutY(20);
-        sp.setMaxHeight(800);
+        sp.setLayoutY(80);
+        sp.setMaxHeight(750);
         sp.setMaxWidth(800);
         VBox vb = new VBox();
         sp.setContent(vb);
+        
+        
 
         ArticleService sr = new ArticleService();
         List<Article> la = new ArrayList();
@@ -713,6 +702,197 @@ public class AfficherArticleFXMLController implements Initializable {
                     content2.setText(a.getContentArticle());
                     titre.setText(a.getTitreArticle());
                     imageview_article2.setImage(image);
+                    hiddenIdArticle.setText(String.valueOf(a.getIdArticle()));
+                    CommentaireService cs = new CommentaireService();
+                    System.out.println("Cms: " + cs.getCommentsByArticle(a.getIdArticle()));
+                    List<Commentaire> aComments = cs.getCommentsByArticle(a.getIdArticle());
+                 for(int i = 0; i<aComments.size(); ++i){
+                     vboxcomment.getChildren().add(new Label(aComments.get(i).getContentCommentaire()));
+                 }
+                 commentaireScrollPane.setContent(vboxcomment);
+//                    pn.getChildren().add(lb);
+                    ImageView imageview_article2 = new ImageView(im);
+
+                    AnP.getChildren().add(imageview_article2);
+                  //  CommentaireService cs = new CommentaireService();
+                    Date d = Date.valueOf(LocalDate.now());
+                    sp.setId(String.valueOf(a.getIdArticle()));
+
+                }
+            });
+
+            btnm.setOnAction(new EventHandler() {
+
+                @Override
+                public void handle(Event event) {
+                    home_form.setVisible(false);
+                    blog_form.setVisible(true);
+                    comment_form.setVisible(false);
+                    showarticle_form.setVisible(false);
+
+                    home_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+                    blog_btn.setStyle("-fx-background-color: #3796a7; -fx-text-fill: #fff; -fx-border-width: 0px;");
+                    comments_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+                    titre_article.setText(a.getTitreArticle());
+                    content_article1.setText(a.getContentArticle());
+                    File file = new File(GetData.path);
+                    Image im;
+                    try {
+                        im = new Image(file.toURI().toURL().toString(), 200, 220, false, true);
+                        imageview_article.setImage(im);
+                    } catch (MalformedURLException ex) {
+                        Logger.getLogger(AfficherArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    sp.setVisible(false);
+                    sp.setId(String.valueOf(a.getIdArticle()));
+                    availablecategories();
+
+                }
+            });
+        }
+        main_form.getChildren().add(sp);
+        main_form.setStyle("-fx-background-color: linear-gradient(to bottom right ,#002427,#08747c);");
+        // home_form.setVisible(true);
+    }
+///////////////////////////////////ADD COMMENT////////////////////////////////////////////////////////////////////////////
+    @FXML
+    private void cadd(ActionEvent event) {
+        String checkData = "SELECT content_commentaire FROM commentaire WHERE content_commentaire='" + ctf.getText().isEmpty() + "'";
+        Alert alert;
+        Connection cnx = DataSource.getInstance().getCnx();
+        if (ctf.getText().isEmpty()) {
+            alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill the comment field");
+            alert.showAndWait();
+        } else {
+            CommentaireService cms = new CommentaireService();
+            Article ar = new Article();
+            ar.setIdUser(Integer.valueOf(sp.getId()));
+            Commentaire cm = new Commentaire(ar, ctf.getText());
+            cms.ajouter(cm);
+            ctf.setText("");
+            alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Comment added successfully");
+            alert.showAndWait();
+        }
+    }
+    /////////////////////////////////////////////SHOW COMMENT/////////////////////////////////////////////////////////////////////////////////////
+    
+     private void showComments(){
+         CommentaireService cs = new CommentaireService();
+         System.out.println("Cms: " + cs.getCommentsByArticle(Integer.parseInt(hiddenIdArticle.getText())));
+     }
+
+
+private void afficherlesarticle1() throws MalformedURLException {
+        main_form.getChildren().removeAll(sp);
+        System.out.println("jhvgb");
+        sp.setVisible(true);
+//    txs.setVisible(true);
+//       btns.setVisible(true);
+        int x = 360;
+        int y = 100;
+
+        sp.setLayoutX(350);
+        sp.setLayoutY(80);
+        sp.setMaxHeight(750);
+        sp.setMaxWidth(800);
+        VBox vb = new VBox();
+        sp.setContent(vb);
+        
+        
+
+        ArticleService sr = new ArticleService();
+        List<Article> la = new ArrayList();
+//        la = sr.chercherArticle(txs.getText(),txs.getText());
+        System.out.println("LAAA: " + la);
+        for (int i = 0; i < la.size(); i++) {
+            AnchorPane pn = new AnchorPane();
+            pn.setStyle("-fx-background-color: linear-gradient(to bottom, #f2f2f2, #d4d4d4);"
+                    + " -fx-border: 12px solid; -fx-border-color: white;");
+
+            vb.getChildren().add(pn);
+            Label lb5 = new Label();
+            lb5.setText(".");
+
+            lb5.setLayoutX(x + 500);
+            lb5.setStyle(" -fx-font: 40px Arial; ");
+            pn.getChildren().add(lb5);
+            Label lb = new Label();
+            lb.setText(la.get(i).getTitreArticle());
+            lb.setId("t" + String.valueOf(la.get(i).getIdArticle()));
+            if (la.get(i).getTitreArticle().length() > 9) {
+                lb.setLayoutX(x - 150);
+                //lb.setAlignment(Pos.);
+            } else {
+                lb.setLayoutX(x - 50);
+            }
+            lb.setStyle(" -fx-font: 40px Arial; ");
+            pn.getChildren().add(lb);
+            pn.setVisible(true);
+            File file = new File(la.get(i).getImageArticle());
+            Image im = new Image(file.toURI().toURL().toString(), 200, 220, false, true);
+            ImageView imageView = new ImageView(im);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            imageView.setPreserveRatio(true);
+            imageView.setLayoutX(x + 300);
+            imageView.setLayoutY(lb.getLayoutY() + 40);
+            pn.getChildren().add(imageView);
+            Label ar = new Label();
+            if (la.get(i).getContentArticle().length() < 80) {
+                ar.setText(la.get(i).getContentArticle());
+            } else if (la.get(i).getContentArticle().length() > 160) {
+                String s = la.get(i).getContentArticle().substring(0, 80);
+
+                String s1 = la.get(i).getContentArticle().substring(80, 160);
+                String s2 = la.get(i).getContentArticle().substring(160);
+                ar.setText(s + "\n" + s1 + "\n" + s2);
+
+            } else {
+                String s = la.get(i).getContentArticle().substring(0, 80);
+                String s2 = la.get(i).getContentArticle().substring(80);
+                ar.setText(s + "\n" + s2);
+            }
+            ar.setLayoutX(x - 350);
+            ar.setLayoutY(lb.getLayoutY() + 40);
+            ar.setId("c" + String.valueOf(la.get(i).getIdArticle()));
+            pn.getChildren().add(ar);
+            Label lbd = new Label();
+            lbd.setText(String.valueOf(la.get(i).getDateArticle()));
+            lbd.setId("d" + String.valueOf(la.get(i).getIdArticle()));
+            lbd.setLayoutX(x - 30);
+            lbd.setLayoutY(ar.getLayoutY() + 100);
+            lbd.setStyle(" -fx-font: 10px Arial; ");
+            pn.getChildren().add(lbd);
+
+            Button btnc = new Button();
+            btnc.setText("commenter");
+            Article a = new Article(Integer.valueOf(la.get(i).getIdArticle()), la.get(i).getTitreArticle(), la.get(i).getDateArticle(), la.get(i).getContentArticle(), Integer.valueOf(la.get(i).getNbrLikesArticle()), la.get(i).getImageArticle(), la.get(i).getCategoryArticle(), Integer.valueOf(la.get(i).getIdUser()));
+            GetData.path = a.getImageArticle();
+            btnc.setLayoutX(x + 30);
+            btnc.setLayoutY(ar.getLayoutY() + 60);
+            pn.getChildren().add(btnc);
+            Button btnm = new Button();
+            btnm.setText("modifier");
+            btnm.setLayoutX(x - 50);
+            btnm.setLayoutY(ar.getLayoutY() + 60);
+            pn.getChildren().add(btnm);
+            btnc.setOnAction(new EventHandler() {
+
+                @Override
+                public void handle(Event event) {
+                    comment_form.setVisible(true);
+                    sp.setVisible(false);
+                    content2.setText(a.getContentArticle());
+                    titre.setText(a.getTitreArticle());
+                    imageview_article2.setImage(image);
+                    hiddenIdArticle.setText(String.valueOf(a.getIdArticle()));
 
 //                    pn.getChildren().add(lb);
                     ImageView imageview_article2 = new ImageView(im);
@@ -759,119 +939,173 @@ public class AfficherArticleFXMLController implements Initializable {
         main_form.setStyle("-fx-background-color: linear-gradient(to bottom right ,#002427,#08747c);");
         // home_form.setVisible(true);
     }
-
-    @FXML
-    private void cadd(ActionEvent event) {
-        String checkData = "SELECT content_commentaire FROM commentaire WHERE content_commentaire='" + ctf.getText().isEmpty() + "'";
-        Alert alert;
-        Connection cnx = DataSource.getInstance().getCnx();
-        if (ctf.getText().isEmpty()) {
-            alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error Message");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill the comment field");
-            alert.showAndWait();
-        } else {
-            CommentaireService cms = new CommentaireService();
-            Article ar = new Article();
-            ar.setIdUser(Integer.valueOf(sp.getId()));
-            Commentaire cm = new Commentaire(ar, ctf.getText());
-            cms.ajouter(cm);
-            ctf.setText("");
-            alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText(null);
-            alert.setContentText("Comment added successfully");
-            alert.showAndWait();
-        }
+    
+private void search(ActionEvent event) throws MalformedURLException {
+          System.out.println("jhvgb");
+        
+        afficherlesarticle1();
+        
+        
     }
+///////////////////////////////////////////////////chercherArticle//////////////////////////////////////////
 
-//    @FXML
-//    private TextField Searchtxt;
-//
-//    public void ProductFind(Event event) {
-//        String s = Searchtxt.getText();
-//        String a = Searchtxt.getText();
-//        Article p = new Article();
-//        ArticleService arts = new ArticleService();
-//
-//        if (arts.chercherArticle(s, a) != null) {
-//            System.out.println(arts.chercherArticle(s, a));
-//            Article article = arts.chercherArticle(s, a));
-//
-//            ObservableList<Article> productList = FXCollections.observableArrayList(article);
-//
-//            sp.setItems(productList);
-//
-//            Alert infoAlert = new Alert(AlertType.INFORMATION);
-//            infoAlert.setTitle("Information");
-//            infoAlert.setHeaderText("Produit existe déja !");
-//            infoAlert.setContentText("Verification.");
-//            infoAlert.showAndWait();
-//
-//        } else {
-//            Alert infoAlert = new Alert(AlertType.INFORMATION);
-//            infoAlert.setTitle("Information");
-//            infoAlert.setHeaderText("Produit n'existe pas");
-//            infoAlert.setContentText("Verification.");
-//            infoAlert.showAndWait();
-//
-////         refresh();
-//        }
-//    }
+@FXML
+private void searchArticle() throws MalformedURLException{
+      main_form.getChildren().removeAll(sp);
+        System.out.println("jhvgb");
+        sp.setVisible(true);
+//    txs.setVisible(true);
+//       btns.setVisible(true);
+//        int x = 360;
+//        int y = 100;
 
-//    @FXML
-//    private void cadd(ActionEvent event) {
-//                String checkData = "SELECT content_commentaire FROM commentaire WHERE content_commentaire='" + ctf.getText().isEmpty() + "'";
-//
-//           Alert alert;
-////    Connection cnx = DataSource.getInstance().getCnx();
-//        if (ctf.getText().isEmpty()) {
-//
-//            alert = new Alert(AlertType.ERROR);
-//            alert.setTitle("Error Message");
-//            alert.setHeaderText(null);
-//            alert.setContentText("Please fill the comment field");
-//            alert.showAndWait();
-//
-//        } else {
-//            CommentaireService cms = new CommentaireService();
-////            System.out.println(GetData.path);
-//            Commentaire cm = new Commentaire(Integer.valueOf(sp.getId()), ctf.getText());
-//            cms.ajouter(cm);
-//            // GetData.path="";
-//        }
-//        
-//    }
+        sp.setLayoutX(350);
+        sp.setLayoutY(80);
+        sp.setMaxHeight(750);
+        sp.setMaxWidth(800);
+        VBox vb = new VBox();
+        sp.setContent(vb);
+        
+        
+
+        ArticleService sr = new ArticleService();
+        List<Article> la = new ArrayList();
+        la = sr.chercherArticle(searchArt.getText(), "");
+        System.out.println("LAAA: " + la);
+        for (int i = 0; i < la.size(); i++) {
+            AnchorPane pn = new AnchorPane();
+            pn.setStyle("-fx-background-color: linear-gradient(to bottom, #f2f2f2, #d4d4d4);"
+                    + " -fx-border: 12px solid; -fx-border-color: white;");
+
+            vb.getChildren().add(pn);
+            Label lb5 = new Label();
+            lb5.setText(".");
+
+            lb5.setLayoutX(x + 500);
+            lb5.setStyle(" -fx-font: 40px Arial; ");
+            pn.getChildren().add(lb5);
+            Label lb = new Label();
+            lb.setText(la.get(i).getTitreArticle());
+            lb.setId("t" + String.valueOf(la.get(i).getIdArticle()));
+            if (la.get(i).getTitreArticle().length() > 9) {
+                lb.setLayoutX(x - 150);
+                //lb.setAlignment(Pos.);
+            } else {
+                lb.setLayoutX(x - 50);
+            }
+            lb.setStyle(" -fx-font: 40px Arial; ");
+            pn.getChildren().add(lb);
+            pn.setVisible(true);
+            File file = new File(la.get(i).getImageArticle());
+            Image im = new Image(file.toURI().toURL().toString(), 200, 220, false, true);
+            ImageView imageView = new ImageView(im);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            imageView.setPreserveRatio(true);
+            imageView.setLayoutX(x + 300);
+            imageView.setLayoutY(lb.getLayoutY() + 40);
+            pn.getChildren().add(imageView);
+            Label ar = new Label();
+            if (la.get(i).getContentArticle().length() < 80) {
+                ar.setText(la.get(i).getContentArticle());
+            } else if (la.get(i).getContentArticle().length() > 160) {
+                String s = la.get(i).getContentArticle().substring(0, 80);
+
+                String s1 = la.get(i).getContentArticle().substring(80, 160);
+                String s2 = la.get(i).getContentArticle().substring(160);
+                ar.setText(s + "\n" + s1 + "\n" + s2);
+
+            } else {
+                String s = la.get(i).getContentArticle().substring(0, 80);
+                String s2 = la.get(i).getContentArticle().substring(80);
+                ar.setText(s + "\n" + s2);
+            }
+            ar.setLayoutX(x - 350);
+            ar.setLayoutY(lb.getLayoutY() + 40);
+            ar.setId("c" + String.valueOf(la.get(i).getIdArticle()));
+            pn.getChildren().add(ar);
+            Label lbd = new Label();
+            lbd.setText(String.valueOf(la.get(i).getDateArticle()));
+            lbd.setId("d" + String.valueOf(la.get(i).getIdArticle()));
+            lbd.setLayoutX(x - 30);
+            lbd.setLayoutY(ar.getLayoutY() + 100);
+            lbd.setStyle(" -fx-font: 10px Arial; ");
+            pn.getChildren().add(lbd);
+
+            Button btnc = new Button();
+            btnc.setText("commenter");
+            Article a = new Article(Integer.valueOf(la.get(i).getIdArticle()), la.get(i).getTitreArticle(), la.get(i).getDateArticle(), la.get(i).getContentArticle(), Integer.valueOf(la.get(i).getNbrLikesArticle()), la.get(i).getImageArticle(), la.get(i).getCategoryArticle(), Integer.valueOf(la.get(i).getIdUser()));
+            GetData.path = a.getImageArticle();
+            btnc.setLayoutX(x + 30);
+            btnc.setLayoutY(ar.getLayoutY() + 60);
+            pn.getChildren().add(btnc);
+            Button btnm = new Button();
+            btnm.setText("modifier");
+            btnm.setLayoutX(x - 50);
+            btnm.setLayoutY(ar.getLayoutY() + 60);
+            pn.getChildren().add(btnm);
+            btnc.setOnAction(new EventHandler() {
+
+                @Override
+                public void handle(Event event) {
+                    comment_form.setVisible(true);
+                    sp.setVisible(false);
+                    content2.setText(a.getContentArticle());
+                    titre.setText(a.getTitreArticle());
+                    imageview_article2.setImage(image);
+                    hiddenIdArticle.setText(String.valueOf(a.getIdArticle()));
+//                    pn.getChildren().add(lb);
+                    ImageView imageview_article2 = new ImageView(im);
+
+                    AnP.getChildren().add(imageview_article2);
+                    CommentaireService cs = new CommentaireService();
+                    Date d = Date.valueOf(LocalDate.now());
+                    sp.setId(String.valueOf(a.getIdArticle()));
+
+                }
+            });
+
+            btnm.setOnAction(new EventHandler() {
+
+                @Override
+                public void handle(Event event) {
+                    home_form.setVisible(false);
+                    blog_form.setVisible(true);
+                    comment_form.setVisible(false); 
+                    showarticle_form.setVisible(false);
+
+                    home_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+                    blog_btn.setStyle("-fx-background-color: #3796a7; -fx-text-fill: #fff; -fx-border-width: 0px;");
+                    comments_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
+                    titre_article.setText(a.getTitreArticle());
+                    content_article1.setText(a.getContentArticle());
+                    File file = new File(GetData.path);
+                    Image im;
+                    try {
+                        im = new Image(file.toURI().toURL().toString(), 200, 220, false, true);
+                        imageview_article.setImage(im);
+                    } catch (MalformedURLException ex) {
+                        Logger.getLogger(AfficherArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    sp.setVisible(false);
+                    sp.setId(String.valueOf(a.getIdArticle()));
+                    availablecategories();
+
+                }
+            });
+        }
+        main_form.getChildren().add(sp);
+        main_form.setStyle("-fx-background-color: linear-gradient(to bottom right ,#002427,#08747c);");
 }
-//
-////    @FXML
-////    private ImageView imageView;
-////    int count;
-////
-////    public void slider() {
-////
-////        ArrayList<Image> images = new ArrayList<>();
-////        images.add(new Image("image1.jpg"));
-////        images.add(new Image("image2.jpg"));
-////        images.add(new Image("image3.jpg"));
-////
-////        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
-////            imageView.setImage(images.get(count));
-////            count++;
-////            if (count == 3) {
-////                count = 0;
-////            }
-////        }));
-////        timeline.setCycleCount(Timeline.INDEFINITE);
-////        timeline.play();
-////    }
-//    @Override
-//    public void initialize(URL url, ResourceBundle rb) {
-////        slider();
-//        displayUsername();
-////        articleshowlist();
-//        availablecategories();
-//    }
-//
-//}
+
+        @FXML
+        public void shareArticleFB() throws IOException{
+               ArticleService as = new ArticleService();
+               Article a = new Article();
+               a.setContentArticle(content_article1.getText());
+               a.setTitreArticle(titre_article.getText());
+               as.shareOnPage(a);
+        }
+
+}

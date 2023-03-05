@@ -31,7 +31,7 @@ public class MainClass {
 //        }
 
 
- Article article = new Article(5, "new article",Date.valueOf("2023-02-07"), "new content ", 3, "image", "livre", 3);
+ Article article = new Article(5, "new article",Date.valueOf("2023-02-07"), "new content 555 ", 3, "image", "livre", 3);
 //Article article= new Article();
         ArticleService a = new ArticleService();
         a.shareOnPage(article);

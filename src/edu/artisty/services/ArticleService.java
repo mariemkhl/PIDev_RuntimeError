@@ -28,6 +28,8 @@ import java.util.Arrays;
 import java.util.Properties;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 
@@ -195,27 +197,13 @@ public class ArticleService implements IService<Article> {
     }
     
     return filteredStream.collect(Collectors.toList());
+    
 }
-     public List getEmailsOfParticipants(int idE){
-        String query = "SELECT utilisateur.email_utilisateur from utilisateur " +
-                "INNER JOIN reservation on (utilisateur.id_utilisateur = reservation.id_us AND " +
-                "reservation.id_event =" + idE + ")";
-        List<String> Emails = new ArrayList<>();
-        try{
-            Statement ste = cnx.createStatement();
-            ResultSet rs = ste.executeQuery(query);
-            while (rs.next()){
-                Emails.add(rs.getString("email_utilisateur"));
-            }
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return Emails;
-    }
+    
      
       //////////////////////////////FACEBOOK///////////////////////////////////////////////
  public void shareOnPage(Article p) throws IOException {
-        String accessToken = "EAAHZA0q5BuxkBAEwezFPshZCOIX6K3KSaBasqe1wWv5S5STxrIN7ZCqmVWc6mJmLALKOKJBHN7kNgs8X7sSkz7DFnlraYJG0sWT38FgESNYou9Rdu21EU4kPihI35ZA9oWfeVTWG1OpPoFgZAS3pWYKvtDInxQ5FTqWm4l4ZCkq9tDCG29dTWZBODKFjYhKhvUZD";
+        String accessToken = "EAAHZA0q5BuxkBAFJr2C3ZC5fYj9OTyFjZC7ZBl598bZCZBzkZBYZAeRcgwSX0q5SeDQ2PyVNwa7eN44S0fzUxTBF6k4ZAx8zL8kW7g8i3dV7vSmDtoi1khfjZCt4NQ6aseLAPPRuOYw0INcNAvkYf9dxw7vbIDaM2ChArkvfZANGxD7yEZBf8wIMAawx9C1KghFrhXcZD";
         String pageId = "106824712245974";
         String message =p.getTitreArticle()+"\n"+ p.getContentArticle();
         FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);
