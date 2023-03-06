@@ -36,7 +36,7 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root= FXMLLoader.load(getClass().getResource("../gui/list.fxml"));
+            Parent root= FXMLLoader.load(getClass().getResource("../gui/paying.fxml"));
             Scene scene = new Scene(root,700,450);
             primaryStage.setTitle("Gestion des commandes");
             primaryStage.setScene(scene); 

@@ -21,6 +21,23 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+  import java.util.Properties;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.Properties;
+import javax.swing.JOptionPane;
+import java.util.Properties;
+import javafx.scene.control.TextField;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+  
 
 /**
  * FXML Controller class
@@ -30,10 +47,16 @@ import javafx.scene.control.TextField;
 public class AjouterReclamationController implements Initializable {
     @FXML
     private ChoiceBox<String> ChoiceBox1;
+    
+      @FXML
+    private TextField tfconf;
 
     @FXML
     private Button confirmation;
 
+        @FXML
+    private TextField tfnumero;
+        
     @FXML
     private Button exit;
         @FXML
@@ -83,11 +106,80 @@ public class AjouterReclamationController implements Initializable {
 		choisir1.setText(type);
 	}
         // TODO
-    }    
-  
+
+
+@FXML
+void sendEmailNotification(ActionEvent event) throws MessagingException {
+    
+    // Assuming you are sending email through relay.jangosmtp.net
+    String host = "smtp.gmail.com";
+
+    Properties props = new Properties();
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.host", "smtp.gmail.com");
+    props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+    props.put("mail.smtp.ssl.protocols","TLSv1.2");
+    props.put("mail.smtp.port", "587");
+    
+    String from = "yessmine.gsouri@esprit.tn";
+    final String username = "yessmine.gsouri@esprit.tn";
+    System.out.println("preparing to send email");
+           
+    String to = tfconf.getText();
+         
+    String myAccountEmail="yessmine.gsouri@esprit.tn";
+    String password="223AFT1624";
+    
+    Session session = Session.getInstance(props, new Authenticator() {
+        @Override
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(myAccountEmail, password);
+        }
+    }); 
+    
+    try {
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(from));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+        message.setSubject("Confirmation de récéption de réclamation"); 
+        
+        // Create a MimeMultipart to contain the content of the email
+        MimeMultipart multipart = new MimeMultipart();
+
+        // Create a new MimeBodyPart for the content with the desired font
+        MimeBodyPart messageBodyPart = new MimeBodyPart();
+        String messageContent = "<p style=\"font-family: Arial, sans-serif;\">Votre Réclamation a été bien reçue. Nous allons la prendre en considération. <br> Merci pour votre patience <br> L'équipe de Artisty</p>";
+        messageBodyPart.setContent(messageContent, "text/html");
+
+        // Add the MimeBodyPart to the MimeMultipart
+        multipart.addBodyPart(messageBodyPart);
+
+        // Create a new MimeBodyPart for the image
+        MimeBodyPart imagePart = new MimeBodyPart();
+
+        // Set the image file location
+        String imagePath = "C:\\Users\\user\\Desktop\\logo.png";
+
+        // Add the image file to the MimeBodyPart
+        imagePart.attachFile(imagePath);
+
+        // Add the MimeBodyPart to the MimeMultipart
+        multipart.addBodyPart(imagePart);
+
+        // Set the content of the message to the MimeMultipart
+        message.setContent(multipart);
+
+        Transport.send(message);
+        JOptionPane.showMessageDialog(null, "Message sent successfully!");
+    } catch (MessagingException e) {
+        JOptionPane.showMessageDialog(null, "Error sending message: " + e.getMessage());
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, "Error attaching image: " + e.getMessage());
+    }
+}
 
 
 
-
-
-
+ 
+}

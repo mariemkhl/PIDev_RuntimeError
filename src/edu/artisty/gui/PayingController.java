@@ -12,26 +12,14 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.stripe.Stripe;
-import com.stripe.exception.StripeException;
-import com.stripe.model.Charge;
-import com.stripe.model.Token;
 import edu.artisty.services.ServicePaiment;
 import edu.artisty.entities.PAIMENT;
-import edu.artisty.services.ServiceCommande;
 import edu.artisty.utils.DataSource;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.sql.SQLException;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -40,25 +28,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.PdfPCell;
 
 
 /**
@@ -108,8 +91,7 @@ public class PayingController implements Initializable {
         Document document = new Document(); //cration de l'instance document
 
         try {
-            PdfWriter.getInstance(document,
-                    new FileOutputStream("C:\\Users\\user\\Desktop\\Downloads\\Commande\\reçu.pdf"));  Connection cnx = DataSource.getInstance().getCnx();
+            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\user\\Desktop\\Downloads\\Commande\\reçu.pdf"));  Connection cnx = DataSource.getInstance().getCnx();
                     
             String req = "SELECT * FROM paiment ";
             Statement st = cnx.createStatement();
@@ -122,6 +104,7 @@ public class PayingController implements Initializable {
             p.setAlignment(Element.ALIGN_CENTER);
             document.add(p);
             document.add(new Paragraph(" "));
+                
             PdfPTable pdfPTable = new PdfPTable(4);
             pdfPTable.setWidthPercentage(100);
 

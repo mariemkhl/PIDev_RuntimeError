@@ -7,6 +7,7 @@ package edu.artisty.services;
 
 import edu.artisty.entities.Commande;
 import edu.artisty.utils.DataSource;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -112,34 +113,74 @@ public class ServiceCommande implements IService<Commande> {
         return c;
     }
 
-   public ObservableList<Commande> rechercheParpaiment(String test) {
-       // Reclamation p = new Reclamation();
-          Commande p = new Commande();
-        ObservableList<Commande> List = FXCollections.observableArrayList();
+//   public Commande rechercheParpaiment(String payment) {
+//      
+//          Commande c = new Commande();
+//      //  ObservableList<Commande> List = FXCollections.observableArrayList();
+//        try {
+//            String req = "SELECT * FROM Commande WHERE `payment`= '" + payment + "'";
+//            Statement pst = cnx.createStatement();
+//            ResultSet rs = pst.executeQuery(req);
+//            
+//           // pst.setString(1, p.getPayment());
+//            
+//           // rs.first();
+//           while (rs.next()){
+//                c = new Commande( rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
+//       
+//           }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//
+//       return c ; 
+//    }
+   
+   
+   public Commande rechercheParpaiment(String payment) {
+       Commande c1 =new Commande();
+        ServiceCommande sc = new ServiceCommande();
         try {
-            String requete3 = "SELECT * FROM commande WHERE `payment` =? ";
-            PreparedStatement pst = cnx.prepareStatement(requete3);
-            pst.setString(1, p.getPayment());
-            ResultSet rs = pst.executeQuery();
-            
-           // rs.first();
-           while (rs.next()){
-            p.setuserid(rs.getString("userid"));
-            p.setPrix_tot(rs.getInt("prix_tot"));
-            p.setDate_creation(rs.getString("date_creation"));
-            p.setId(rs.getInt("idcommande"));
-            p.setPayment(rs.getString("payment"));
-             List.add(p);
-           }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
+            String req = "SELECT * FROM commande WHERE `payment`= '" + payment + "'";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
 
-        return List;
+            while (rs.next()) {
+            
+                Commande c = new Commande(rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5));
+System.out.println(c);
+                return c;
+                 
+               
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+ System.out.println(c1);
+        return null ;
+
     }
-   
-   
-   
+
+    public boolean exists(String payment) throws SQLException {
+
+        PreparedStatement a = cnx.prepareStatement("SELECT * FROM commande");
+        ResultSet rs = a.executeQuery();
+        while (rs.next()) {
+            if (payment.equals(rs.getString("payment"))) {
+                System.out.println("this payment already exists");
+                return true;
+            }
+        }
+        System.out.println("this payment doesn't exists");
+        return false;
+
+    }
     
     public ObservableList<Commande> afficherCommande() {
         ObservableList<Commande> myList = FXCollections.observableArrayList();

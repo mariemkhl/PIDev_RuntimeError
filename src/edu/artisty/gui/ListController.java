@@ -43,6 +43,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
 public class ListController {
 
@@ -69,6 +70,8 @@ public class ListController {
 
     @FXML
     private Button affich;
+        @FXML
+    private TextField tfp;
 
 
     
@@ -84,6 +87,8 @@ FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCommande.fxml"
                 quitter1.getScene().setRoot(root);
     
     }
+    
+    
 
     @FXML
     void retour1 ()throws IOException {
@@ -144,21 +149,45 @@ void update1(ActionEvent event) throws IOException {
     }              
 }
 
-
+ServiceCommande sc = new ServiceCommande ();
 @FXML
 void rechercherPaiment(ActionEvent event) {
-    ServiceCommande sc = new ServiceCommande();
-    ObservableList<Commande> liste = sc.rechercheParpaiment(lpayment.getText());
-           list.setItems(liste);
-        list.setCellFactory(param -> new ListCell<Commande>() {
-            @Override
-            protected void updateItem(Commande item, boolean empty) {
-             
-                    setText(item.getuserid() + " - " + item.getPayment() + " - " + item.getDate_creation());
-                }        
-        });
-        list.refresh();
-    }
+    
+    String s =tfp.getText();
+              Commande c= new Commande();
+              
+         
+         if(sc.rechercheParpaiment(s)!=null){
+         System.out.println(sc.rechercheParpaiment(s));
+         Commande commande = sc.rechercheParpaiment(s);
+       
+         ObservableList<Commande> CList = FXCollections.observableArrayList(commande);
+ 
+         list.setItems(CList);
+    
+//     
+//    ServiceCommande sc = new ServiceCommande();
+//    ObservableList<Commande> liste = sc.rechercheParpaiment(lpayment.getText());
+//    if (liste.isEmpty()) {
+//        System.out.println("No results found for payment: " + lpayment.getText());
+//    } else {
+//        list.setItems(liste);
+//        list.setCellFactory(param -> new ListCell<Commande>() {
+//            @Override
+//            protected void updateItem(Commande item, boolean empty) {
+//                super.updateItem(item, empty);
+//                if (empty || item == null) {
+//                    setText(null);
+//                } else {
+//                    setText(item.getuserid() + " - " + item.getPayment() + " - " + item.getDate_creation());
+//                }
+//            }
+//        });
+//        list.refresh();
+//    }
+}
+}
+
 
 
 

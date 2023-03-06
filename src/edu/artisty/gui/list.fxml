@@ -49,7 +49,7 @@
             <ListView fx:id="list" layoutX="402.0" layoutY="170.0" prefHeight="371.0" prefWidth="703.0" />
             <Label fx:id="lpayment" layoutX="232.0" layoutY="132.0" textFill="WHITE" />
             <Button fx:id="Find" layoutX="233.0" layoutY="250.0" mnemonicParsing="false" onAction="#rechercherPaiment" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="FIND" />
-            <TextField layoutX="162.0" layoutY="201.0" prefHeight="26.0" prefWidth="220.0" promptText="Chercher par paiment" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" />
+            <TextField fx:id="tfp" layoutX="162.0" layoutY="201.0" prefHeight="26.0" prefWidth="220.0" promptText="Chercher par paiment" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" />
             <Button fx:id="affich" layoutX="226.0" layoutY="585.0" mnemonicParsing="false" onAction="#afficher" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="afficher" />
             <Label fx:id="luserid" layoutX="301.0" layoutY="132.0" />
          </children>

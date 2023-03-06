@@ -16,10 +16,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
-import com.stripe.Stripe;
-import com.stripe.exception.StripeException;
-import com.stripe.model.Charge;
-import com.stripe.model.Token;
 import java.util.HashMap;
 
 /**
