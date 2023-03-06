@@ -15,7 +15,9 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -48,6 +50,9 @@ public class AjouterReclamationController implements Initializable {
         ReclamationCRUD rc = new ReclamationCRUD();
         Reclamation r = new Reclamation( section_commentaires.getText(),choisir1.getText());
                 rc.AjoutReclamation2(r);
+                
+        Alert a = new Alert(Alert.AlertType.INFORMATION, "Votre réclamation a été ajoutée. Nous allons la prendre en considération !", ButtonType.OK);
+                a.showAndWait();
 
     }
 

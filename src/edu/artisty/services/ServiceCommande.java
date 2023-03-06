@@ -114,14 +114,14 @@ public class ServiceCommande implements IService<Commande> {
 
    public ObservableList<Commande> rechercheParpaiment(String test) {
        // Reclamation p = new Reclamation();
-         
+          Commande p = new Commande();
         ObservableList<Commande> List = FXCollections.observableArrayList();
         try {
-            String requete3 = "SELECT * FROM Commande WHERE payment=? ";
+            String requete3 = "SELECT * FROM commande WHERE `payment` =? ";
             PreparedStatement pst = cnx.prepareStatement(requete3);
-            pst.setString(1, test);
+            pst.setString(1, p.getPayment());
             ResultSet rs = pst.executeQuery();
-             Commande p = new Commande();
+            
            // rs.first();
            while (rs.next()){
             p.setuserid(rs.getString("userid"));
@@ -137,6 +137,8 @@ public class ServiceCommande implements IService<Commande> {
 
         return List;
     }
+   
+   
    
     
     public ObservableList<Commande> afficherCommande() {

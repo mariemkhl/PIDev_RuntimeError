@@ -100,14 +100,8 @@ public class PayingController implements Initializable {
     private Label meth_paiment;
     
     @FXML
-    private DatePicker date_ex ;
-    
-        // Récupérer la date sélectionnée
-                LocalDate date = date_ex.getValue();
-
-// Convertir la date en String avec un format spécifique
-                String dateString = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));  
-    
+    private DatePicker date_ex1 ;   
+   
     @FXML
     void imprimer(ActionEvent event) throws FileNotFoundException, DocumentException, SQLException, IOException {
 
@@ -123,12 +117,12 @@ public class PayingController implements Initializable {
             // creation de outputstream instance et pdfwriter instance
             document.open();
             document.add(new Paragraph(" "));
-            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 28, Font.UNDERLINE, BaseColor.GREEN);
+            Font font = new Font(Font.FontFamily.TIMES_ROMAN, 28, Font.UNDERLINE, BaseColor.BLUE);
             Paragraph p = new Paragraph(" reçu de paiment  ", font);
             p.setAlignment(Element.ALIGN_CENTER);
             document.add(p);
             document.add(new Paragraph(" "));
-            PdfPTable pdfPTable = new PdfPTable(5);
+            PdfPTable pdfPTable = new PdfPTable(4);
             pdfPTable.setWidthPercentage(100);
 
             PdfPCell cell;
@@ -210,13 +204,13 @@ else if (!num_carte.getText().matches("\\d+") || !CV_code.getText().matches("\\d
         Alert c = new Alert(Alert.AlertType.ERROR, "le numéro de la carte et le CV code doivent être des entiers", ButtonType.FINISH);
         c.showAndWait();
     }
- else if (date_ex.getValue() == null) {
+ else if (date_ex1.getValue() == null) {
     Alert d = new Alert(Alert.AlertType.ERROR, "date invalide", ButtonType.FINISH);
     d.showAndWait();
 }
  else  {
     try {
-        String dateString = date_ex.getValue().toString(); // Get the date as a string
+        String dateString = date_ex1.getValue().toString(); // Get the date as a string
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Set the expected format of the date
         Date date = dateFormat.parse(dateString); // Parse the date string into a Date object
         Date currentDate = new Date(); // Get the current date
@@ -256,46 +250,6 @@ else {
              a.showAndWait();
     }
     }
-//        @FXML
-//    void verif_payment() {
-//
-//        Stripe.apiKey = "sk_test_51MhusREq6aEa2VTuAfVPeqL43VcCUQlVqVM6d6tYc6TYBIK3Ip3YfCQFrcYH0QxsPKbpigevc5p1Lc2HPxnnehSq007YdMCTiP";
-//        Map<String,Object> Param = new HashMap<String,Object>();
-//        Param.put("number", num_carte.getText());
-//        Param.put("exp_month","14/25");
-//        Param.put("cvc", CV_code.getText());
-//        Map<String,Object> TokenParam = new HashMap<String,Object>();
-//        TokenParam.put("card",Param);
-//        Token token=null;
-//            ServicePaiment sp = new ServicePaiment();
-//        try {
-//            token = Token.create(TokenParam);
-//        } catch (StripeException ex) {
-//            Logger.getLogger(PayingController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        Map<String,Object> chargeParam = new HashMap<String,Object>();
-//        chargeParam.put("amount", Math.round((Integer.valueOf(prix_totcarte.getText())+10)*0.3*100));
-//        chargeParam.put("currency", "EUR");
-//        chargeParam.put("source", token.getId());
-//        try {
-//        Charge a =   Charge.create(chargeParam);
-//        if(a.getPaid()){
-//           Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("Payement");
-//                    alert.setContentText("Le Payement a été effectué avec succes");
-//                    alert.showAndWait(); 
-//                    sp.ToPayer(com.getId());
-//                    form1.setVisible(false);
-//        vbox1.setPrefHeight(71);
-//        form2.setVisible(true);
-//        vbox2.setPrefHeight(239);
-//        }
-//        } catch (StripeException ex) {
-//            Logger.getLogger(PayingController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//             
-//        
-//    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

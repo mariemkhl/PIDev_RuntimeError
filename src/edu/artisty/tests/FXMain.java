@@ -11,6 +11,8 @@ package edu.artisty.tests;
  * and open the template in the editor.
  */
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -32,13 +34,16 @@ public class FXMain extends Application {
      * @throws IOException
      */
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/list.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-               primaryStage.setScene(scene);
-                primaryStage.setTitle("Gestion des commandes");
-        primaryStage.show();
+    public void start(Stage primaryStage) {
+        try {
+            Parent root= FXMLLoader.load(getClass().getResource("../gui/list.fxml"));
+            Scene scene = new Scene(root,700,450);
+            primaryStage.setTitle("Gestion des commandes");
+            primaryStage.setScene(scene); 
+            primaryStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

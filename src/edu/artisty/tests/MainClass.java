@@ -27,7 +27,7 @@ public class MainClass {
 //    Commande c2 = new Commande (6,"hajer","cash");
     Reclamation r1 = new Reclamation ("description erronée","authenticité");
     ReclamationCRUD rc = new ReclamationCRUD();
-    rc.recherchePartype("authenticité");
+    rc.AjoutReclamation2(r1);
                 
 //        ServiceCommande sc = new ServiceCommande();
 //        sc.ajouter(c1);

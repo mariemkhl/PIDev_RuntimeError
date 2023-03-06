@@ -9,6 +9,7 @@ import edu.artisty.entities.CommandeListCell;
 import edu.artisty.entities.Commande;
 import edu.artisty.services.IService;
 import edu.artisty.services.ServiceCommande;
+import edu.artisty.utils.DataSource;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -17,7 +18,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import static java.time.zone.ZoneRulesProvider.refresh;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -68,10 +71,7 @@ public class ListController {
     private Button affich;
 
 
-
-
-
-   
+    
     @FXML 
     private ListView <Commande> list ;
 
@@ -146,22 +146,20 @@ void update1(ActionEvent event) throws IOException {
 
 
 @FXML
-void rechercher(ActionEvent event) {
+void rechercherPaiment(ActionEvent event) {
     ServiceCommande sc = new ServiceCommande();
     ObservableList<Commande> liste = sc.rechercheParpaiment(lpayment.getText());
-    list.setItems(liste);
-    list.setCellFactory(param -> new ListCell<Commande>() {
-        @Override
-        protected void updateItem(Commande item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty || item == null) {
-                setText(null);
-            } else {
-                setText(item.getuserid()+ " - " + item.getPayment()+ " - " + item.getDate_creation());
-            }
-        }
-    });
-}
+           list.setItems(liste);
+        list.setCellFactory(param -> new ListCell<Commande>() {
+            @Override
+            protected void updateItem(Commande item, boolean empty) {
+             
+                    setText(item.getuserid() + " - " + item.getPayment() + " - " + item.getDate_creation());
+                }        
+        });
+        list.refresh();
+    }
+
 
 
 
@@ -195,36 +193,36 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/
 }
         // TODO
     }   
-    void refresh () {
-        afficher();
-    }
+  
+ 
 
-    //... omitted code ...
-
-     
 
     void setMeth_Paiment(String paiment) {
         this.lpayment.setText(paiment);
     }
 
  
-    private void afficher() {
-        ServiceCommande sc = new ServiceCommande();
-        ObservableList<Commande> liste = sc.afficherCommande();
-        list.setItems(liste);
-        list.setCellFactory(param -> new ListCell<Commande>() {
-            @Override
-            protected void updateItem(Commande item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                } else {
-                    setText(item.getuserid()+ " - " + item.getPayment()+ " - " + item.getDate_creation());
-                }
+   @FXML
+void afficher() {
+    ServiceCommande sc = new ServiceCommande();
+    ObservableList<Commande> liste = FXCollections.observableArrayList(sc.getAll());
+    list.setItems(liste);
+    list.setCellFactory(param -> new ListCell<Commande>() {
+        @Override
+        protected void updateItem(Commande item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty || item == null) {
+                setText(null);
+            } else {
+                setText(item.getuserid()+ " - " + item.getPayment()+ " - " + item.getDate_creation());
             }
-        });
-    }
+        }
+    });
 }
+
+
+}
+
 
    
 

@@ -38,7 +38,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="conf_carte" layoutX="742.0" layoutY="549.0" mnemonicParsing="false" onAction="#valider_carte" prefHeight="58.0" prefWidth="118.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Confirmer" textFill="WHITE">
+      <Button fx:id="conf_carte" layoutX="744.0" layoutY="496.0" mnemonicParsing="false" onAction="#valider_carte" prefHeight="58.0" prefWidth="118.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Confirmer" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -73,10 +73,10 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="num_carte" layoutX="792.0" layoutY="208.0" prefHeight="31.0" prefWidth="198.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css" />
-      <TextField fx:id="nom_carte" layoutX="792.0" layoutY="262.0" prefHeight="31.0" prefWidth="198.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css" />
-      <TextField fx:id="CV_code" layoutX="794.0" layoutY="379.0" prefHeight="31.0" prefWidth="198.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css" />
-      <DatePicker fx:id="date_ex" layoutX="794.0" layoutY="318.0" prefHeight="31.0" prefWidth="198.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css" />
+      <TextField fx:id="num_carte" layoutX="792.0" layoutY="208.0" prefHeight="31.0" prefWidth="198.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" />
+      <TextField fx:id="nom_carte" layoutX="792.0" layoutY="262.0" prefHeight="31.0" prefWidth="198.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" />
+      <TextField fx:id="CV_code" layoutX="794.0" layoutY="379.0" prefHeight="31.0" prefWidth="198.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" />
+      <DatePicker fx:id="date_ex1" layoutX="794.0" layoutY="318.0" prefHeight="31.0" prefWidth="198.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css" />
       <Text fill="#08465e" layoutX="598.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le montant total ">
          <font>
             <Font name="System Bold Italic" size="18.0" />
@@ -87,7 +87,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="conf_cash" layoutX="279.0" layoutY="554.0" mnemonicParsing="false" onAction="#valider_cash" prefHeight="49.0" prefWidth="118.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Confirmer" textFill="WHITE">
+      <Button fx:id="conf_cash" layoutX="275.0" layoutY="492.0" mnemonicParsing="false" onAction="#valider_cash" prefHeight="58.0" prefWidth="118.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Confirmer" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -107,10 +107,5 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Button fx:id="verif_payment" layoutX="742.0" layoutY="476.0" mnemonicParsing="false" onAction="#verif_payment" prefHeight="58.0" prefWidth="118.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Confirmer" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>
