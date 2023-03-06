@@ -72,25 +72,25 @@ public class Main {
 
 
 
-  Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the product name to search: ");
-        String productName = scanner.nextLine();
-
-        try {
-            OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder()
-                .url("https://amazon-web-scraping-api.p.rapidapi.com/products/B091J3NYVF/reviews?=" + productName + "&page=1&countryCode=US&languageCode=EN")
-                .get()
-                .addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
-                .addHeader("X-RapidAPI-Host", "amazon-web-scraping-api.p.rapidapi.com")
-                .build();
-            Response response = client.newCall(request).execute();
-            System.out.println(response.body().string());
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-        } finally {
-            scanner.close();
-        }
+//  Scanner scanner = new Scanner(System.in);
+//        System.out.print("Enter the product name to search: ");
+//        String productName = scanner.nextLine();
+//
+//        try {
+//            OkHttpClient client = new OkHttpClient();
+//            Request request = new Request.Builder()
+//                .url("https://amazon-web-scraping-api.p.rapidapi.com/products/B091J3NYVF/reviews?=" + productName + "&page=1&countryCode=US&languageCode=EN")
+//                .get()
+//                .addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
+//                .addHeader("X-RapidAPI-Host", "amazon-web-scraping-api.p.rapidapi.com")
+//                .build();
+//            Response response = client.newCall(request).execute();
+//            System.out.println(response.body().string());
+//        } catch (Exception e) {
+//            System.err.println("Error: " + e.getMessage());
+//        } finally {
+//            scanner.close();
+//        }
         
         
         
@@ -100,8 +100,59 @@ public class Main {
         
    
  
+  Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the product name to search: ");
+        String productName = scanner.nextLine();
+
+        try {
+//            OkHttpClient client = new OkHttpClient();
+//
+//            Request request = new Request.Builder()
+//                    .url("https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q="+productName+"/%20grande&pageNumber=1&pageSize=10&autoCorrect=true")
+//                    .get()
+//                    .addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
+//                    .addHeader("X-RapidAPI-Host", "contextualwebsearch-websearch-v1.p.rapidapi.com")
+//                    .build();
+//
+//            Response response = client.newCall(request).execute();
 
 
+
+
+//OkHttpClient client = new OkHttpClient();
+//
+//Request request = new Request.Builder()
+//	.url("https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI?q=lady%20gaga&pageNumber=1&pageSize=10&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null")
+//	.get()
+//	.addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
+//	.addHeader("X-RapidAPI-Host", "contextualwebsearch-websearch-v1.p.rapidapi.com")
+//	.build();
+//
+//Response response = client.newCall(request).execute();
+
+
+
+
+OkHttpClient client = new OkHttpClient();
+
+Request request = new Request.Builder()
+	.url("https://large-text-to-speech.p.rapidapi.com/tts?id=5425b1c0-357b-47cf-a06c-69c5260ea890")
+	.get()
+	.addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
+	.addHeader("X-RapidAPI-Host", "large-text-to-speech.p.rapidapi.com")
+	.build();
+
+Response response = client.newCall(request).execute();
+
+
+
+           
+            System.out.println(response.body().string());
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
 
 
 

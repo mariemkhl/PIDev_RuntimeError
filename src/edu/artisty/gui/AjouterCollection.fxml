@@ -8,20 +8,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="AddBtnID" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AjouterCollectionController">
+<AnchorPane id="AnchorPane" fx:id="AddBtnID" prefHeight="600.0" prefWidth="700.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AjouterCollectionController">
    <children>
-      <TextField fx:id="ColNameID" layoutX="192.0" layoutY="56.0" />
-      <TextField fx:id="ProdID" layoutX="192.0" layoutY="96.0" />
-      <TextField fx:id="ProdNameID" layoutX="192.0" layoutY="139.0" />
-      <Label fx:id="labelNameCol" layoutX="57.0" layoutY="48.0" text="Collection Name" />
-      <Label fx:id="labelProdId" layoutX="62.0" layoutY="88.0" text="Product Reference" />
-      <Label fx:id="labelProdName" layoutX="62.0" layoutY="131.0" text="Product Name" />
-      <Button fx:id="BtnAjout" layoutX="192.0" layoutY="176.0" mnemonicParsing="false" onAction="#AjouterCollection" prefHeight="25.0" prefWidth="149.0" text="ADD Collection" textAlignment="CENTER" textFill="#06283b">
+      <TextField fx:id="ColNameID" layoutX="24.0" layoutY="20.0" style="-fx-background-radius: 15PX;" />
+      <TextField fx:id="ProdID" layoutX="24.0" layoutY="59.0" style="-fx-background-radius: 15PX;" />
+      <TextField fx:id="ProdNameID" layoutX="24.0" layoutY="99.0" style="-fx-background-radius: 15PX;" />
+      <Label fx:id="labelNameCol" layoutX="202.0" layoutY="24.0" prefHeight="17.0" prefWidth="98.0" text="Collection Name" textFill="#fdfefe" />
+      <Label fx:id="labelProdId" layoutX="201.0" layoutY="54.0" prefHeight="17.0" prefWidth="104.0" text="Product Reference" textFill="#fdfefe" />
+      <Label fx:id="labelProdName" layoutX="202.0" layoutY="90.0" prefHeight="17.0" prefWidth="104.0" text="Product Name" textFill="#fdfefe" />
+      <Button fx:id="BtnAjout" layoutX="192.0" layoutY="124.0" mnemonicParsing="false" onAction="#AjouterCollection" prefHeight="26.0" prefWidth="118.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="ADD Collection" textAlignment="CENTER" textFill="#2c3e50">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button fx:id="AfficheBtn" layoutX="467.0" layoutY="19.0" mnemonicParsing="false" onAction="#AfficheCollection" prefHeight="25.0" prefWidth="119.0" text="Afficher Collection" />
-      <TableView fx:id="collectionTable" layoutX="71.0" layoutY="255.0" onMouseClicked="#getSelected" prefHeight="164.0" prefWidth="434.0">
+      <Button fx:id="AfficheBtn" layoutX="422.0" layoutY="19.0" mnemonicParsing="false" onAction="#AfficheCollection" prefHeight="26.0" prefWidth="149.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Afficher Collection" textFill="#2c3e50" />
+      <TableView fx:id="collectionTable" layoutX="14.0" layoutY="269.0" onMouseClicked="#getSelected" prefHeight="164.0" prefWidth="434.0">
          <columns>
             <TableColumn fx:id="NomCol" prefWidth="128.33331298828125" text=" Nom Collection" />
             <TableColumn fx:id="refProd" prefWidth="123.66668701171875" text="Reference Produit" />
@@ -29,15 +29,15 @@
             <TableColumn fx:id="idCollec" prefWidth="97.66668701171875" text="Id Collection" />
          </columns>
       </TableView>
-      <Label layoutX="71.0" layoutY="14.0" text="ID:" />
-      <TextField fx:id="ifid" layoutX="192.0" layoutY="10.0" />
-      <Button layoutX="514.0" layoutY="347.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="67.0" prefWidth="72.0" text="Supprimer" textFill="#06283b" />
-      <Button layoutX="514.0" layoutY="258.0" mnemonicParsing="false" onAction="#modifier" prefHeight="67.0" prefWidth="72.0" text="Modifier" textFill="#06283b">
+      <Label layoutX="635.0" layoutY="24.0" text="ID:" visible="false" />
+      <TextField fx:id="ifid" layoutX="627.0" layoutY="47.0" prefHeight="17.0" prefWidth="32.0" visible="false" />
+      <Button layoutX="453.0" layoutY="338.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="67.0" prefWidth="88.0" style="-fx-background-radius: 100PX;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Supprimer" textFill="#2c3e50" />
+      <Button layoutX="453.0" layoutY="260.0" mnemonicParsing="false" onAction="#modifier" prefHeight="67.0" prefWidth="88.0" style="-fx-background-radius: 100PX;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Modifier" textFill="#2c3e50">
          <font>
             <Font name="Candara" size="13.0" />
          </font>
       </Button>
-      <Label layoutX="182.0" layoutY="217.0" text="Listes des Collections" textFill="#06283b">
+      <Label layoutX="87.0" layoutY="222.0" text="Listes des Collections" textFill="#fdfefe">
          <font>
             <Font name="Cambria Math" size="23.0" />
          </font>

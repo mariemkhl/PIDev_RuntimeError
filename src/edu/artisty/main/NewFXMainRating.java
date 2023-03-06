@@ -5,11 +5,16 @@
  */
 package edu.artisty.main;
 
-import API.MyAPI;
+import API.ImageItem;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import static com.sun.org.apache.bcel.internal.classfile.Utility.getSignature;
 import static com.sun.xml.internal.ws.api.ComponentFeature.Target.ENDPOINT;
 import static com.sun.xml.internal.ws.api.ComponentFeature.Target.SERVICE;
 import static com.sun.xml.internal.ws.policy.subject.WsdlBindingSubject.WsdlNameScope.OPERATION;
+//import java.awt.Image;
+import javafx.scene.image.Image;
 import java.awt.Insets;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,6 +38,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -45,7 +51,9 @@ import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.jsoup.Jsoup;               
+import org.jsoup.Jsoup;    
+import javax.imageio.ImageIO;
+
 //import org.jsoup.nodes.Document;      
 //import org.jsoup.nodes.Element;       
 //import org.jsoup.select.Elements; 
@@ -58,6 +66,7 @@ public class NewFXMainRating extends Application {
 
  private TextField searchField;
     private Label resultLabel;
+    ImageView resultImageView = new ImageView();
 
     @Override
     public void start(Stage primaryStage) {
@@ -72,22 +81,34 @@ public class NewFXMainRating extends Application {
             String productName = searchField.getText();
             try {
                 OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()
-                        .url("https://amazon-web-scraping-api.p.rapidapi.com/products/B091J3NYVF/reviews?" + productName + "&page=1&countryCode=US&languageCode=EN")
-                        .get()
-                        .addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
-                        .addHeader("X-RapidAPI-Host", "amazon-web-scraping-api.p.rapidapi.com")
-                        .build();
-                Response response = client.newCall(request).execute();
+
+            Request request = new Request.Builder()
+                    .url("https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q="+productName+"/%20grande&pageNumber=1&pageSize=10&autoCorrect=true")
+                    .get()
+                    .addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
+                    .addHeader("X-RapidAPI-Host", "contextualwebsearch-websearch-v1.p.rapidapi.com")
+                    .build();
+
+            Response response = client.newCall(request).execute();
                 String responseBody = response.body().string();
                 resultLabel.setText(responseBody);
+                
+                JsonParser jsonParser = new JsonParser();
+        JsonObject responseJson = jsonParser.parse(responseBody).getAsJsonObject();
+        JsonArray imageResults = responseJson.getAsJsonArray("value");
+        String imageUrl = imageResults.get(0).getAsJsonObject().get("url").getAsString();
+
+        // Load the image from the URL and set it in the ImageView
+        Image image = new Image(imageUrl);
+        resultImageView.setImage(image);
+                
             } catch (Exception e) {
                 System.err.println("Error: " + e.getMessage());
             }
         });
 
         // Create a layout and add the UI components
-        VBox root = new VBox(10, searchField, searchButton, resultLabel);
+        VBox root = new VBox(10, searchField, searchButton, resultImageView, resultLabel);
         Scene scene = new Scene(root, 400, 400);
 
         // Set the title and show the stage

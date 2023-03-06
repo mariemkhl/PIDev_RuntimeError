@@ -5,23 +5,30 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="558.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AjouterCategoryController">
    <children>
-      <TextField fx:id="NomCat" layoutX="287.0" layoutY="96.0" prefHeight="32.0" prefWidth="191.0" style="-fx-background-radius: 20PX;" />
-      <Label layoutX="121.0" layoutY="97.0" text="Category Name" textFill="#fbfcfc">
+      <TextField fx:id="NomCat" layoutX="288.0" layoutY="65.0" prefHeight="32.0" prefWidth="191.0" style="-fx-background-radius: 20PX;" />
+      <Label layoutX="121.0" layoutY="68.0" text="Category Name" textFill="#fbfcfc">
          <font>
             <Font name="Arial Nova" size="21.0" />
          </font></Label>
-      <Button fx:id="addCatBtn" layoutX="316.0" layoutY="141.0" mnemonicParsing="false" onAction="#AjouterCategory" prefHeight="32.0" prefWidth="149.0" style="-fx-background-radius: 100PX; -fx-background-color: #EBF5FB;" text="ADD Category" />
-      <TableView fx:id="CategoryTable" layoutX="228.0" layoutY="196.0" onMouseClicked="#getSelected" prefHeight="173.0" prefWidth="257.0" style="-fx-background-color: #FBFCFC;">
+      <Button fx:id="addCatBtn" layoutX="316.0" layoutY="115.0" mnemonicParsing="false" onAction="#AjouterCategory" prefHeight="32.0" prefWidth="149.0" style="-fx-background-radius: 100PX; -fx-background-color: #EBF5FB;" text="ADD Category" />
+      <TableView fx:id="CategoryTable" layoutX="224.0" layoutY="157.0" onMouseClicked="#getSelected" prefHeight="173.0" prefWidth="257.0" style="-fx-background-color: #FBFCFC;">
         <columns>
           <TableColumn fx:id="nomCat" prefWidth="193.0" text=" Category" />
         </columns>
       </TableView>
-      <Button fx:id="ModifBtn" layoutX="218.0" layoutY="382.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="98.0" style="-fx-background-radius: 15PX; -fx-background-color: #EBF5FB;" text="Update" />
-      <Button fx:id="SuppBtn" layoutX="383.0" layoutY="382.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="25.0" prefWidth="98.0" style="-fx-background-radius: 15PX; -fx-background-color: #EBF5FB;" text="Delete" />
+      <Button fx:id="ModifBtn" layoutX="218.0" layoutY="343.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="98.0" style="-fx-background-radius: 15PX; -fx-background-color: #EBF5FB;" text="Update" />
+      <Button fx:id="SuppBtn" layoutX="384.0" layoutY="343.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="25.0" prefWidth="98.0" style="-fx-background-radius: 15PX; -fx-background-color: #EBF5FB;" text="Delete" />
+      <ImageView fitHeight="173.0" fitWidth="191.0" layoutX="14.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Art-Mediums.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
