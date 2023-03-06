@@ -63,6 +63,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
@@ -78,11 +79,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javax.imageio.ImageIO;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * FXML Controller class
@@ -160,7 +165,15 @@ public class AjouterProductController implements Initializable {
     @FXML
     private Button updateButton;
     @FXML
-    private TextField Searchtxt;
+    private TextField Searchtxt; 
+    @FXML
+    private TextField reviewField;
+    @FXML
+    private Button ReviewBtn;
+    @FXML
+    private Label ReviewLabel;
+    
+  
     
 
     @Override
@@ -208,6 +221,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/
     
     
      public void ProductFind(Event event) {
+         
          String s =Searchtxt.getText();
               Product p= new Product();
          
@@ -313,6 +327,51 @@ infoAlert.showAndWait();
   }
     
    
+      
+      
+     private TextField  searchField;
+     private Label resultLabel;
+      public void ReviewProductGenerator(Event event) {
+          searchField = new TextField();
+        Button searchButton = new Button("Search");
+        resultLabel = new Label();
+       // String productName = reviewField.getText();
+        searchButton.setOnAction(ev -> {
+            String productName = searchField.getText();
+            try {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url("https://amazon-web-scraping-api.p.rapidapi.com/products/B091J3NYVF/reviews?" + productName + "&page=1&countryCode=US&languageCode=EN")
+                        .get()
+                        .addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
+                        .addHeader("X-RapidAPI-Host", "amazon-web-scraping-api.p.rapidapi.com")
+                        .build();
+                Response response = client.newCall(request).execute();
+                String responseBody = response.body().string();
+                searchField.setText(responseBody);
+            } catch (Exception e) {
+                System.err.println("Error: " + e.getMessage());
+            }
+        });
+
+        // Create a layout and add the UI components
+        VBox root = new VBox(10, searchField, searchButton, resultLabel);
+        Scene scene = new Scene(root, 400, 400);
+
+
+        // Set the title and show the stage
+        
+        Stage stage= new Stage();
+              stage.setTitle("Amazon Product Search");
+              stage.setScene(scene);
+              stage.show();
+   }
+      
+      
+      
+      
+      
+      
     
     
          

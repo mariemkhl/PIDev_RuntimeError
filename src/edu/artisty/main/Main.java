@@ -69,34 +69,6 @@ public class Main {
 //Ps.RechercherProduit(23);
 
 
-//OkHttpClient client = new OkHttpClient();
-//
-//Request request = new Request.Builder()
-//	.url("https://amazon-web-scraping-api.p.rapidapi.com/products/search?criteria=AMD%20Ryzen&page=1&countryCode=US&languageCode=EN")
-//	.get()
-//	.addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
-//	.addHeader("X-RapidAPI-Host", "amazon-web-scraping-api.p.rapidapi.com")
-//	.build();
-//
-//Response response = client.newCall(request).execute();
-// System.out.println(response.body());
-
-
-
-//    try {
-//        OkHttpClient client = new OkHttpClient();
-//        Request request = new Request.Builder()
-//            .url("https://amazon-web-scraping-api.p.rapidapi.com/products/search?criteria=AMD%20Ryzen&page=1&countryCode=US&languageCode=EN")
-//            .get()
-//            .addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
-//            .addHeader("X-RapidAPI-Host", "amazon-web-scraping-api.p.rapidapi.com")
-//            .build();
-//        Response response = client.newCall(request).execute();
-//        System.out.println(response.body().string());
-//    } catch (Exception e) {
-//        System.err.println("Error: " + e.getMessage());
-//    }
-
 
 
 
@@ -119,6 +91,14 @@ public class Main {
         } finally {
             scanner.close();
         }
+        
+        
+        
+        
+        
+        
+        
+   
  
 
 

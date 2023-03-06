@@ -72,13 +72,13 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="441.0" prefWidth="206.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css">
+      <AnchorPane layoutY="-5.0" prefHeight="450.0" prefWidth="206.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css">
          <children>
             <Button fx:id="VersCatBtn" layoutX="4.0" layoutY="362.0" mnemonicParsing="false" onAction="#AfficheCategory" prefHeight="26.0" prefWidth="198.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="--&gt; Category" />
             <Button fx:id="CollecWindow" layoutX="2.0" layoutY="401.0" mnemonicParsing="false" onAction="#AfficheCollection" prefHeight="26.0" prefWidth="198.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="--&gt; Collection" />
-            <Button fx:id="AfficheProduct" layoutX="7.0" layoutY="320.0" mnemonicParsing="false" onAction="#AfficheProducts" prefHeight="26.0" prefWidth="191.0" style="-fx-background-radius: 15pc;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="--&gt; AfficheProduct" />
-            <Button fx:id="PgalleryBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#listProd" prefHeight="25.0" prefWidth="175.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Gallery" />
-            <Button fx:id="PaddBtn" layoutX="43.0" layoutY="47.0" mnemonicParsing="false" onAction="#addProd" prefHeight="26.0" prefWidth="116.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Add a Product" />
+            <Button fx:id="PgalleryBtn" layoutX="7.0" layoutY="290.0" mnemonicParsing="false" onAction="#listProd" prefHeight="26.0" prefWidth="191.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Gallery" />
+            <Button fx:id="PaddBtn" layoutX="6.0" layoutY="329.0" mnemonicParsing="false" onAction="#addProd" prefHeight="26.0" prefWidth="191.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Add a Product" />
+            <Button fx:id="ReviewBtn" layoutX="8.0" layoutY="7.0" mnemonicParsing="false" onAction="#ReviewProductGenerator" prefHeight="17.0" prefWidth="191.0" style="-fx-background-radius: 15PX;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Review Similar Product" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchor2" layoutX="207.0" layoutY="1.0" prefHeight="441.0" prefWidth="476.0" style="-fx-background-color: #FFFFFF;">
@@ -95,6 +95,7 @@
             <Button fx:id="updateButton" layoutX="161.0" layoutY="402.0" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="128.0" style="-fx-background-radius: 100PX;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Update" />
             <TextField fx:id="Searchtxt" layoutX="295.0" layoutY="66.0" prefHeight="25.0" prefWidth="116.0" promptText="Search Product" style="-fx-background-radius: 50PX;" />
             <Button fx:id="searchBtn" layoutX="416.0" layoutY="66.0" mnemonicParsing="false" onAction="#ProductFind" prefHeight="26.0" prefWidth="55.0" style="-fx-background-radius: 1001PX;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Find" />
+            <Button fx:id="AfficheProduct" layoutX="398.0" layoutY="402.0" mnemonicParsing="false" onAction="#AfficheProducts" prefHeight="26.0" prefWidth="64.0" style="-fx-background-radius: 15pc;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="--&gt; AfficheProduct" visible="false" />
          </children>
       </AnchorPane>
    </children>
