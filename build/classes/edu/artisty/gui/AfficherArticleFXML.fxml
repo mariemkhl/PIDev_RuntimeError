@@ -15,6 +15,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -22,14 +23,18 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="837.0" prefWidth="1276.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AfficherArticleFXMLController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1337.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.AfficherArticleFXMLController">
    <children>
-      <AnchorPane fx:id="main_form" prefHeight="700.0" prefWidth="500.0">
+      <AnchorPane fx:id="main_form" prefHeight="900.0" prefWidth="1373.0">
          <children>
-            <JFXTextField fx:id="searchArt" layoutX="385.0" onKeyTyped="#searchArticle" onMouseClicked="#searchArticle" prefHeight="23.0" prefWidth="726.0" style="-fx-background-color: #ffffff;" />
+            <JFXTextField fx:id="searchArt" layoutX="385.0" onKeyTyped="#searchArticle" prefHeight="23.0" prefWidth="726.0" stylesheets="@dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="search" />
+                  <String fx:value="nav-form" />
+               </styleClass></JFXTextField>
             <BorderPane layoutX="239.0" layoutY="291.0" prefHeight="642.0" prefWidth="1113.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <left>
-                  <AnchorPane prefHeight="837.0" prefWidth="224.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="900.0" prefWidth="0.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
                      <children>
                         <FontAwesomeIconView fill="#eeebeb" glyphName="USER" layoutX="91.0" layoutY="78.0" size="60" />
                         <Label layoutX="71.0" layoutY="87.0" text="Welcome," textFill="#f5f5f5">
@@ -49,14 +54,14 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="COMMENT" layoutX="26.0" layoutY="278.0" size="1.5em" text="" />
                         <Button fx:id="comments_btn" alignment="CENTER" layoutX="16.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="56.0" prefWidth="197.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="      Comments" textFill="WHITE" />
                         <FontAwesomeIconView fill="WHITE" glyphName="ENVELOPE" layoutX="28.0" layoutY="329.0" size="1.2em" />
-                        <Button fx:id="logoutbtn" layoutX="14.0" layoutY="792.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="42.0" stylesheets="@dashboardDesign.css">
+                        <Button fx:id="logoutbtn" layoutX="14.0" layoutY="856.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="42.0" stylesheets="@dashboardDesign.css">
                            <styleClass>
                               <String fx:value="logout" />
                               <String fx:value="shadow" />
                            </styleClass>
                         </Button>
-                        <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" layoutX="27.0" layoutY="813.0" size="1.4em" />
-                        <Label layoutX="71.0" layoutY="798.0" text="Sign Out" textFill="WHITE">
+                        <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" layoutX="27.0" layoutY="877.0" size="1.4em" />
+                        <Label layoutX="77.0" layoutY="862.0" text="Sign Out" textFill="WHITE">
                            <font>
                               <Font name="Tahoma Bold" size="15.0" />
                            </font>
@@ -65,78 +70,108 @@
                   </AnchorPane>
                </left>
                <center>
-                  <AnchorPane fx:id="home_form" prefHeight="718.0" prefWidth="1041.0" BorderPane.alignment="CENTER">
+                  <AnchorPane fx:id="home_form" prefHeight="900.0" prefWidth="1105.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="home_form" prefHeight="837.0" prefWidth="1048.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="home_form" layoutX="2.0" prefHeight="900.0" prefWidth="1122.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="-27.0">
                            <children>
-                              <AnchorPane layoutX="15.0" layoutY="354.0" prefHeight="456.0" prefWidth="1018.0" stylesheets="@dashboardDesign.css">
-                                 <styleClass>
-                                    <String fx:value="white-bg" />
-                                    <String fx:value="shadow" />
-                                 </styleClass>
-                              </AnchorPane>
-                              <AnchorPane layoutX="15.0" layoutY="69.0" prefHeight="200.0" prefWidth="1018.0" stylesheets="@dashboardDesign.css">
+                              <Pane layoutX="6.0" layoutY="35.0" prefHeight="279.0" prefWidth="1083.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="173.0" prefWidth="304.0" stylesheets="@dashboardDesign.css">
+                                    <AnchorPane layoutX="14.0" layoutY="58.0" prefHeight="200.0" prefWidth="326.0" stylesheets="@LoginDesign.css">
                                        <styleClass>
-                                          <String fx:value="nav-form" />
-                                          <String fx:value="card" />
+                                          <String fx:value="login-btn" />
+                                          <String fx:value="shadow" />
                                        </styleClass>
-                                       <children>
-                                          <Label layoutX="95.0" layoutY="122.0" prefHeight="24.0" prefWidth="114.0" text="LIKES" textFill="WHITE">
-                                             <font>
-                                                <Font name="Tahoma Bold" size="29.0" />
-                                             </font>
-                                          </Label>
-                                          <FontAwesomeIconView fill="WHITE" glyphName="ANGELLIST" layoutX="21.0" layoutY="98.0" size="80" />
-                                          <Label fx:id="home_likes" alignment="TOP_RIGHT" layoutX="176.0" layoutY="14.0" prefHeight="24.0" prefWidth="114.0" text="0" textFill="WHITE">
-                                             <font>
-                                                <Font name="Tahoma Bold" size="29.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
                                     </AnchorPane>
-                                    <AnchorPane layoutX="348.0" layoutY="14.0" prefHeight="173.0" prefWidth="304.0" styleClass="card" stylesheets="@dashboardDesign.css">
-                                       <children>
-                                          <Label layoutX="72.0" layoutY="122.0" prefHeight="37.0" prefWidth="178.0" text="CATEGORY" textFill="WHITE">
-                                             <font>
-                                                <Font name="Tahoma Bold" size="29.0" />
-                                             </font>
-                                          </Label>
-                                          <FontAwesomeIconView fill="WHITE" glyphName="LIST" layoutX="14.0" layoutY="99.0" size="75" wrappingWidth="85.0" />
-                                          <Label fx:id="total_category" alignment="TOP_RIGHT" layoutX="168.0" layoutY="16.0" prefHeight="24.0" prefWidth="114.0" text="0" textFill="WHITE">
-                                             <font>
-                                                <Font name="Tahoma Bold" size="29.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
+                                    <AnchorPane layoutX="367.0" layoutY="58.0" prefHeight="200.0" prefWidth="349.0" stylesheets="@LoginDesign.css">
+                                       <styleClass>
+                                          <String fx:value="login-btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
                                     </AnchorPane>
-                                    <AnchorPane layoutX="686.0" layoutY="14.0" prefHeight="173.0" prefWidth="304.0" styleClass="card" stylesheets="@dashboardDesign.css">
-                                       <children>
-                                          <Label layoutX="17.0" layoutY="122.0" prefHeight="37.0" prefWidth="270.0" text="TOTAL BOLGGERS" textFill="WHITE">
-                                             <font>
-                                                <Font name="Tahoma Bold" size="29.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="total_bloggers" alignment="TOP_RIGHT" layoutX="168.0" layoutY="14.0" prefHeight="24.0" prefWidth="114.0" text="0" textFill="WHITE">
-                                             <font>
-                                                <Font name="Tahoma Bold" size="29.0" />
-                                             </font>
-                                          </Label>
-                                          <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="22.0" layoutY="99.0" size="75" />
-                                       </children>
+                                    <AnchorPane layoutX="742.0" layoutY="58.0" prefHeight="200.0" prefWidth="327.0" stylesheets="@LoginDesign.css">
+                                       <styleClass>
+                                          <String fx:value="login-btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
                                     </AnchorPane>
+                                    <Label alignment="CENTER" layoutX="311.0" layoutY="6.0" prefHeight="23.0" prefWidth="483.0" text="BEST ARTWORKS" textFill="#183d4a">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="35.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <AnchorPane layoutX="8.0" layoutY="327.0" prefHeight="308.0" prefWidth="1081.0" stylesheets="@dashboardDesign.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="326.0" stylesheets="@LoginDesign.css">
+                                       <styleClass>
+                                          <String fx:value="login-btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="370.0" layoutY="69.0" prefHeight="200.0" prefWidth="341.0" stylesheets="@LoginDesign.css">
+                                       <styleClass>
+                                          <String fx:value="login-btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="740.0" layoutY="69.0" prefHeight="200.0" prefWidth="327.0" stylesheets="@LoginDesign.css">
+                                       <styleClass>
+                                          <String fx:value="login-btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <Label alignment="CENTER" layoutX="299.0" layoutY="14.0" prefHeight="23.0" prefWidth="483.0" text="BEST ARTWORKS" textFill="#183d4a">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="35.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="8.0" layoutY="651.0" prefHeight="268.0" prefWidth="1079.0" stylesheets="@dashboardDesign.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <AnchorPane layoutX="14.0" layoutY="54.0" prefHeight="200.0" prefWidth="326.0" stylesheets="@LoginDesign.css">
+                                       <styleClass>
+                                          <String fx:value="login-btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="369.0" layoutY="54.0" prefHeight="200.0" prefWidth="341.0" stylesheets="@LoginDesign.css">
+                                       <styleClass>
+                                          <String fx:value="login-btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="731.0" layoutY="54.0" prefHeight="200.0" prefWidth="334.0" stylesheets="@LoginDesign.css">
+                                       <styleClass>
+                                          <String fx:value="login-btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <Label alignment="CENTER" layoutX="298.0" prefHeight="23.0" prefWidth="483.0" text="BEST ARTWORKS" textFill="#183d4a">
+                                       <font>
+                                          <Font name="Tahoma Bold" size="35.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="blog_form" prefHeight="837.0" prefWidth="1048.0" visible="false">
+                        <AnchorPane fx:id="blog_form" prefHeight="900.0" prefWidth="1123.0">
                            <children>
-                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="810.0" prefWidth="329.0" stylesheets="@dashboardDesign.css">
+                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="867.0" prefWidth="340.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />
@@ -164,17 +199,18 @@
                                        </font>
                                     </Label>
                                     <ComboBox fx:id="category" layoutX="11.0" layoutY="477.0" onAction="#availablecategories" prefHeight="65.0" prefWidth="304.0" promptText="Choose..." />
-                                    <Button fx:id="update_article" layoutX="13.0" layoutY="570.0" mnemonicParsing="false" onAction="#updatearticle" prefHeight="100.0" prefWidth="135.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Update" />
-                                    <Button fx:id="clear_fields_article" layoutX="179.0" layoutY="570.0" mnemonicParsing="false" onAction="#availableFDClear" prefHeight="99.0" prefWidth="130.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Clear" />
+                                    <Button fx:id="update_article" layoutX="16.0" layoutY="670.0" mnemonicParsing="false" onAction="#updatearticle" prefHeight="100.0" prefWidth="135.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Update" />
+                                    <Button fx:id="clear_fields_article" layoutX="185.0" layoutY="670.0" mnemonicParsing="false" onAction="#availableFDClear" prefHeight="99.0" prefWidth="130.0" styleClass="login-btn" stylesheets="@../../../../../ArtistyRuntimeError/src/artistyruntimeerror/LoginDesign.css" text="Clear" />
                                     <DatePicker fx:id="date_article" layoutX="14.0" layoutY="372.0" prefHeight="67.0" prefWidth="301.0" promptText="DD MM YYYY" style="-fx-border-color: #002427;" />
                                     <Label layoutX="14.0" layoutY="335.0" prefHeight="27.0" prefWidth="57.0" text="Date:" textFill="#156b4e">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
+                                    <Line endX="166.0" layoutX="151.0" layoutY="569.0" startX="-133.0" stroke="#a1a1a1" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="372.0" layoutY="12.0" prefHeight="813.0" prefWidth="659.0" stylesheets="@dashboardDesign.css">
+                              <AnchorPane layoutX="372.0" layoutY="12.0" prefHeight="872.0" prefWidth="726.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />
@@ -185,14 +221,14 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="content_article1" layoutX="52.0" layoutY="78.0" prefHeight="347.0" prefWidth="551.0" style="-fx-border-color: #156b4e;" />
-                                    <Button fx:id="delete_article" layoutX="60.0" layoutY="649.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="177.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Delete" />
-                                    <Button fx:id="add_article" layoutX="60.0" layoutY="510.0" mnemonicParsing="false" onAction="#articleAdd" prefHeight="73.0" prefWidth="177.0" styleClass="login-btn" stylesheets="@LoginDesign.css" text="Add" />
-                                    <Button fx:id="show_article" layoutX="342.0" layoutY="508.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="77.0" prefWidth="177.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Show Article" />
-                                    <ScrollBar layoutX="575.0" layoutY="87.0" orientation="VERTICAL" prefHeight="327.0" prefWidth="18.0" />
-                                    <ScrollBar layoutX="60.0" layoutY="396.0" prefHeight="18.0" prefWidth="512.0" />
-                                    <Button fx:id="shareArticleFB" layoutX="342.0" layoutY="649.0" mnemonicParsing="false" onAction="#shareArticleFB" prefHeight="73.0" prefWidth="177.0" styleClass="login-btn" stylesheets="@LoginDesign.css" />
-                                    <FontAwesomeIconView fill="WHITE" glyphName="FACEBOOK" layoutX="416.0" layoutY="713.0" size="50" />
+                                    <TextField fx:id="content_article1" layoutX="37.0" layoutY="78.0" prefHeight="397.0" prefWidth="652.0" style="-fx-border-color: #156b4e;" />
+                                    <Button fx:id="add_article" layoutX="31.0" layoutY="655.0" mnemonicParsing="false" onAction="#articleAdd" prefHeight="79.0" prefWidth="177.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Add" />
+                                    <Button fx:id="show_article" layoutX="527.0" layoutY="658.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="77.0" prefWidth="177.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Show Article" />
+                                    <ScrollBar layoutX="665.0" layoutY="87.0" orientation="VERTICAL" prefHeight="379.0" prefWidth="18.0" />
+                                    <ScrollBar layoutX="44.0" layoutY="448.0" prefHeight="18.0" prefWidth="613.0" />
+                                    <Button fx:id="shareArticleFB" layoutX="298.0" layoutY="658.0" mnemonicParsing="false" onAction="#shareArticleFB" prefHeight="73.0" prefWidth="177.0" styleClass="login-btn" stylesheets="@LoginDesign.css" />
+                                    <FontAwesomeIconView fill="WHITE" glyphName="FACEBOOK" layoutX="372.0" layoutY="712.0" size="50" />
+                                    <Line endX="579.0" layoutX="132.0" layoutY="567.0" startX="-100.0" stroke="#a19a9a" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -249,7 +285,7 @@
                               <String fx:value="shadow" />
                            </styleClass>
                         </AnchorPane>
-                        <AnchorPane fx:id="comment_form" layoutX="-4.0" layoutY="-107.0" prefHeight="944.0" prefWidth="1056.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-107.0">
+                        <AnchorPane fx:id="comment_form" layoutX="-4.0" layoutY="-107.0" prefHeight="944.0" prefWidth="1056.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-107.0">
                            <children>
                               <AnchorPane layoutX="20.0" layoutY="133.0" prefHeight="794.0" prefWidth="1019.0" stylesheets="@dashboardDesign.css">
                                  <styleClass>
@@ -288,7 +324,6 @@
                                           <Label fx:id="success" layoutX="337.0" layoutY="361.0" prefHeight="17.0" prefWidth="179.0" textFill="#42f56c" />
                                           <Label fx:id="warning" alignment="TOP_LEFT" layoutX="250.0" layoutY="347.0" prefHeight="48.0" prefWidth="263.0" textFill="#ff2b23" />
                                           <Label fx:id="idU" disable="true" layoutX="270.0" layoutY="32.0" opacity="0.0" prefHeight="17.0" prefWidth="29.0" text="0" textFill="WHITE" />
-                                          <Button fx:id="reload" layoutX="165.0" layoutY="532.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="109.0" styleClass="login-btn" />
                                           <Button fx:id="delete_comment" layoutX="28.0" layoutY="530.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="112.0" styleClass="login-btn" stylesheets="@LoginDesign.css">
                                              <textFill>
                                                 <LinearGradient endX="1.0" endY="1.0">
@@ -309,7 +344,6 @@
                                                 <ImageView fx:id="imageview_article2" fitHeight="221.0" fitWidth="193.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
                                              </children>
                                           </AnchorPane>
-                                          <FontAwesomeIconView fill="WHITE" glyphName="COMMENT" layoutX="205.0" layoutY="567.0" size="30" />
                                           <Button fx:id="like3" layoutX="833.0" layoutY="407.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="141.0" styleClass="logout" stylesheets="@dashboardDesign.css">
                                              <effect>
                                                 <ColorAdjust />
@@ -331,7 +365,7 @@
                                           <Label fx:id="hiddenIdArticle" layoutX="157.0" layoutY="147.0" text="idArticle" />
                                           <TextArea fx:id="ctf" layoutX="28.0" layoutY="631.0" prefHeight="94.0" prefWidth="455.0" />
                                           <Button layoutX="506.0" layoutY="647.0" mnemonicParsing="false" onAction="#cadd" prefHeight="62.0" prefWidth="132.0" styleClass="login-btn" text="Ajouter" textFill="WHITE" />
-                                          <Button layoutX="697.0" layoutY="649.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="57.0" styleClass="login-btn" stylesheets="@LoginDesign.css">
+                                          <Button fx:id="clear_comment" layoutX="697.0" layoutY="649.0" mnemonicParsing="false" onAction="#clearfield" prefHeight="59.0" prefWidth="57.0" styleClass="login-btn" stylesheets="@LoginDesign.css">
                                              <textFill>
                                                 <LinearGradient endX="1.0" endY="1.0">
                                                    <stops>
@@ -342,6 +376,11 @@
                                              </textFill>
                                           </Button>
                                           <FontAwesomeIconView fill="WHITE" glyphName="RECYCLE" layoutX="711.0" layoutY="689.0" size="30" text="" />
+                                          <Button fx:id="reload" layoutX="177.0" layoutY="529.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="54.0" prefWidth="115.0" styleClass="login-btn" stylesheets="@dashboardDesign.css">
+                                             <graphic>
+                                                <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="20" />
+                                             </graphic>
+                                          </Button>
                                        </children>
                                        <styleClass>
                                           <String fx:value="shadow" />

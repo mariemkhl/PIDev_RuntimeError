@@ -35,8 +35,11 @@ public class MainClass {
 //Article article= new Article();
         ArticleService a = new ArticleService();
         a.shareOnPage(article);
+//a.ApiTranslate("new content");
+        
         //a.ajouter(article);
        // a.supprimer(7);
+//       a.chercherArticle("titre1", null);
        
        
         
@@ -50,7 +53,7 @@ public class MainClass {
 // ArticleService articleService = new ArticleService();
 //    
 //    // Chercher les articles ayant "new" dans leur titre
-//    List<Article> articlesWithTitleNew = articleService.chercherArticle("Title 1", null);
+//    List<Article> articlesWithTitleNew = articleService.chercherArticle("titre2", null);
 //    
 //    System.out.println("Articles avec le titre 'Title 1':");
 //    System.out.println("----------------------------------");

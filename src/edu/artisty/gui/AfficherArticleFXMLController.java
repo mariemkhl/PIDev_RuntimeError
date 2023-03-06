@@ -1,8 +1,6 @@
 package edu.artisty.gui;
 
 import com.jfoenix.controls.JFXTextField;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
-import static com.sun.xml.internal.ws.api.model.wsdl.WSDLBoundOperation.ANONYMOUS.optional;
 import edu.artisty.entities.Article;
 import edu.artisty.entities.Commentaire;
 import edu.artisty.services.ArticleService;
@@ -13,7 +11,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,8 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,11 +33,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -50,21 +41,15 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
-import static javax.management.Query.value;
 import java.lang.String;
 import java.net.MalformedURLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.controlsfx.control.Notifications;
 
@@ -140,7 +125,6 @@ public class AfficherArticleFXMLController implements Initializable {
     @FXML
     private TextField search_article;
 
-
     @FXML
     private Button like;
 
@@ -157,16 +141,18 @@ public class AfficherArticleFXMLController implements Initializable {
     private Button delete_comment;
     @FXML
     private AnchorPane showarticle_form;
+    @FXML
+    private Button clear_comment;
 
     private Image image;
     ScrollPane sp = new ScrollPane();
-    
+
     @FXML
     private JFXTextField searchArt;
-    
+
     @FXML
     private Label hiddenIdArticle;
-    
+
 //    public AfficherArticleFXMLController() {
 //        this.listcategory = ("livre , artworks");
 //    }
@@ -251,8 +237,7 @@ public class AfficherArticleFXMLController implements Initializable {
 //    private Button btns;
     @FXML
     private AnchorPane imageview3;
-    
-    
+
     @FXML
     private Button shareArticleFB;
 
@@ -296,14 +281,12 @@ public class AfficherArticleFXMLController implements Initializable {
                     alert.setContentText("titre article:" + titre_article.getText() + " already exist!");
                     alert.showAndWait();
                 } else {
-                    
+
                     ArticleService as = new ArticleService();
 
                     Article ar = new Article(titre_article.getText(), java.sql.Date.valueOf(date_article.getValue()), content_article1.getText(), 0, GetData.path, category.getValue().toString(), 100);
                     as.ajouter(ar);
                     as.filtrerMotsInappropries();
-                    
-                    
 
                     home_form.setVisible(false);
                     blog_form.setVisible(false);
@@ -390,10 +373,16 @@ public class AfficherArticleFXMLController implements Initializable {
     public void availableFDClear() {
 
         titre_article.setText("");
-        content_article.setText("");
+        content_article1.setText("");
         GetData.path = "";
         imageview_article.setImage(null);
         category.getSelectionModel().clearSelection();
+
+    }
+
+    @FXML
+    void clearfield(ActionEvent event) {
+        ctf.setText("");
 
     }
 
@@ -490,14 +479,14 @@ public class AfficherArticleFXMLController implements Initializable {
             comment_form.setVisible(true);
             showarticle_form.setVisible(false);
 //            commentbox.setVisible(false);
-            
-        }else if (event.getSource() == reload) {
+
+        } else if (event.getSource() == reload) {
             home_form.setVisible(false);
             blog_form.setVisible(false);
             comment_form.setVisible(false);
             showarticle_form.setVisible(false);
 //            commentbox.setVisible(true);
-            
+
         }
 
     }
@@ -555,7 +544,6 @@ public class AfficherArticleFXMLController implements Initializable {
         }
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        slider();
@@ -602,7 +590,7 @@ public class AfficherArticleFXMLController implements Initializable {
     private void afficherlesarticle() throws MalformedURLException {
         main_form.getChildren().removeAll(sp);
         sp.setVisible(true);
-           sp.setVisible(true);
+//        sp.setVisible(true);
 //           btns.setVisible(true);
 //    txs.setVisible(true);
         int x = 360;
@@ -613,9 +601,13 @@ public class AfficherArticleFXMLController implements Initializable {
         sp.setMaxHeight(750);
         sp.setMaxWidth(800);
         VBox vb = new VBox();
+        sp.setStyle("border-radius: 25px;"
+                + "border: 2px solid #73AD21;"
+                + "padding: 20px;"
+                + "width: 200px;"
+                + "height: 150px;");
+
         sp.setContent(vb);
-        
-        
 
         ArticleService sr = new ArticleService();
         List<Article> la = new ArrayList();
@@ -624,7 +616,8 @@ public class AfficherArticleFXMLController implements Initializable {
         for (int i = 0; i < la.size(); i++) {
             AnchorPane pn = new AnchorPane();
             pn.setStyle("-fx-background-color: linear-gradient(to bottom, #f2f2f2, #d4d4d4);"
-                    + " -fx-border: 12px solid; -fx-border-color: white;");
+                    + " -fx-border: 12px solid; -fx-border-color: white;"
+            );
 
             vb.getChildren().add(pn);
             Label lb5 = new Label();
@@ -679,19 +672,80 @@ public class AfficherArticleFXMLController implements Initializable {
             lbd.setLayoutX(x - 30);
             lbd.setLayoutY(ar.getLayoutY() + 100);
             lbd.setStyle(" -fx-font: 10px Arial; ");
-            pn.getChildren().add(lbd);
+           
+            Article a = new Article(Integer.valueOf(la.get(i).getIdArticle()), la.get(i).getTitreArticle(), la.get(i).getDateArticle(), la.get(i).getContentArticle(), Integer.valueOf(la.get(i).getNbrLikesArticle()), la.get(i).getImageArticle(), la.get(i).getCategoryArticle(), Integer.valueOf(la.get(i).getIdUser()));
+             pn.getChildren().add(lbd);
+            Button btndel = new Button();
+            btndel.setText("delete");
+            btndel.setLayoutX(x + 190);
+            btndel.setLayoutY(lb.getLayoutY() +110);
+            pn.getChildren().add(btndel);
+            btndel.setStyle("    -fx-background-color: linear-gradient(to bottom ,#08747c ,#5aced6);"
+                    + "    -fx-text-fill: #fff;"
+                    + "    -fx-font-size: 14px;"
+                    + "    -fx-font-family:Arial;"
+                    + "    -fx-cursor:hand;");
+            btndel.setOnAction(new EventHandler() {
+                @Override
+                public void handle(Event event) {
+
+                    sr.supprimer(a.getIdArticle());
+                    try {
+                        afficherlesarticle();
+                    } catch (MalformedURLException ex) {
+                        Logger.getLogger(AfficherArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            });
+
+//             
+            Button btnapi = new Button();
+            btnapi.setText("Translate");
+            btnapi.setLayoutX(x +50);
+            btnapi.setLayoutY(ar.getLayoutY() + 70);
+            pn.getChildren().add(btnapi);
+            btnapi.setStyle("    -fx-background-color: linear-gradient(to bottom ,#08747c ,#5aced6);"
+                    + "    -fx-text-fill: #fff;"
+                    + "    -fx-font-size: 14px;"
+                    + "    -fx-font-family:Arial;"
+                    + "    -fx-cursor:hand;");
+            btnapi.setOnAction(new EventHandler() {
+                @Override
+                public void handle(Event event) {
+                    String s = ar.getText() + "\n";
+                    try {
+                        s = sr.ApiTranslate(s);
+                    } catch (IOException ex) {
+                        Logger.getLogger(AfficherArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    ar.setText(s);
+                }
+
+            });
 
             Button btnc = new Button();
             btnc.setText("commenter");
-            Article a = new Article(Integer.valueOf(la.get(i).getIdArticle()), la.get(i).getTitreArticle(), la.get(i).getDateArticle(), la.get(i).getContentArticle(), Integer.valueOf(la.get(i).getNbrLikesArticle()), la.get(i).getImageArticle(), la.get(i).getCategoryArticle(), Integer.valueOf(la.get(i).getIdUser()));
+            btnc.setStyle(
+                    "    -fx-background-color: linear-gradient(to bottom ,#08747c ,#5aced6);"
+                    + "    -fx-text-fill: #fff;"
+                    + "    -fx-font-size: 14px;"
+                    + "    -fx-font-family:Arial;"
+                    + "    -fx-cursor:hand;");
             GetData.path = a.getImageArticle();
-            btnc.setLayoutX(x + 30);
-            btnc.setLayoutY(ar.getLayoutY() + 60);
+            btnc.setLayoutX(x -100);
+            btnc.setLayoutY(ar.getLayoutY() + 70);
             pn.getChildren().add(btnc);
             Button btnm = new Button();
+            btnm.setStyle(
+                    "    -fx-background-color: linear-gradient(to bottom ,#08747c ,#5aced6);"
+                    + "    -fx-text-fill: #fff;"
+                    + "    -fx-font-size: 14px;"
+                    + "    -fx-font-family:Arial;"
+                    + "    -fx-cursor:hand;");
             btnm.setText("modifier");
-            btnm.setLayoutX(x - 50);
-            btnm.setLayoutY(ar.getLayoutY() + 60);
+            btnm.setLayoutX(x -200);
+            btnm.setLayoutY(ar.getLayoutY() + 70);
             pn.getChildren().add(btnm);
             btnc.setOnAction(new EventHandler() {
 
@@ -706,15 +760,15 @@ public class AfficherArticleFXMLController implements Initializable {
                     CommentaireService cs = new CommentaireService();
                     System.out.println("Cms: " + cs.getCommentsByArticle(a.getIdArticle()));
                     List<Commentaire> aComments = cs.getCommentsByArticle(a.getIdArticle());
-                 for(int i = 0; i<aComments.size(); ++i){
-                     vboxcomment.getChildren().add(new Label(aComments.get(i).getContentCommentaire()));
-                 }
-                 commentaireScrollPane.setContent(vboxcomment);
+                    for (int i = 0; i < aComments.size(); ++i) {
+                        vboxcomment.getChildren().add(new Label(aComments.get(i).getContentCommentaire()));
+                    }
+                    commentaireScrollPane.setContent(vboxcomment);
 //                    pn.getChildren().add(lb);
                     ImageView imageview_article2 = new ImageView(im);
 
                     AnP.getChildren().add(imageview_article2);
-                  //  CommentaireService cs = new CommentaireService();
+                    //  CommentaireService cs = new CommentaireService();
                     Date d = Date.valueOf(LocalDate.now());
                     sp.setId(String.valueOf(a.getIdArticle()));
 
@@ -756,6 +810,7 @@ public class AfficherArticleFXMLController implements Initializable {
         // home_form.setVisible(true);
     }
 ///////////////////////////////////ADD COMMENT////////////////////////////////////////////////////////////////////////////
+
     @FXML
     private void cadd(ActionEvent event) {
         String checkData = "SELECT content_commentaire FROM commentaire WHERE content_commentaire='" + ctf.getText().isEmpty() + "'";
@@ -773,6 +828,7 @@ public class AfficherArticleFXMLController implements Initializable {
             ar.setIdUser(Integer.valueOf(sp.getId()));
             Commentaire cm = new Commentaire(ar, ctf.getText());
             cms.ajouter(cm);
+            cms.filtrerMotsInappropriesCommentaires();
             ctf.setText("");
             alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Success");
@@ -782,14 +838,13 @@ public class AfficherArticleFXMLController implements Initializable {
         }
     }
     /////////////////////////////////////////////SHOW COMMENT/////////////////////////////////////////////////////////////////////////////////////
-    
-     private void showComments(){
-         CommentaireService cs = new CommentaireService();
-         System.out.println("Cms: " + cs.getCommentsByArticle(Integer.parseInt(hiddenIdArticle.getText())));
-     }
 
+    private void showComments() {
+        CommentaireService cs = new CommentaireService();
+        System.out.println("Cms: " + cs.getCommentsByArticle(Integer.parseInt(hiddenIdArticle.getText())));
+    }
 
-private void afficherlesarticle1() throws MalformedURLException {
+    private void afficherlesarticle1() throws MalformedURLException {
         main_form.getChildren().removeAll(sp);
         System.out.println("jhvgb");
         sp.setVisible(true);
@@ -798,14 +853,12 @@ private void afficherlesarticle1() throws MalformedURLException {
         int x = 360;
         int y = 100;
 
-        sp.setLayoutX(350);
+        sp.setLayoutX(150);
         sp.setLayoutY(80);
-        sp.setMaxHeight(750);
+        sp.setMaxHeight(950);
         sp.setMaxWidth(800);
         VBox vb = new VBox();
         sp.setContent(vb);
-        
-        
 
         ArticleService sr = new ArticleService();
         List<Article> la = new ArrayList();
@@ -813,7 +866,7 @@ private void afficherlesarticle1() throws MalformedURLException {
         System.out.println("LAAA: " + la);
         for (int i = 0; i < la.size(); i++) {
             AnchorPane pn = new AnchorPane();
-            pn.setStyle("-fx-background-color: linear-gradient(to bottom, #f2f2f2, #d4d4d4);"
+            pn.setStyle("-fx-background-color: linear-gradient(to bottom,  #c8fff6 ,#002427);"
                     + " -fx-border: 12px solid; -fx-border-color: white;");
 
             vb.getChildren().add(pn);
@@ -827,7 +880,7 @@ private void afficherlesarticle1() throws MalformedURLException {
             lb.setText(la.get(i).getTitreArticle());
             lb.setId("t" + String.valueOf(la.get(i).getIdArticle()));
             if (la.get(i).getTitreArticle().length() > 9) {
-                lb.setLayoutX(x - 150);
+                lb.setLayoutX(x - 250);
                 //lb.setAlignment(Pos.);
             } else {
                 lb.setLayoutX(x - 50);
@@ -847,6 +900,12 @@ private void afficherlesarticle1() throws MalformedURLException {
             Label ar = new Label();
             if (la.get(i).getContentArticle().length() < 80) {
                 ar.setText(la.get(i).getContentArticle());
+                Button btnapi = new Button();
+                btnapi.setText("Translate");
+                btnapi.setLayoutX(x + 60);
+                btnapi.setLayoutY(ar.getLayoutY() + 60);
+                pn.getChildren().add(btnapi);
+
             } else if (la.get(i).getContentArticle().length() > 160) {
                 String s = la.get(i).getContentArticle().substring(0, 80);
 
@@ -934,30 +993,34 @@ private void afficherlesarticle1() throws MalformedURLException {
 
                 }
             });
+
+            main_form.getChildren().add(sp);
+            main_form.setStyle("-fx-background-color: linear-gradient(to bottom right ,#002427,#08747c);");
+            // home_form.setVisible(true);
         }
-        main_form.getChildren().add(sp);
-        main_form.setStyle("-fx-background-color: linear-gradient(to bottom right ,#002427,#08747c);");
-        // home_form.setVisible(true);
     }
-    
-private void search(ActionEvent event) throws MalformedURLException {
-          System.out.println("jhvgb");
-        
-        afficherlesarticle1();
-        
-        
+
+    private void search(ActionEvent event) throws MalformedURLException {
+
+        try {
+            //  main_form.setVisible(false);
+            afficherlesarticle1();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(AfficherArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 ///////////////////////////////////////////////////chercherArticle//////////////////////////////////////////
 
-@FXML
-private void searchArticle() throws MalformedURLException{
-      main_form.getChildren().removeAll(sp);
-        System.out.println("jhvgb");
+    @FXML
+    private void searchArticle() throws MalformedURLException {
+        main_form.getChildren().removeAll(sp);
+
         sp.setVisible(true);
 //    txs.setVisible(true);
 //       btns.setVisible(true);
-//        int x = 360;
-//        int y = 100;
+        int x = 360;
+        int y = 100;
 
         sp.setLayoutX(350);
         sp.setLayoutY(80);
@@ -965,16 +1028,14 @@ private void searchArticle() throws MalformedURLException{
         sp.setMaxWidth(800);
         VBox vb = new VBox();
         sp.setContent(vb);
-        
-        
 
         ArticleService sr = new ArticleService();
         List<Article> la = new ArrayList();
         la = sr.chercherArticle(searchArt.getText(), "");
-        System.out.println("LAAA: " + la);
+
         for (int i = 0; i < la.size(); i++) {
             AnchorPane pn = new AnchorPane();
-            pn.setStyle("-fx-background-color: linear-gradient(to bottom, #f2f2f2, #d4d4d4);"
+            pn.setStyle("-fx-background-color: linear-gradient(to bottom, white,#08747c);"
                     + " -fx-border: 12px solid; -fx-border-color: white;");
 
             vb.getChildren().add(pn);
@@ -1071,7 +1132,7 @@ private void searchArticle() throws MalformedURLException{
                 public void handle(Event event) {
                     home_form.setVisible(false);
                     blog_form.setVisible(true);
-                    comment_form.setVisible(false); 
+                    comment_form.setVisible(false);
                     showarticle_form.setVisible(false);
 
                     home_btn.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-text-fill: #000;");
@@ -1096,16 +1157,16 @@ private void searchArticle() throws MalformedURLException{
             });
         }
         main_form.getChildren().add(sp);
-        main_form.setStyle("-fx-background-color: linear-gradient(to bottom right ,#002427,#08747c);");
-}
+        main_form.setStyle("-fx-background-color: linear-gradient(to bottom right , #c8fff6 ,#002427);");
+    }
 
-        @FXML
-        public void shareArticleFB() throws IOException{
-               ArticleService as = new ArticleService();
-               Article a = new Article();
-               a.setContentArticle(content_article1.getText());
-               a.setTitreArticle(titre_article.getText());
-               as.shareOnPage(a);
-        }
+    @FXML
+    public void shareArticleFB() throws IOException {
+        ArticleService as = new ArticleService();
+        Article a = new Article();
+        a.setContentArticle(content_article1.getText());
+        a.setTitreArticle(titre_article.getText());
+        as.shareOnPage(a);
+    }
 
 }

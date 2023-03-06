@@ -31,6 +31,12 @@ import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import org.json.JSONObject;
 
 
 /**
@@ -203,7 +209,7 @@ public class ArticleService implements IService<Article> {
      
       //////////////////////////////FACEBOOK///////////////////////////////////////////////
  public void shareOnPage(Article p) throws IOException {
-        String accessToken = "EAAHZA0q5BuxkBAFJr2C3ZC5fYj9OTyFjZC7ZBl598bZCZBzkZBYZAeRcgwSX0q5SeDQ2PyVNwa7eN44S0fzUxTBF6k4ZAx8zL8kW7g8i3dV7vSmDtoi1khfjZCt4NQ6aseLAPPRuOYw0INcNAvkYf9dxw7vbIDaM2ChArkvfZANGxD7yEZBf8wIMAawx9C1KghFrhXcZD";
+        String accessToken = "EAAHZA0q5BuxkBAE5hQOQZCqHrkCJLZCYrjr1EtZCjNiuWnVUJggel6ktWKmZCfcyBsFno3F3dlZC7pEIw8ClHoFcwySvkN2RNfXir4P8FNyFRg5X0q2JS6Pux5hGNnW9ElmkEjA8VfMaHLf3wuOWg4UvZCCkBkOZBji7hivU9oOIiqUuKxti0wPZB";
         String pageId = "106824712245974";
         String message =p.getTitreArticle()+"\n"+ p.getContentArticle();
         FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);
@@ -216,106 +222,44 @@ public class ArticleService implements IService<Article> {
             System.err.println("Failed to post on page: " + ex.getMessage());
         }
     }
-     /////////////////////////////////////////////////////////////////////////
+ ///////////////////////////////////////TRANSLATE/////////////////////////////////////////////////////////////
+ 
+ public String ApiTranslate(String p) throws IOException{
+                      OkHttpClient client = new OkHttpClient();
+       
+//        Response response = client.newCall(request).execute();
+        
+           RequestBody body = new FormBody.Builder()
+            .add("q",p )
+            .add("target", "fr")
+            .build();
 
+           Request request = new Request.Builder()
+           .url("https://google-translate1.p.rapidapi.com/language/translate/v2")
+           .post(body)
+           .addHeader("content-type", "application/x-www-form-urlencoded")
+           .addHeader("Accept-Encoding", "application/gzip")
+           .addHeader("X-RapidAPI-Key", "c18264e0acmshb87e57a497397a6p1f81d3jsnf873e4869b66")
+           .addHeader("X-RapidAPI-Host", "google-translate1.p.rapidapi.com")
+           .build();
+
+            Response response = client.newCall(request).execute();
+            if (response.isSuccessful()){
+            String responseBody = response.body().string();
+            JSONObject json = new JSONObject(responseBody);
+            String translatedText = json.getJSONObject("data")
+                .getJSONArray("translations")
+                .getJSONObject(0)
+                .getString("translatedText");
+            return translatedText; 
+            } else {
+            System.out.println("Request failed");
+            }
+            return p;
      
-//     public void sendMail(String recepient) throws Exception {
-//    System.out.println("Preparing to send email");
-//    Properties properties = new Properties();
-//
-//    //Enable authentication
-//    properties.put("mail.smtp.auth", "true");
-//    //Set TLS encryption enabled
-//    properties.put("mail.smtp.starttls.enable", "true");
-//    //Set SMTP host
-//    properties.put("mail.smtp.host", "smtp.gmail.com");
-//    //Set smtp port
-//    properties.put("mail.smtp.port", "587");
-//
-//    //Your gmail address
-//    String myAccountEmail = "khlifi.mariem@esprit.tn"; // Replace with your email address
-//    //Your gmail password
-//    String password = "mariemkhlifi28238114"; // Replace with your gmail password
-//
-//    //Create a session with account credentials
-//    Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-//        protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-//            return new javax.mail.PasswordAuthentication(myAccountEmail, password);
-//        }
-//    });
-//
-//    //Prepare email message
-//    Message message = prepareMessage(session, myAccountEmail, recepient);
-//
-//    //Send mail
-//    Transport.send(message);
-//    System.out.println("Message sent successfully");
-//}
-//
-//private Message prepareMessage(Session session, String myAccountEmail, String recepient) {
-//    try {
-//        Message message = new MimeMessage(session);
-//        message.setFrom(new InternetAddress(myAccountEmail));
-//        message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-//        message.setSubject("Event Canceled");
-//        String htmlCode = "<h1> Ouuuuups </h1> <br/> <h2><b>The Event Has been Canceled </b></h2>";
-//        message.setContent(htmlCode, "text/html");
-//        return message;
-//    } catch (Exception ex) {
-//        System.out.println(ex.getMessage());
-//    }
-//    return null;
-//}
+ }
 
-
-//    public  void sendMail(String recepient) throws Exception {
-//        System.out.println("Preparing to send email");
-//        Properties properties = new Properties();
-//
-//        //Enable authentication
-//        properties.put("mail.smtp.auth", "true");
-//        //Set TLS encryption enabled
-//        properties.put("mail.smtp.starttls.enable", "true");
-//        //Set SMTP host
-//        properties.put("mail.smtp.host", "smtp.gmail.com");
-//        //Set smtp port
-//        properties.put("mail.smtp.port", "587");
-//
-//        //Your gmail address
-//        String myAccountEmail = "khlifi.mariem@esprit.tn";
-//        //Your gmail password
-//        String password = "mariemkhlifi28238114";
-//
-//        //Create a session with account credentials
-//       Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-//    protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-//        return new javax.mail.PasswordAuthentication(myAccountEmail, password);
-//    }
-//});
-//
-//        //Prepare email message
-//        Message message = prepareMessage(session, myAccountEmail, recepient);
-//
-//        //Send mail
-//        Transport.send(message);
-//        System.out.println("Message sent successfully");
-//    }
-//
-//    private  Message prepareMessage(Session session, String myAccountEmail, String recepient) {
-//        try {
-//            Message message = new MimeMessage(session);
-//            message.setFrom(new InternetAddress(myAccountEmail));
-//            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-//            message.setSubject("Event Canceled");
-//            String htmlCode = "<h1> Ouuuuups </h1> <br/> <h2><b>The Event Has been Canceled </b></h2>";
-//            message.setContent(htmlCode, "text/html");
-//            return message;
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//        return null;
-//    }
-      
+ 
     
 }
 

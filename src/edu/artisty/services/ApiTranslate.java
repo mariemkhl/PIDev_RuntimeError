@@ -5,8 +5,7 @@
  */
 package edu.artisty.services;
 
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
-
+//import okhttp3.FormBody;
 import java.io.IOException;
 import okhttp3.Credentials;
 import okhttp3.FormBody;
@@ -26,43 +25,38 @@ import okhttp3.*;
  */
 public class ApiTranslate {
 
-
-
     public static void main(String[] args) throws IOException {
-                OkHttpClient client = new OkHttpClient();
-    
-    
+        OkHttpClient client = new OkHttpClient();
+
 //        Response response = client.newCall(request).execute();
-        
-           RequestBody body = new FormBody.Builder()
-            .add("q", "hello dear friends !")
-            .add("target", "fr")
-            .build();
+        RequestBody body = new FormBody.Builder()
+                .add("q", "hello")
+                .add("target", "fr")
+                .build();
 
-           Request request = new Request.Builder()
-           .url("https://google-translate1.p.rapidapi.com/language/translate/v2")
-           .post(body)
-           .addHeader("content-type", "application/x-www-form-urlencoded")
-           .addHeader("Accept-Encoding", "application/gzip")
-           .addHeader("X-RapidAPI-Key", "b56bb89a07msh6f8377f22380a43p1ae033jsn119c07392b4e")
-           .addHeader("X-RapidAPI-Host", "google-translate1.p.rapidapi.com")
-           .build();
+        Request request = new Request.Builder()
+                .url("https://google-translate1.p.rapidapi.com/language/translate/v2")
+                .post(body)
+                .addHeader("content-type", "application/x-www-form-urlencoded")
+                .addHeader("Accept-Encoding", "application/gzip")
+                .addHeader("X-RapidAPI-Key", "c18264e0acmshb87e57a497397a6p1f81d3jsnf873e4869b66")
+                .addHeader("X-RapidAPI-Host", "google-translate1.p.rapidapi.com")
+                .build();
 
-            Response response = client.newCall(request).execute();
-            if (response.isSuccessful()){
+        Response response = client.newCall(request).execute();
+        if (response.isSuccessful()) {
             String responseBody = response.body().string();
             JSONObject json = new JSONObject(responseBody);
             String translatedText = json.getJSONObject("data")
-                .getJSONArray("translations")
-                .getJSONObject(0)
-                .getString("translatedText");
-            System.out.println(translatedText); 
-            } else {
+                    .getJSONArray("translations")
+                    .getJSONObject(0)
+                    .getString("translatedText");
+            System.out.println(translatedText);
+        } else {
             System.out.println("Request failed");
-            }
+        }
+    }
 }
-}
-
 
 //
 //MediaType mediaType = MediaType.parse("application/json");
@@ -130,7 +124,6 @@ public class ApiTranslate {
 //            System.out.println("Request failed");
 //            }
 //          
-    
 //        public static final String ACCOUNT_SID = "AC02908980344cad799b56226aeb5ccf96";
 //    public static final String AUTH_TOKEN = "0c96f35933aab8618fdbe45fd5b3418b";
 //

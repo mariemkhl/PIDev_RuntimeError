@@ -30,7 +30,7 @@ public class OperationTable extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/edu.artisty.gui/TableView.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/edu.artisty.gui/Facebook.fxml"));
             Scene scene = new Scene(parent);
             scene.setFill(Color.TRANSPARENT);
             primaryStage.setScene(scene);
