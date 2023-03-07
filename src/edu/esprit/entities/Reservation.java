@@ -19,6 +19,7 @@ public class Reservation {
 
     private int id_res;
     private Events event ;
+    
     private int id_user;
     private String name;
    private Date dateRE ;
@@ -27,7 +28,7 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Events event,int id_event, int id_user, String name,Date dateRE) {
+    public Reservation(Events event,String nameEv, int id_user, String name,Date dateRE) {
         this.event = event;
         this.id_user = id_user;
         this.name = name;
@@ -44,12 +45,12 @@ public class Reservation {
     }
 
    
- public Reservation( String tfName, int tfuserid , Events tfeventid , Date datepc){
+ public Reservation( String tfName, int tfuserid , Events tfevent , Date datepc){
     
     this.name=tfName;
     this.id_user= tfuserid;
     
-     this.event = tfeventid;
+     this.event = tfevent;
      this.dateRE=datepc;
     }
  

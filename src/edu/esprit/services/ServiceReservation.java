@@ -38,9 +38,9 @@ public class ServiceReservation implements InterfaceRes<Reservation> {
     @Override
     public void ajouter(Reservation r) {
         try {
-            String req = "INSERT INTO `reservations`( `id_event`, `id_user`, `name`, `dateRE`) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `reservations`( `nameEv`, `id_user`, `name`, `dateRE`) VALUES (?,?,?,?)";
             PreparedStatement pso = cnx.prepareStatement(req);
-            pso.setInt(1, r.getEvent().getId_event());
+            pso.setString(1, r.getEvent().getNameEv());
             pso.setInt(2, r.getId_user());
             pso.setString(3, r.getName());
             pso.setDate(4,r.getDateRE());
@@ -73,7 +73,7 @@ public class ServiceReservation implements InterfaceRes<Reservation> {
     @Override
     public void modifier(Reservation r) {
         try {
-            String req2 = "UPDATE `reservations` SET `id_event`='" + r.getEvent() + "',`user_id`='" + r.getId_user() + "',`name`='" + r.getName() +"',`dateRE`='"+r.getDateRE()+ "' WHERE `id_res`=" + r.getId_res();
+            String req2 = "UPDATE `reservations` SET `nameEv`='" + r.getEvent() + "',`user_id`='" + r.getId_user() + "',`name`='" + r.getName() +"',`dateRE`='"+r.getDateRE()+ "' WHERE `id_res`=" + r.getId_res();
             Statement st = cnx.createStatement();
             st.executeUpdate(req2);
             System.out.println("Reservation Updated!");
@@ -95,19 +95,21 @@ public class ServiceReservation implements InterfaceRes<Reservation> {
                 Reservation r = new Reservation();
 
                 ServiceEvents se = new ServiceEvents();
+                
+          
                 r.setId_res(rs.getInt(1));
 
-                r.setEvent(se.getOneById(rs.getInt(2)));
+                r.setEvent(se.getOneByName(rs.getString(2)));
                 r.setUser_id(rs.getInt(3));
                 r.setName(rs.getString(4));
-                  r.setDateRE(rs.getDate(5));
+                r.setDateRE(rs.getDate(5));
 
                 list.add(r);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
+       // System.out.println("done");
         return list;
 
     }
@@ -123,7 +125,7 @@ public class ServiceReservation implements InterfaceRes<Reservation> {
                 ServiceEvents se = new ServiceEvents();
               r.setId_res(rs.getInt("id_res"));
                 
-                r.setEvent(se.getOneById(rs.getInt(2)));
+                r.setEvent(se.getOneByName(rs.getString(2)));
                 r.setUser_id(rs.getInt(3));
                 r.setName(rs.getString(4));
                 r.setDateRE(rs.getDate(5));
@@ -151,7 +153,7 @@ public class ServiceReservation implements InterfaceRes<Reservation> {
     }
     
       public Events getEventForReservation(String s){
-        String query = "SELECT * FROM EVENEMENT WHERE titre_evenement= '" + s +"' LIMIT 1";
+        String query = "SELECT * FROM events WHERE nameEv = '" + s +"' LIMIT 1";
         Events evenement = new Events();
         try {
             Statement ste = cnx.createStatement();
@@ -223,7 +225,7 @@ public class ServiceReservation implements InterfaceRes<Reservation> {
             rs.absolute(size);
            String s=  rs.getString("id_res");
            ServiceEvents se = new ServiceEvents();
-           Events e = se.getOneById(rs.getInt("id_event"));
+           Events e = se.getOneByName(rs.getString("nameEv"));
            
            r = new Reservation(Integer.valueOf(rs.getString("id_res")), e,Integer.valueOf(rs.getString("id_user")),rs.getString("name"),rs.getDate("dateRE"));
           

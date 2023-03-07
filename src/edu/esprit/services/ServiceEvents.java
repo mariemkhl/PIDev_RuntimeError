@@ -35,20 +35,30 @@ public class ServiceEvents implements IService<Events> {
     public void ajouter(Events e) {
 
         try {
-            String req = "INSERT INTO `events`(`name`, `date_event`, `location`, `id_user`,`categorie`, `nbplacetotal`,`img`) VALUES (?,?,?,?,?,?,?);";
+            
+            String checkReq = "SELECT COUNT(*) FROM `events` WHERE nameEv = ?";
+        PreparedStatement checkPs = cnx.prepareStatement(checkReq);
+        checkPs.setString(1, e.getNameEv());
+        ResultSet rs = checkPs.executeQuery();
+        if (rs.next() && rs.getInt(1) > 0) {
+            System.err.println("Un événement avec ce nom existe déjà!");
+            return;
+        }
+//            
+            String req = "INSERT INTO `events`(`nameEv`, `date_event`, `location`, `id_user`,`categorie`, `nbplacetotal`,`img`) VALUES (?,?,?,?,?,?,?);";
             PreparedStatement pso = cnx.prepareStatement(req);
-            pso.setString(1, e.getName());
+            pso.setString(1, e.getNameEv());
             pso.setDate(2, e.getDate_event());
             pso.setString(3, e.getLocation());
             pso.setInt(4, e.getId_user());
             pso.setString(5, e.getCategorie());
             pso.setInt(6, e.getNbplacetotal());
-            
-            File file = new File (e.getImg().toString());
-            Path path = file.toPath();
-            String img = path.toString();
-              pso.setString(7,img);
-            //pso.setInt(7, e.getNbplaceres());
+//            pso.
+//            File file = new File (e.getImg().toString());
+//            Path path = file.toPath();
+//            String img = path.toString();
+              pso.setString(7,e.getImg());
+          //  pso.setInt(7, e.getNbplaceres());
             Date Date = new Date(120, 01, 21);
             pso.executeUpdate();
             System.out.println("event created !");
@@ -67,7 +77,7 @@ public class ServiceEvents implements IService<Events> {
             while (rs.next()) {
                 Events e = new Events();
                 // e.setIdEvent(rs.getInt("idEvent"));
-                e.setName(rs.getString("name"));
+                e.setNameEv(rs.getString("nameEv"));
                 e.setDate_event(rs.getDate("date_event"));
                 e.setLocation(rs.getString("location"));
                 e.setId_user(rs.getInt("id_user"));
@@ -98,7 +108,7 @@ public class ServiceEvents implements IService<Events> {
     @Override
     public void modifier(Events e, int i) {
         try {
-            String req2 = "UPDATE `events` SET `name`='" + e.getName() + "',`date_event`='" + e.getDate_event() + "',`location`='" + e.getLocation() + "',`categorie`='" + e.getCategorie() + "',`nbplacetotal`='" + e.getNbplacetotal() + "' WHERE `id_event` =' " + i + "';";
+            String req2 = "UPDATE `events` SET `nameEv`='" + e.getNameEv()+ "',`date_event`='" + e.getDate_event() + "',`location`='" + e.getLocation() + "',`categorie`='" + e.getCategorie() + "',`nbplacetotal`='" + e.getNbplacetotal() + "' WHERE `id_event` =' " + i + "';";
             Statement st = cnx.createStatement();
             st.executeUpdate(req2);
             System.out.println("Event Updated ! ");
@@ -110,7 +120,7 @@ public class ServiceEvents implements IService<Events> {
 
     @Override
     public List<Events> getAll() {
-        List<Events> list = new ArrayList<>();
+           List<Events> list = new ArrayList<>();
 
         try {
             String req = "SELECT * FROM `events` ";
@@ -129,16 +139,16 @@ public class ServiceEvents implements IService<Events> {
     }
 
     @Override
-    public Events getOneById(int id_event) {
+    public Events getOneByName(String nameEv) {
         Events e = new Events();
-        String req = "SELECT * FROM `events` WHERE id_event='" + id_event+ "';";
+        String req = "SELECT * FROM `events` WHERE `nameEv` ='" + nameEv+ "';";
 
         try {
             Statement ste = cnx.createStatement();
             ResultSet rs = ste.executeQuery(req);
             while (rs.next()) {
                 e.setId_event(rs.getInt("id_event"));
-                e.setName(rs.getString("name"));
+                e.setNameEv(rs.getString("nameEv"));
                 e.setDate_event(rs.getDate("date_event"));
                 e.setLocation(rs.getString("location"));
                 e.setId_user(rs.getInt("id_user"));

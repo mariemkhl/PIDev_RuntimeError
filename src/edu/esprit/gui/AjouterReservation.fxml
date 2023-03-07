@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="578.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.AjouterReservationController">
    <children>
-      <TextField fx:id="tfeventid" layoutX="611.0" layoutY="130.0" prefHeight="40.0" prefWidth="243.0" promptText="Event" style="-fx-background-radius: 30;" />
+      <TextField fx:id="tfevent" layoutX="611.0" layoutY="130.0" prefHeight="40.0" prefWidth="243.0" promptText="Event" style="-fx-background-radius: 30;" />
       <TextField fx:id="tfname" layoutX="611.0" layoutY="252.0" prefHeight="40.0" prefWidth="243.0" promptText="Name" style="-fx-background-radius: 30;" />
       <Pane prefHeight="579.0" prefWidth="187.0" styleClass="nav-form" stylesheets="@dashboardDesign.css">
          <children>

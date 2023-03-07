@@ -18,7 +18,7 @@ import java.util.Objects;
 public class Events {
 
     private int id_event;
-    private String name;
+    private String nameEv;
     private Date date_event;
     private String location;
     private int id_user;
@@ -32,21 +32,12 @@ public class Events {
         online, cinematic, literature, theatre, salle_exposition_des_tableaux, salle_exposition_des_sculpture
     };
 
+   
+
     public Events() {
     }
 
-    public Events(String name, Date date_event, String location, int id_user, String categorie, int nbplacetotal , String img) {
-        this.name = name;
-        this.date_event = date_event;
-        this.location = location;
-        this.id_user = id_user;
-        this.categorie = categorie;
-        this.nbplacetotal = nbplacetotal;
-        this.img=img; 
-
-    }
-
-    public Events(int id_event, String nameEv, Date date_event, String location, int user_id, String categorie, int nbplacetotal, String img) {
+    public Events(int id_event, String nameEv, Date date_event, String location, int id_user, String categorie, int nbplacetotal, String img) {
         this.id_event = id_event;
         this.nameEv = nameEv;
         this.date_event = date_event;
@@ -54,13 +45,26 @@ public class Events {
         this.id_user = id_user;
         this.categorie = categorie;
         this.nbplacetotal = nbplacetotal;
-          this.img=img; 
-        
+        this.img = img;
     }
+
+    public Events(String nameEv, Date date_event, String location, int id_user, String categorie, int nbplacetotal, String img) {
+        this.nameEv = nameEv;
+        this.date_event = date_event;
+        this.location = location;
+        this.id_user = id_user;
+        this.categorie = categorie;
+        this.nbplacetotal = nbplacetotal;
+        this.img = img;
+    }
+    
+    
+
+   
     
     public Events( String tfName, int tfuser,Date dpDate,String tfLocation , int nbplace,String myCategory ){
     
-    this.name=tfName;
+    this.nameEv=tfName;
     this.id_user= tfuser;
     this.date_event= dpDate ;
     this.location=tfLocation; 
@@ -77,13 +81,15 @@ public class Events {
     public void setId_event(int id_event) {
         this.id_event = id_event;
     }
-    public String getName() {
-        return name;
+
+    public String getNameEv() {
+        return nameEv;
     }
 
-    public void setName(String name ) {
-        this.name = name;
+    public void setNameEv(String nameEv) {
+        this.nameEv = nameEv;
     }
+   
 
     public Date getDate_event() {
         return date_event;
@@ -140,7 +146,7 @@ public class Events {
     
     @Override
     public String toString() {
-        return "Events{" + "name=" + name + ", date_event=" + date_event + ", location=" + location + ", id_user=" + id_user + ", categorie=" + categorie + ", nbplacetotal=" + nbplacetotal + '}';
+        return "Events{" + "nameEv=" + nameEv + ", date_event=" + date_event + ", location=" + location + ", id_user=" + id_user + ", categorie=" + categorie + ", nbplacetotal=" + nbplacetotal + '}';
     }
 
    

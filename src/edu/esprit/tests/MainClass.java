@@ -76,6 +76,7 @@ public class MainClass {
 //        }else {
 //            System.out.println("reservation refusee");
 //}
+   //     System.out.println(sr.getAll());
 
  SendEmail ts = new SendEmail ();
  ts.envoyer();

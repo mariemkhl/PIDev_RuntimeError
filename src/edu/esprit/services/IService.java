@@ -21,5 +21,5 @@ public interface IService<T> {
 
     public List<T> getAll();
 
-    public T getOneById(int id_event);
+    public T getOneByName(String nameEv);
 }

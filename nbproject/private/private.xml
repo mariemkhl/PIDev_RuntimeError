@@ -3,19 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/services/ServiceEvents.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/services/ServiceReservation.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/entities/Events.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/AfficherEventsController.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/AjouterEventsController.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/GetData.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/ReservationMain.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/entities/Reservation.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/AfficherReservationController.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/entities/Reservation.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/AfficherEventsController.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/AjouterReservationController.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/EventsMain.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/services/SendEmail.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/tests/MainClass.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Documents/NetBeansProjects/PIDev/src/edu/esprit/gui/AjouterEventsController.java</file>
         </group>
     </open-files>
 </project-private>

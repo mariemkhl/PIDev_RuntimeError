@@ -50,15 +50,16 @@ public class AjouterReservationController implements Initializable {
     @FXML
     private TextField tfuserid;
     @FXML
-    private TextField tfname;
+    public TextField tfname;
     @FXML
     private Button tbnadd;
+   // private TextField tfeventid;
     @FXML
-    private TextField tfeventid;
-    @FXML
-    private DatePicker datepc;
+    public DatePicker datepc;
     @FXML
     private Button btnpdf;
+    @FXML
+    public TextField tfevent;
 
     /**
      * Initializes the controller class.
@@ -70,21 +71,18 @@ public class AjouterReservationController implements Initializable {
 
     @FXML
     private void actionadd(ActionEvent event) throws IOException {
-
         ServiceReservation sr = new ServiceReservation();
         ServiceEvents se = new ServiceEvents();
-
         String name = tfname.getText();
         int userid = Integer.valueOf(tfuserid.getText());
-        int eventid = Integer.valueOf(tfeventid.getText());
-        System.out.println(eventid);
-        Events evenid = se.getOneById(eventid);
-        System.out.println(evenid);
+        String eventname = tfevent.getText();
+       // System.out.println(eventname);
+        Events evenname = se.getOneByName(eventname);
+       // System.out.println(evenname);
         Date date = java.sql.Date.valueOf(datepc.getValue());
 
-        if (tfname.getText().isEmpty() || tfuserid.getText().isEmpty() || tfeventid.getText().isEmpty()) {
+        if (tfname.getText().isEmpty() || tfuserid.getText().isEmpty() || tfevent.getText().isEmpty()) {
             Alert a = new Alert(Alert.AlertType.ERROR);
-
             a.setHeaderText(null);
             a.setHeaderText("Check you information");
             a.showAndWait();
@@ -93,17 +91,14 @@ public class AjouterReservationController implements Initializable {
             al2.setHeaderText(null);
             al2.setContentText("Current day please");
             al2.showAndWait();
-
         } else {
-
-            Reservation r = new Reservation(name, userid, evenid, date);
+            Reservation r = new Reservation(name, userid, evenname, date);
             sr.ajouter(r);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText(null);
             alert.setContentText("reservation created !");
             alert.showAndWait();
-
         }
     }
 
