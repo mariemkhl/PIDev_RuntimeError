@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1208.0" styleClass="post-background" stylesheets="@facebookdesign.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="905.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="50.0" fitWidth="50.0">
+                    <image>
+                        <Image url="@../../../../../../Downloads/facebook.png" />
+                    </image>
+                </ImageView>
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="round-button" stylesheets="@facebookdesign.css">
+                    <graphic>
+                        <FontAwesomeIconView fill="#a4a2a2" glyphName="SEARCH" size="30" text="" />
+                    </graphic>
+                </Button>
+                <Pane prefHeight="79.0" prefWidth="0.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS" />
+                <HBox alignment="CENTER" prefHeight="79.0" prefWidth="590.0" spacing="100.0">
+                    <children>
+                        <FontAwesomeIconView fill="#216bff" glyphName="HOME" size="35" />
+                        <FontAwesomeIconView fill="#216bff" glyphName="USERS" layoutX="10.0" layoutY="64.0" size="35" />
+                        <FontAwesomeIconView fill="#216bff" glyphName="CAMERA" layoutX="48.0" layoutY="64.0" size="35" />
+                        <FontAwesomeIconView fill="#216bff" glyphName="CLOUD" layoutX="86.0" layoutY="64.0" size="35" />
+                    </children>
+                </HBox>
+                <Pane layoutX="108.0" layoutY="10.0" prefHeight="79.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="round-button" stylesheets="@facebookdesign.css">
+                    <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="27.0">
+                            <image>
+                                <Image url="@../../../../../../Downloads/plus.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="round-button" stylesheets="@facebookdesign.css">
+                    <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                            <image>
+                                <Image url="@../../../../../../Downloads/messager%20(1).png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="round-button" stylesheets="@facebookdesign.css">
+                    <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="27.0">
+                            <image>
+                                <Image url="@../../../../../../Downloads/bell.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="round-button" stylesheets="@facebookdesign.css">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="29.0">
+                            <image>
+                                <Image url="@../../../../../../Downloads/down-filled-triangular-arrow.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+            <padding>
+                <Insets left="10.0" right="10.0" />
+            </padding>
+        </HBox>
+    </top>
+    <left>
+        <ScrollPane prefHeight="811.0" prefWidth="308.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+            <content>
+                <VBox prefHeight="809.0" prefWidth="314.0" spacing="30.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="56.0" style="-fx-background-color: white;" styleClass="round-button" stylesheets="@facebookdesign.css">
+                                    <graphic>
+                                        <ImageView fitHeight="45.0" fitWidth="45.0">
+                                            <image>
+                                                <Image url="@../../../../../../Downloads/334064267_121509990871732_3197885638420210851_n.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Label text="AbdelAziz_Mezri">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="51.0" fitWidth="50.0">
+                                    <image>
+                                        <Image url="@../../../../../../Downloads/groups.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Friends">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="70.0" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="51.0" fitWidth="50.0">
+                                    <image>
+                                        <Image url="@../../../../../../Downloads/facebook-group.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Groups">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="130.0" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="45.0" fitWidth="50.0">
+                                    <image>
+                                        <Image url="@../../../../../../Downloads/calendar.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Events">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="190.0" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="42.0" fitWidth="46.0">
+                                    <image>
+                                        <Image url="@../../../../../../Downloads/star.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Favories">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="250.0" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="51.0" fitWidth="50.0">
+                                    <image>
+                                        <Image url="@../../../../../../Downloads/7648256341545304610-128.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Live Videos">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="310.0" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="51.0" fitWidth="50.0">
+                                    <image>
+                                        <Image url="@../../../../../../Downloads/6799297081610058222-128.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Games">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="550.0" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="51.0" fitWidth="50.0">
+                                    <image>
+                                        <Image url="@../../../../../../Downloads/3438406911582988840-128.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Gaming Video">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="640.0" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="51.0" fitWidth="50.0">
+                                    <image>
+                                        <Image url="@../../../../../../Downloads/9984272221674452804-128.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Jobs">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="730.0" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="51.0" fitWidth="50.0">
+                                    <image>
+                                        <Image url="@../../../../../../Downloads/8265316131537355851-128.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Pages">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="444.0" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fitHeight="51.0" fitWidth="50.0">
+                                    <image>
+                                        <Image url="@../../../../../../Downloads/7648256341545304610-128.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Live Videos">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets top="25.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </left>
+    <center>
+        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Pane prefHeight="811.0" prefWidth="27.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <ScrollPane layoutX="-1.0" layoutY="-3.0" prefHeight="818.0" prefWidth="546.0">
+                            <content>
+                                <VBox fx:id="postcontainer" prefHeight="821.0" prefWidth="547.0">
+                                    <children>
+                                        <VBox prefHeight="134.0" prefWidth="525.0" style="-fx-background-color: #F0F2F5;" styleClass="post-background" stylesheets="@facebookdesign.css">
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <children>
+                                                <VBox prefHeight="134.0" prefWidth="553.0" stylesheets="@dashboardDesign.css">
+                                                    <styleClass>
+                                                        <String fx:value="white-bg" />
+                                                        <String fx:value="shadow" />
+                                                    </styleClass>
+                                                    <children>
+                                                        <Pane prefHeight="76.0" prefWidth="623.0">
+                                                            <children>
+                                                                <TextField layoutX="40.0" layoutY="13.0" prefHeight="52.0" prefWidth="472.0" promptText="Sir wha't on your mind?" styleClass="text_field" stylesheets="@facebookdesign.css">
+                                                                    <font>
+                                                                        <Font size="18.0" />
+                                                                    </font>
+                                                                </TextField>
+                                                                <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="-12.0" layoutY="12.0">
+                                                                    <image>
+                                                                        <Image url="@../../../../../../Downloads/334064267_121509990871732_3197885638420210851_n.jpg" />
+                                                                    </image>
+                                                                </ImageView>
+                                                            </children>
+                                                        </Pane>
+                                                        <Pane prefHeight="2.0" prefWidth="623.0" styleClass="text_field" stylesheets="@facebookdesign.css" />
+                                                        <Pane prefHeight="86.0" prefWidth="528.0">
+                                                            <children>
+                                                                <Label layoutX="64.0" layoutY="26.0" text="Live Videos">
+                                                                    <font>
+                                                                        <Font name="Segoe UI Semibold" size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <ImageView fitHeight="51.0" fitWidth="50.0" layoutX="14.0" layoutY="14.0">
+                                                                    <image>
+                                                                        <Image url="@../../../../../../Downloads/7648256341545304610-128.png" />
+                                                                    </image>
+                                                                </ImageView>
+                                                                <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="174.0" layoutY="20.0">
+                                                                    <image>
+                                                                        <Image url="@../../../../../../Downloads/15440682391640066328-128.png" />
+                                                                    </image>
+                                                                </ImageView>
+                                                                <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="349.0" layoutY="20.0">
+                                                                    <image>
+                                                                        <Image url="@../../../../../../Downloads/11539454921583400158-128.png" />
+                                                                    </image>
+                                                                </ImageView>
+                                                                <Label layoutX="214.0" layoutY="26.0" text="Images/Videos">
+                                                                    <font>
+                                                                        <Font name="Segoe UI Semibold" size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Label layoutX="389.0" layoutY="29.0" prefHeight="27.0" prefWidth="132.0" text="Feelings/Activities">
+                                                                    <font>
+                                                                        <Font name="Segoe UI Semibold" size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </children>
+                                                        </Pane>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets left="10.0" right="10.0" />
+                                                    </padding>
+                                                </VBox>
+                                            </children>
+                                        </VBox>
+                                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="744.0" prefWidth="547.0" style="-fx-background-color: #F0F2F5;" styleClass="post-background" stylesheets="@facebookdesign.css">
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <children>
+                                                <VBox prefHeight="428.0" prefWidth="547.0" stylesheets="@dashboardDesign.css">
+                                                    <styleClass>
+                                                        <String fx:value="white-bg" />
+                                                        <String fx:value="shadow" />
+                                                    </styleClass>
+                                                    <children>
+                                                        <Pane prefHeight="64.0" prefWidth="527.0">
+                                                            <children>
+                                                                <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="-12.0" layoutY="12.0">
+                                                                    <image>
+                                                                        <Image url="@../../../../../../Downloads/334064267_121509990871732_3197885638420210851_n.jpg" />
+                                                                    </image>
+                                                                </ImageView>
+                                                                <Label layoutX="45.0" layoutY="28.0" text="AbdelAziz_Mezri">
+                                                                    <font>
+                                                                        <Font name="System Bold" size="14.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </children>
+                                                        </Pane>
+                                                        <Pane prefHeight="2.0" prefWidth="623.0" styleClass="text_field" stylesheets="@facebookdesign.css" />
+                                                        <Pane prefHeight="127.0" prefWidth="527.0">
+                                                            <children>
+                                                                <Label layoutX="-1.0" layoutY="-1.0" prefHeight="28.0" prefWidth="331.0" text="Art Power to Confront Kill and Violence">
+                                                                    <font>
+                                                                        <Font name="Arial Bold Italic" size="14.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Label alignment="TOP_LEFT" layoutX="-1.0" layoutY="27.0" prefHeight="23.0" prefWidth="511.0" text="Art has the power to confront and challenge violence and killing.">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Label alignment="TOP_LEFT" layoutX="-1.0" layoutY="50.0" prefHeight="23.0" prefWidth="511.0" text="Through the use of creative expression and artistic mediums,art has the power">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Label alignment="TOP_LEFT" layoutX="8.0" layoutY="73.0" prefHeight="23.0" prefWidth="511.0" text=" to inspire change and raise awareness about ,Art has the power to confront and challenge">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Label alignment="TOP_LEFT" layoutX="8.0" layoutY="96.0" prefHeight="36.0" prefWidth="511.0" text="Art has the power to confront and challenge violence an the impact of violence and killing on individuals and society as a whole.d killing.">
+                                                                    <font>
+                                                                        <Font size="14.0" />
+                                                                    </font>
+                                                                </Label>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="3.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../../../Downloads/love.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="23.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../../../Downloads/love.png" />
+                                                   </image>
+                                                </ImageView>
+                                                                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="43.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                                                                    <image>
+                                                                        <Image url="@../../../../../../Downloads/love.png" />
+                                                                    </image>
+                                                                </ImageView>
+                                                            </children>
+                                                        </Pane>
+                                                        <Pane prefHeight="41.0" prefWidth="527.0">
+                                                            <children>
+                                                                <Label layoutX="58.0" layoutY="11.0" text="Like">
+                                                                    <font>
+                                                                        <Font name="Segoe UI Semibold" size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="5.0" layoutY="1.0">
+                                                                    <image>
+                                                                        <Image url="@../../../image/like.png" />
+                                                                    </image>
+                                                                </ImageView>
+                                                                <Label layoutX="207.0" layoutY="11.0" text="Comment">
+                                                                    <font>
+                                                                        <Font name="Segoe UI Semibold" size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Label layoutX="389.0" layoutY="12.0" prefHeight="27.0" prefWidth="132.0" text="Share">
+                                                                    <font>
+                                                                        <Font name="Segoe UI Semibold" size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <FontAwesomeIconView fill="#000ba1" glyphName="COMMENT" layoutX="164.0" layoutY="32.0" size="30" />
+                                                                <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="349.0" layoutY="5.0">
+                                                                    <image>
+                                                                        <Image url="@../../../../../11930121041540882615-128.png" />
+                                                                    </image>
+                                                                </ImageView>
+                                                            </children>
+                                                        </Pane>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets left="10.0" right="10.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox prefHeight="411.0" prefWidth="547.0" stylesheets="@dashboardDesign.css">                                       
+                                                    <styleClass>
+                                                        <String fx:value="white-bg" />
+                                                        <String fx:value="shadow" />
+                                                    </styleClass>
+                                                    <children>
+                                                        <Pane prefHeight="58.0" prefWidth="527.0">
+                                                            <children>
+                                                                <ImageView fitHeight="49.0" fitWidth="49.0" layoutY="9.0">
+                                                                    <image>
+                                                                        <Image url="@../../../../../../Downloads/334064267_121509990871732_3197885638420210851_n.jpg" />
+                                                                    </image>
+                                                                </ImageView>
+                                                                <Label layoutX="49.0" layoutY="13.0" text="AbdelAziz_Mezri">
+                                                                    <font>
+                                                                        <Font name="System Bold" size="14.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </children>
+                                                        </Pane>
+                                                        <Pane prefHeight="2.0" prefWidth="623.0" styleClass="text_field" stylesheets="@facebookdesign.css" />
+                                                        <Pane prefHeight="128.0" prefWidth="527.0">
+                                                            <children>
+                                                                <Pane layoutX="-6.0" layoutY="27.0" prefHeight="105.0" prefWidth="531.0">
+                                                                    <children>
+                                                                        <ImageView fitHeight="126.0" fitWidth="208.0" layoutX="296.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true">
+                                                                            <image>
+                                                                                <Image url="@../../../../../article1.jpg" />
+                                                                            </image>
+                                                                        </ImageView>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="11.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../../../../Downloads/love.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="31.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../../../../Downloads/love.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                                    </children>
+                                                                </Pane>
+                                                                <Pane layoutX="10.0" layoutY="1.0" prefHeight="113.0" prefWidth="261.0">
+                                                                    <children>
+                                                                        <Label layoutX="-1.0" layoutY="-1.0" prefHeight="28.0" prefWidth="331.0" text="Art Power to Confront Kill and Violence">
+                                                                            <font>
+                                                                                <Font name="Arial Bold Italic" size="14.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label alignment="TOP_LEFT" layoutX="-1.0" layoutY="27.0" prefHeight="23.0" prefWidth="511.0" text="Art has the power to confront and ">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label alignment="TOP_LEFT" layoutX="-1.0" layoutY="50.0" prefHeight="23.0" prefWidth="257.0" text="Through the use of creative expression ">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label alignment="TOP_LEFT" layoutX="8.0" layoutY="73.0" prefHeight="23.0" prefWidth="253.0" text=" to inspire change and raise awareness ">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label alignment="TOP_LEFT" layoutX="8.0" layoutY="96.0" prefHeight="23.0" prefWidth="196.0" text="Art has the power to confront ">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    <Pane layoutX="-16.0" layoutY="126.0" prefHeight="38.0" prefWidth="527.0">
+                                                                        <children>
+                                                                            <Label layoutX="53.0" layoutY="11.0" text="Like">
+                                                                                <font>
+                                                                                    <Font name="Segoe UI Semibold" size="15.0" />
+                                                                                </font>
+                                                                            </Label>
+                                                                            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="9.0">
+                                                                                <image>
+                                                                                    <Image url="@../../../image/like.png" />
+                                                                                </image>
+                                                                            </ImageView>
+                                                                            <Label layoutX="209.0" layoutY="11.0" text="Comment">
+                                                                                <font>
+                                                                                    <Font name="Segoe UI Semibold" size="15.0" />
+                                                                                </font>
+                                                                            </Label>
+                                                                            <Label layoutX="389.0" layoutY="10.0" prefHeight="27.0" prefWidth="132.0" text="Share">
+                                                                                <font>
+                                                                                    <Font name="Segoe UI Semibold" size="15.0" />
+                                                                                </font>
+                                                                            </Label>
+                                                                            <FontAwesomeIconView fill="#000ba1" glyphName="COMMENT" layoutX="169.0" layoutY="34.0" size="30" />
+                                                                            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="349.0" layoutY="2.0">
+                                                                                <image>
+                                                                                    <Image url="@../../../../../11930121041540882615-128.png" />
+                                                                                </image>
+                                                                            </ImageView>
+                                                                        </children>
+                                                                    </Pane>
+                                                                    </children>
+                                                                </Pane>
+                                                            </children>
+                                                        </Pane>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets left="10.0" right="10.0" />
+                                                    </padding>
+                                                </VBox>
+                                    <VBox layoutX="10.0" layoutY="309.0" prefHeight="404.0" prefWidth="547.0" stylesheets="@dashboardDesign.css">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <Pane prefHeight="36.0" prefWidth="527.0">
+                                             <children>
+                                                <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="-10.0" layoutY="3.0">
+                                                   <image>
+                                                      <Image url="@../../../../../../Downloads/334064267_121509990871732_3197885638420210851_n.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="39.0" layoutY="8.0" text="AbdelAziz_Mezri">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                          <Pane prefHeight="129.0" prefWidth="527.0">
+                                             <children>
+                                                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../../1a50d963f4f1ed5cbfb56f0aa5a6eb06.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="135.0" fitWidth="200.0" layoutX="248.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../../ad754e0d543bd77c4bb60d3d180a8681.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </Pane>
+                                          <Pane prefHeight="50.0" prefWidth="527.0" />
+                                          <Pane prefHeight="38.0" prefWidth="527.0">
+                                             <children>
+                                                <Label layoutX="53.0" layoutY="11.0" text="Like">
+                                                   <font>
+                                                      <Font name="Segoe UI Semibold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="9.0">
+                                                   <image>
+                                                      <Image url="@../../../image/like.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="209.0" layoutY="11.0" text="Comment">
+                                                   <font>
+                                                      <Font name="Segoe UI Semibold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="389.0" layoutY="10.0" prefHeight="27.0" prefWidth="132.0" text="Share">
+                                                   <font>
+                                                      <Font name="Segoe UI Semibold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <FontAwesomeIconView fill="#000ba1" glyphName="COMMENT" layoutX="169.0" layoutY="34.0" size="30" />
+                                                <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="349.0" layoutY="2.0">
+                                                   <image>
+                                                      <Image url="@../../../../../11930121041540882615-128.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" right="10.0" />
+                                       </padding>
+                                    </VBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </Pane>
+            </children>
+        </HBox>
+    </center>
+    <right>
+        <VBox prefHeight="811.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="360.0">
+                    <children>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="85.0" text="contact" translateX="-210.0">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="20.0" />
+                            </font>
+                        </Label>
+                        <FontAwesomeIconView fill="#a4a2a2" glyphName="SEARCH" size="30" text="" translateX="-5.0" />
+                        <Label alignment="CENTER" layoutX="257.0" layoutY="28.0" prefHeight="31.0" prefWidth="0.0" text="..." textFill="#7c7878">
+                            <font>
+                                <Font name="Arial Bold" size="26.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <ScrollPane prefHeight="745.0" prefWidth="324.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                    <content>
+                        <VBox prefHeight="745.0" prefWidth="170.0" spacing="30.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="141.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="56.0" style="-fx-background-color: white;" styleClass="round-button" stylesheets="@facebookdesign.css">
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#d7066e" glyphName="USER" size="27" />
+                                            </graphic>
+                                        </Button>
+                                        <Label text="User1">
+                                            <font>
+                                                <Font name="Segoe UI Semibold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="56.0" style="-fx-background-color: white;" styleClass="round-button" stylesheets="@facebookdesign.css">
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#1609ff" glyphName="USER" size="27" />
+                                            </graphic>
+                                        </Button>
+                                        <Label text="User2">
+                                            <font>
+                                                <Font name="Segoe UI Semibold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="56.0" style="-fx-background-color: white;" styleClass="round-button" stylesheets="@facebookdesign.css">
+                                            <graphic>
+                                                <FontAwesomeIconView fill="RED" glyphName="USER" size="27" text="" />
+                                            </graphic>
+                                        </Button>
+                                        <Label text="User3">
+                                            <font>
+                                                <Font name="Segoe UI Semibold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="56.0" style="-fx-background-color: white;" styleClass="round-button" stylesheets="@facebookdesign.css">
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#0d6f00" glyphName="USER" size="27" />
+                                            </graphic>
+                                        </Button>
+                                        <Label text="User4">
+                                            <font>
+                                                <Font name="Segoe UI Semibold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="56.0" style="-fx-background-color: white;" styleClass="round-button" stylesheets="@facebookdesign.css">
+                                            <graphic>
+                                                <FontAwesomeIconView fill="#b28787" glyphName="USER" size="27" />
+                                            </graphic>
+                                        </Button>
+                                        <Label text="User5">
+                                            <font>
+                                                <Font name="Segoe UI Semibold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </right>
+</BorderPane>

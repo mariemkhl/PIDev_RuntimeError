@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="826.0" prefWidth="877.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pidev1.createuserController">
+   <children>
+      <Label layoutX="172.0" layoutY="161.0" prefHeight="65.0" prefWidth="328.0" text="Create An Account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="283.0" text="UserName" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="338.0" text="Phone Number" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="398.0" text="Email" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="464.0" text="Password" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="540.0" text="Choose your Account" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="adresse" layoutX="117.0" layoutY="508.0" text="Delivery Adresse" textFill="WHITE" visible="false">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="artistdomaine" layoutX="117.0" layoutY="508.0" text="Artistic Domaine" textFill="WHITE" visible="false">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="checkartist" layoutX="302.0" layoutY="540.0" mnemonicParsing="false" onAction="#artistchecked" text="Artist" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="customercheck" layoutX="500.0" layoutY="540.0" mnemonicParsing="false" onAction="#Customerchecked" text="Customer" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </CheckBox>
+      <TextField fx:id="artisttf" layoutX="399.0" layoutY="508.0" prefHeight="31.0" prefWidth="233.0" style="-fx-background-radius: 20;" visible="false" />
+      <TextField fx:id="addresstf" layoutX="388.0" layoutY="508.0" prefHeight="31.0" prefWidth="248.0" style="-fx-background-radius: 20;" visible="false" />
+      <TextField fx:id="usernametf" layoutX="293.0" layoutY="282.0" prefHeight="31.0" prefWidth="233.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="phonetf" layoutX="293.0" layoutY="337.0" prefHeight="31.0" prefWidth="233.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="mailtf" layoutX="293.0" layoutY="398.0" prefHeight="31.0" prefWidth="233.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="pwtf" layoutX="293.0" layoutY="464.0" prefHeight="31.0" prefWidth="233.0" style="-fx-background-radius: 20;" />
+      <Button layoutX="246.0" layoutY="637.0" mnemonicParsing="false" onAction="#CreateAccount" prefHeight="65.0" prefWidth="233.0" text="Create Account">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Label fx:id="errorlabel" layoutX="26.0" layoutY="638.0" prefHeight="31.0" prefWidth="840.0" text="Label" visible="false">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button layoutX="26.0" layoutY="766.0" mnemonicParsing="false" onAction="#Back" prefHeight="50.0" prefWidth="88.0" text="go back" />
+      <ImageView fitHeight="804.0" fitWidth="553.0" layoutX="255.0" layoutY="20.0" opacity="0.22" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/logo%20artisty%201.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

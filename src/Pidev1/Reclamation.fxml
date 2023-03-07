@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="807.0" prefWidth="1094.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pidev1.ReclamationController">
+   <children>
+      <TableView fx:id="table" layoutX="318.0" layoutY="232.0" prefHeight="399.0" prefWidth="406.0" stylesheets="@../../../css/dashboardDesign.css">
+        <columns>
+            <TableColumn fx:id="tfId" prefWidth="134.0" text="numero" />
+            <TableColumn fx:id="tfComm" prefWidth="130.0" text="Commentaire " />
+            <TableColumn fx:id="tfType" prefWidth="134.0" text="TypeReclamation" />
+        </columns>
+      </TableView>
+      <Button fx:id="tbAff" layoutX="318.0" layoutY="673.0" mnemonicParsing="false" onAction="#show" prefHeight="50.0" prefWidth="153.0" style="-fx-background-radius: 30;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Afficher" textFill="#d3c526" />
+      <Button layoutX="534.0" layoutY="673.0" mnemonicParsing="false" onAction="#PDF" prefHeight="50.0" prefWidth="153.0" style="-fx-background-radius: 30;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="PDF" textFill="#d3c526" />
+      <Button fx:id="Ajouter" layoutX="802.0" layoutY="673.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="50.0" prefWidth="153.0" style="-fx-background-radius: 30;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Ajouter" textFill="#d3c526" />
+      <TextField fx:id="tvRech" layoutX="742.0" layoutY="244.0" prefHeight="39.0" prefWidth="273.0" promptText="Rechercher Par Type.." style="-fx-background-radius: 30;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" />
+      <Button fx:id="tbRech" layoutX="802.0" layoutY="345.0" mnemonicParsing="false" onAction="#Recherche" prefHeight="50.0" prefWidth="153.0" style="-fx-background-radius: 30;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Recherche" textFill="#d3c526" />
+      <AnchorPane layoutX="-2.0" prefHeight="807.0" prefWidth="255.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css" />
+      <Button fx:id="entertainement_btn2" alignment="CENTER" layoutX="125.0" layoutY="513.0" mnemonicParsing="false" onAction="#gestionmap" prefHeight="56.0" prefWidth="123.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text=" entertainement" textFill="WHITE" />
+      <Button fx:id="event_btn1" alignment="CENTER" layoutX="37.0" layoutY="442.0" mnemonicParsing="false" onAction="#events" prefHeight="41.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="   event" textFill="WHITE" />
+      <Button fx:id="produit_btn1" layoutX="139.0" layoutY="359.0" mnemonicParsing="false" onAction="#goproduit" prefHeight="48.0" prefWidth="109.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text=" produit" textFill="WHITE" />
+      <Button fx:id="home_btn1" alignment="CENTER" layoutX="132.0" layoutY="218.0" mnemonicParsing="false" onAction="#afficheprofile" prefHeight="41.0" prefWidth="115.0" style="-fx-border-radius: 500px;" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="    Profile" textFill="WHITE" />
+      <Button fx:id="blog_btn1" alignment="CENTER" layoutX="50.0" layoutY="283.0" mnemonicParsing="false" onAction="#blogs" prefHeight="48.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="     Blog" textFill="WHITE" />
+      <Label layoutX="93.0" layoutY="56.0" text="Welcome," textFill="#f5f5f5">
+         <font>
+            <Font name="Tahoma" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="username1" alignment="CENTER" layoutX="69.0" layoutY="88.0" text="Abdelaziz Mezri" textFill="#f5f0f0">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="entertainement_btn11" alignment="CENTER" layoutX="36.0" layoutY="606.0" mnemonicParsing="false" onAction="#gestionreclaction" prefHeight="48.0" prefWidth="115.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Reclamation " textFill="WHITE" />
+      <Text fontSmoothingType="LCD" layoutX="225.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ART IS IN EVERYTHING" textAlignment="CENTER" wrappingWidth="680.40234375">
+         <font>
+            <Font name="Bauhaus 93" size="46.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#68a7ff" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Line endX="952.0" layoutX="142.0" layoutY="120.0" startX="-143.99996948242188" stroke="#f2eeee" />
+      <Line endX="106.0" endY="676.2929077148438" layoutX="152.0" layoutY="130.0" startX="99.0" startY="-162.0" stroke="#f2eeee" />
+   </children>
+</AnchorPane>

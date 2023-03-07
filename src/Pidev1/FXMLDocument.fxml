@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import com.sothawo.mapjfx.MapView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<BorderPane fx:id="Borderpane" maxHeight="-Infinity" style="-fx-background-color: #002427;" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Pidev1.Controller">
+    <left>
+        <Accordion fx:id="leftControls" BorderPane.alignment="CENTER" style="-fx-background-color: #002427;">
+            <panes >            
+                <TitledPane fx:id="optionsMarkers" animated="true" text="addmarkers" textFill="WHITE">
+                    <content>
+                        <VBox spacing="10.0" style="-fx-background-color: #002427;">
+                            <children>
+                               
+         <Button fx:id="entertainement_btn2" alignment="CENTER" layoutX="97.0" layoutY="525.0" mnemonicParsing="false" onAction="#gestionmap" prefHeight="56.0" prefWidth="123.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text=" entertainement" textFill="WHITE" />
+      <Button fx:id="event_btn1" alignment="CENTER" layoutX="9.0" layoutY="454.0" mnemonicParsing="false" onAction="#events" prefHeight="41.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="   event" textFill="WHITE" />
+      <Button fx:id="produit_btn1" layoutX="111.0" layoutY="371.0" mnemonicParsing="false" onAction="#goproduit" prefHeight="48.0" prefWidth="109.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text=" produit" textFill="WHITE" />
+      <Button fx:id="home_btn1" alignment="CENTER" layoutX="104.0" layoutY="230.0" mnemonicParsing="false" onAction="#afficheprofile" prefHeight="41.0" prefWidth="115.0" style="-fx-border-radius: 500px;" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="    Profile" textFill="WHITE" />
+      <Button fx:id="blog_btn1" alignment="CENTER" layoutX="22.0" layoutY="295.0" mnemonicParsing="false" onAction="#blogs" prefHeight="48.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="     Blog" textFill="WHITE" />
+      <Label layoutX="65.0" layoutY="68.0" text="Welcome," textFill="#f5f5f5">
+         <font>
+            <Font name="Tahoma" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="username1" alignment="CENTER" layoutX="41.0" layoutY="100.0" text="Abdelaziz Mezri" textFill="#f5f0f0">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      </children>
+     </VBox>                       
+      </content>
+                    
+                </TitledPane> 
+            </panes>
+        </Accordion>
+        
+        
+    </left>
+    <top>
+          <Text layoutX="100.0" strokeType="OUTSIDE" text="Artisty" underline="true" x="100.0" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Bell MT Italic" size="38.0" />
+         </font>
+         <stroke>
+            <LinearGradient >
+               <stops>
+                  <Stop color="#00d7ff" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Text>
+        
+    </top>
+          <center >
+        <MapView fx:id="mapView"  maxHeight="800" maxWidth="800"      BorderPane.alignment="CENTER"/>
+       </center>
+ <right >
+        <Accordion fx:id="leftControls" BorderPane.alignment="CENTER" style="-fx-background-color: #002427;">
+            <panes >            
+                <TitledPane fx:id="optionsMarkers" animated="true" text="addmarkers" textFill="WHITE">
+                    <content>
+                        <VBox spacing="10.0" style="-fx-background-color: #002427;">
+                            <children>
+                                
+                                <CheckBox fx:id="checkClickMarker" text="click location" textFill="WHITE" maxWidth="Infinity"/>
+                                           <Label fx:id="nomplace" textFill="WHITE" layoutX="45.0" layoutY="31.0" prefHeight="25.0" prefWidth="115.0" text="nomplace" />
+      <TextField fx:id="nomplacet"  />
+      <Label fx:id="description"  prefHeight="25.0" prefWidth="115.0" textFill="WHITE" text="description" />
+      <TextField fx:id="descriptiont" />
+      <Label fx:id="lien" textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="lien" />
+      <TextField fx:id="lient"  />
+      <Label fx:id="categorie" textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="categorie" />
+      
+      <TextField fx:id="categoriet"  />
+       <Button fx:id="btnimage" layoutX="235.0" layoutY="77.0" mnemonicParsing="false" text="image" />   
+       <Label fx:id="path" textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="categorie" /> 
+                            </children>
+                        </VBox>
+                        </content>
+                </TitledPane>
+                     <TitledPane fx:id="emplacement" textFill="WHITE" animated="true" text="see a marker">
+                    <content>
+                        <VBox spacing="10.0" style="-fx-background-color: #002427;">
+                            <children>
+                                <Label fx:id="nomplaceE" textFill="WHITE" layoutX="45.0" layoutY="31.0" prefHeight="25.0" prefWidth="115.0" text="nomplace" >
+                                    <font>
+            <Font name="Franklin Gothic Heavy Italic" size="18.0" />
+                                </font>
+                                </Label>
+                                <Label fx:id="nomplacea"  textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="nomplace" />
+              
+             <Label fx:id="descriptionE" textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="description" >
+                   <font>
+            <Font name="Franklin Gothic Heavy Italic" size="18.0" />
+                                </font>
+             </Label>
+              <Label fx:id="descriptiona" textFill="WHITE"  prefHeight="25.0" prefWidth="115.0" text="description" />
+                 <Label fx:id="lienE" textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="lien" >
+                       <font>
+            <Font name="Franklin Gothic Heavy Italic" size="18.0" />
+                                </font>
+                                </Label>
+                 <Label fx:id="liena" textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="lien" />
+                 <Label fx:id="categorieE" textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="categorie" >
+                       <font>
+            <Font name="Franklin Gothic Heavy Italic" size="18.0" />
+                                </font>
+                 </Label>
+                  <Label fx:id="categoriea" textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="categorie" />
+                  <Label fx:id="nblikesE" textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="categorie" >
+                        <font>
+            <Font name="Franklin Gothic Heavy Italic" size="18.0" />
+                                </font>
+                  </Label>
+                  <Label fx:id="nblikesa" textFill="WHITE" prefHeight="25.0" prefWidth="115.0" text="categorie" />
+                                
+             <ImageView fx:id="imgplace" fitHeight="238.0" fitWidth="277.0" layoutX="155.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" />
+              
+                 
+                 
+                 
+                  
+                  
+                   <Button fx:id="btnlike"  mnemonicParsing="false" text="like"  />
+                      <Button fx:id="btndelete"  mnemonicParsing="false" text="supprimer"  />
+                                
+                            </children>
+                        </VBox>
+                        </content>
+                </TitledPane> 
+                <TitledPane text="music timeee" >
+                    <content>
+                        <VBox style="-fx-background-color: #002427;">
+                            <children>
+      <Button fx:id="searchButton" layoutX="235.0" layoutY="77.0" mnemonicParsing="false" text="search" />
+      <TextField fx:id="searchField" layoutX="200.0" layoutY="35.0" />
+        <ImageView fx:id="thumbnailView" fitHeight="238.0" fitWidth="277.0" layoutX="155.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" />
+
+                            </children>
+                        </VBox>
+                    </content>
+                   
+                </TitledPane>   
+                <TitledPane text="talk to me">
+                    
+                    
+                        <content>
+                            <VBox>
+                                <TextField fx:id="tfchat"  />
+                                <Button fx:id="btnchat"  mnemonicParsing="false" text="send"  />
+                             <TextArea fx:id="txchat" prefHeight="586.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
+                           </VBox>                       
+                        </content>
+                    
+                </TitledPane> 
+            </panes>
+        </Accordion>
+    </right>
+    
+</BorderPane>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/Pidev1/Controller.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>350</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/services/servicemap.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/services/ArtsyAPI.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/services/IServiceP.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/AjouterProduct.fxml</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/services/ProductService.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/FXMLDocument.fxml</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/services/ServiceUtilisateur.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/AjouterCollectionController.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/SignInController.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/UserSession.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/entities/Likes.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/dashboardDesign.css</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/SignIn.fxml</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/services/CategoryService.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/adminController.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/AjouterProductController.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/AjouterCategory.fxml</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/services/Mail.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/ImageItem.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/Login.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/AjouterCategoryController.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/ForgorCntrl.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/FXMLhome.fxml</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/FXML.fxml</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/services/CollectionService.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/Pidev1.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/AjouterCollection.fxml</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/services/servicelikes.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/createAccount.fxml</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/FXMLhomeController.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/services/chatbot.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/createuserController.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/Controller.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/utils/DataConnection.java</file>
+            <file>file:/C:/Users/iheb%20debbech/Documents/NetBeansProjects/pidev/src/Pidev1/admin_interface.fxml</file>
+        </group>
+    </open-files>
+</project-private>

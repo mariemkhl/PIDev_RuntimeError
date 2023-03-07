@@ -1,0 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Pidev1;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfPageEventHelper;
+import com.itextpdf.text.pdf.PdfWriter;
+
+/**
+ *
+ * @author ASUS
+ */
+public class BackgroundImageEvent extends PdfPageEventHelper {
+    Image image;
+    
+    @Override 
+    public void onEndPage(PdfWriter writer, Document document) {
+        try {
+            if (image == null) {
+                image = Image.getInstance("C:\\Users\\iheb debbech\\Desktop\\back.png");
+            }
+
+            PdfContentByte canvas = writer.getDirectContentUnder();
+            image.scaleAbsolute(document.getPageSize());
+            image.setAbsolutePosition(0, 0);
+            canvas.addImage(image);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    
+}

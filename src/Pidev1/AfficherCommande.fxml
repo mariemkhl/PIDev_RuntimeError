@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="837.0" prefWidth="1006.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pidev1.AfficherCommandeController">
+   <children>
+      <AnchorPane layoutX="-14.0" layoutY="2.0" prefHeight="845.0" prefWidth="228.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css">
+         <children>
+            <Button fx:id="entertainement_btn" alignment="CENTER" layoutX="102.0" layoutY="515.0" mnemonicParsing="false" onAction="#gestionmap" prefHeight="56.0" prefWidth="123.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text=" entertainement" textFill="WHITE" />
+            <Button fx:id="event_btn" alignment="CENTER" layoutX="14.0" layoutY="444.0" mnemonicParsing="false" onAction="#events" prefHeight="41.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="   event" textFill="WHITE" />
+            <Button fx:id="produit_btn" layoutX="116.0" layoutY="361.0" mnemonicParsing="false" onAction="#goproduit" prefHeight="48.0" prefWidth="109.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text=" produit" textFill="WHITE" />
+            <Button fx:id="home_btn" alignment="CENTER" layoutX="113.0" layoutY="220.0" mnemonicParsing="false" onAction="#afficheprofile" prefHeight="41.0" prefWidth="115.0" style="-fx-border-radius: 500px;" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="    Profile" textFill="WHITE" />
+            <Button fx:id="blog_btn" alignment="CENTER" layoutX="27.0" layoutY="285.0" mnemonicParsing="false" onAction="#blogs" prefHeight="48.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="     Blog" textFill="WHITE" />
+            <Label layoutX="70.0" layoutY="58.0" text="Welcome," textFill="#f5f5f5">
+               <font>
+                  <Font name="Tahoma" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="username" alignment="CENTER" layoutX="46.0" layoutY="90.0" text="Abdelaziz Mezri" textFill="#f5f0f0">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="entertainement_btn1" alignment="CENTER" layoutX="13.0" layoutY="608.0" mnemonicParsing="false" onAction="#gestionreclaction" prefHeight="48.0" prefWidth="115.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Reclamation " textFill="WHITE" />
+            <Label layoutX="113.0" layoutY="776.0" text="Sign Out" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="logoutbtn" layoutX="45.0" layoutY="772.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="42.0" stylesheets="@dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="logout" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="761.0" fitWidth="708.0" layoutX="356.0" layoutY="34.0" opacity="0.22" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/logo%20artisty%201.png" />
+         </image>
+      </ImageView>
+      <Text fontSmoothingType="LCD" layoutX="174.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Les informations de votre commande" textAlignment="CENTER" wrappingWidth="680.40234375">
+         <font>
+            <Font name="Bauhaus 93" size="46.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#68a7ff" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Label layoutX="280.0" layoutY="303.0" text="La méthode de paiment" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font></Label>
+      <Label layoutX="274.0" layoutY="401.0" text="Le montant total à payer" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font></Label>
+      <Label fx:id="meth_paiment" layoutX="698.0" layoutY="299.0" prefHeight="41.0" prefWidth="0.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font></Label>
+      <Label fx:id="prix_tot" layoutX="698.0" layoutY="406.0" prefHeight="27.0" prefWidth="0.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font></Label>
+      <Button fx:id="voir_plus" layoutX="264.0" layoutY="555.0" mnemonicParsing="false" onAction="#voir_plus" prefHeight="41.0" prefWidth="115.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text=" voir plus" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="retour" layoutX="777.0" layoutY="555.0" mnemonicParsing="false" onAction="#retour" prefHeight="41.0" prefWidth="98.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Retour" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="passer_paiment" layoutX="479.0" layoutY="562.0" mnemonicParsing="false" onAction="#passer_paiment" prefHeight="41.0" prefWidth="157.0" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="passer au paiment" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Pane layoutY="151.0" prefHeight="1.0" prefWidth="1006.0" style="-fx-background-color: #ffff;" />
+      <Line endX="99.0" endY="677.2929077148438" layoutX="116.0" layoutY="167.0" startX="99.0" startY="-162.0" stroke="#f2eeee" />
+   </children>
+</AnchorPane>

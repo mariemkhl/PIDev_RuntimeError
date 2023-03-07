@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="837.0" prefWidth="1143.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pidev1.AfficherEventsController">
+   <children>
+      <ImageView fitHeight="761.0" fitWidth="708.0" layoutX="366.0" layoutY="44.0" opacity="0.22" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/logo%20artisty%201.png" />
+         </image>
+      </ImageView>
+      <ScrollPane fx:id="spe" layoutX="224.0" layoutY="151.0" opacity="0.61" prefHeight="536.0" prefWidth="892.0">
+         <content>
+            <VBox fx:id="vbe" prefHeight="540.0" prefWidth="859.0" />
+         </content>
+      </ScrollPane>
+      <Pane layoutX="-6.0" prefHeight="837.0" prefWidth="233.0" styleClass="nav-form" stylesheets="@dashboardDesign.css">
+         <children>
+            <Button fx:id="entertainement_btn" alignment="CENTER" layoutX="107.0" layoutY="532.0" mnemonicParsing="false" onAction="#gestionmap" prefHeight="56.0" prefWidth="123.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text=" entertainement" textFill="WHITE" />
+            <Button fx:id="event_btn" alignment="CENTER" layoutX="19.0" layoutY="461.0" mnemonicParsing="false" onAction="#events" prefHeight="41.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="   event" textFill="WHITE" />
+            <Button fx:id="produit_btn" layoutX="121.0" layoutY="378.0" mnemonicParsing="false" onAction="#goproduit" prefHeight="48.0" prefWidth="109.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text=" produit" textFill="WHITE" />
+            <Button fx:id="home_btn" alignment="CENTER" layoutX="118.0" layoutY="237.0" mnemonicParsing="false" onAction="#afficheprofile" prefHeight="41.0" prefWidth="115.0" style="-fx-border-radius: 500px;" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="    Profile" textFill="WHITE" />
+            <Button fx:id="blog_btn" alignment="CENTER" layoutX="32.0" layoutY="302.0" mnemonicParsing="false" onAction="#blogs" prefHeight="48.0" prefWidth="87.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="     Blog" textFill="WHITE" />
+            <Label layoutX="75.0" layoutY="75.0" text="Welcome," textFill="#f5f5f5">
+               <font>
+                  <Font name="Tahoma" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="username" alignment="CENTER" layoutX="51.0" layoutY="107.0" text="Abdelaziz Mezri" textFill="#f5f0f0">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="entertainement_btn1" alignment="CENTER" layoutX="18.0" layoutY="625.0" mnemonicParsing="false" onAction="#gestionreclaction" prefHeight="48.0" prefWidth="115.0" styleClass="login-btn" stylesheets="@dashboardDesign.css" text="Reclamation " textFill="WHITE" />
+            <Label layoutX="111.0" layoutY="772.0" text="Sign Out" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="logoutbtn" layoutX="43.0" layoutY="768.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="42.0" stylesheets="@dashboardDesign.css">
+               <styleClass>
+                  <String fx:value="logout" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </Button>
+         </children></Pane>
+      <Button layoutX="449.0" layoutY="751.0" mnemonicParsing="false" onAction="#reserver" prefHeight="31.0" prefWidth="369.0" styleClass="login-btn" stylesheets="@LoginDesign.css" text="Reserver" />
+      <Text fontSmoothingType="LCD" layoutX="262.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ARTISTIC EVENTS" textAlignment="CENTER" wrappingWidth="680.40234375">
+         <font>
+            <Font name="Bauhaus 93" size="46.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#68a7ff" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Pane layoutY="145.0" prefHeight="1.0" prefWidth="1143.0" style="-fx-background-color: #ffff;" />
+      <Line endX="99.0" endY="677.2929077148438" layoutX="126.0" layoutY="161.0" startX="99.0" startY="-162.0" stroke="#f2eeee" />
+   </children>
+</AnchorPane>
