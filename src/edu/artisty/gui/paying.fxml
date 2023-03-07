@@ -96,7 +96,7 @@
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font></Label>
-      <Label fx:id="meth_paiment" layoutX="427.0" layoutY="107.0" />
+      <Label fx:id="meth_paiment" layoutX="468.0" layoutY="110.0" prefHeight="21.0" prefWidth="1.0" />
       <Pane layoutX="164.0" layoutY="77.0" prefHeight="8.0" prefWidth="867.0" style="-fx-background-color: #002427;" />
       <AnchorPane layoutY="-5.0" prefHeight="711.0" prefWidth="152.0" styleClass="nav-form" stylesheets="@../../../css/dashboardDesign.css">
          <children>

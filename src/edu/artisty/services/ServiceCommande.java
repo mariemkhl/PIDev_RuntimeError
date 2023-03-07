@@ -182,11 +182,11 @@ System.out.println(c);
 
     }
     
-    public ObservableList<Commande> afficherCommande() {
+    public ObservableList<Commande> afficherCommande(String userid) {
         ObservableList<Commande> myList = FXCollections.observableArrayList();
         try {
 
-            String requete3 = "SELECT *FROM  Commande  ";
+            String requete3 = "SELECT *FROM  Commande where userid = '" + userid + "'" ;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(requete3);
             

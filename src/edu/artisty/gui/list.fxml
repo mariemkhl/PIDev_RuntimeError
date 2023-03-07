@@ -21,7 +21,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="update1" layoutX="669.0" layoutY="587.0" mnemonicParsing="false" onAction="#update1" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="update" textFill="WHITE">
+            <Button fx:id="update1" layoutX="464.0" layoutY="588.0" mnemonicParsing="false" onAction="#update1" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="update" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -32,7 +32,7 @@
                </font>
             </Text>
             <Pane layoutX="149.0" layoutY="71.0" prefHeight="9.0" prefWidth="976.0" style="-fx-background-color: #002427;" />
-            <Button fx:id="ajouter1" layoutX="438.0" layoutY="587.0" mnemonicParsing="false" onAction="#ajouter" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Ajouter" textFill="WHITE">
+            <Button fx:id="ajouter1" layoutX="228.0" layoutY="588.0" mnemonicParsing="false" onAction="#ajouter" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Ajouter" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -50,8 +50,9 @@
             <Label fx:id="lpayment" layoutX="232.0" layoutY="132.0" textFill="WHITE" />
             <Button fx:id="Find" layoutX="233.0" layoutY="250.0" mnemonicParsing="false" onAction="#rechercherPaiment" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="FIND" />
             <TextField fx:id="tfp" layoutX="162.0" layoutY="201.0" prefHeight="26.0" prefWidth="220.0" promptText="Chercher par paiment" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" />
-            <Button fx:id="affich" layoutX="226.0" layoutY="585.0" mnemonicParsing="false" onAction="#afficher" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="afficher" />
+            <Button fx:id="affich" layoutX="227.0" layoutY="394.0" mnemonicParsing="false" onAction="#afficher" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="afficher" />
             <Label fx:id="luserid" layoutX="301.0" layoutY="132.0" />
+            <Label fx:id="lprix_tot" layoutX="308.0" layoutY="100.0" />
          </children>
       </AnchorPane>
    </children>

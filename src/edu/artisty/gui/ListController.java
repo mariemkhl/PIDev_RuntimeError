@@ -59,8 +59,6 @@ public class ListController {
     @FXML
     private Button ajouter1;
 
-     @FXML
-    private Button refresh;
 
     @FXML
     private Label lpayment;
@@ -73,10 +71,15 @@ public class ListController {
         @FXML
     private TextField tfp;
 
-
+    @FXML
+    private Label lprix_tot;
     
     @FXML 
     private ListView <Commande> list ;
+    @FXML
+    private Label luserid;
+    @FXML
+    private Button passer_pay;
 
 
     @FXML
@@ -224,11 +227,11 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/
     }   
   
  
-
-
     void setMeth_Paiment(String paiment) {
         this.lpayment.setText(paiment);
     }
+    
+    
 
  
    @FXML
@@ -243,14 +246,16 @@ void afficher() {
             if (empty || item == null) {
                 setText(null);
             } else {
-                setText(item.getuserid()+ " - " + item.getPayment()+ " - " + item.getDate_creation());
+                setText(item.getId()+ " - " +item.getPrix_tot()+" - "+item.getuserid()+ " - " + item.getPayment()+ " - " + item.getDate_creation());
             }
         }
     });
 }
 
+   
 
 }
+
 
 
    

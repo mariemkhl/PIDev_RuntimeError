@@ -56,7 +56,7 @@ public class PayingController implements Initializable {
      */
     
     @FXML
-    private Label prix_totcash;
+    public Label prix_totcash;
 
     @FXML
     private Button conf_carte;
@@ -74,7 +74,7 @@ public class PayingController implements Initializable {
     private TextField CV_code;
 
     @FXML
-    private Label prix_totcarte;
+    public Label prix_totcarte;
 
     @FXML
     private Button conf_cash;
