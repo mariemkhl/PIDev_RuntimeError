@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="704.0" prefWidth="1023.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.PayingController">
+<AnchorPane id="AnchorPane" prefHeight="704.0" prefWidth="1023.0" stylesheets="@../../../css/dashboardDesign.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.artisty.gui.PayingController">
    <children>
       <Text layoutX="188.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finalisation : Paiment">
          <font>

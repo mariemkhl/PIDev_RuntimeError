@@ -30,21 +30,21 @@ public class MainClass {
     
        
             //Commande c1 = new Commande(50,"alice","carte","12/12/2023");
-            Commande c3 = new Commande (7,"ttt","ttt");
-            ServiceCommande sc = new ServiceCommande();
+//            Commande c3 = new Commande (7,"ttt","ttt");
+//            ServiceCommande sc = new ServiceCommande();
 //    Reclamation r1 = new Reclamation ("description erronée","authenticité");
 //    ReclamationCRUD rc = new ReclamationCRUD();
-sc.rechercheParpaiment("ttt");
+//sc.rechercheParpaiment("ttt");
 //sc.exists("xcvbn");
 
 
 
 //  sc.rechercheParpaiment("carte");
         
-//    PAIMENT p1 = new PAIMENT (8425,"KATIPATI",8235,80);
-//    PAIMENT p2 = new PAIMENT (8425,"yassmine",8235,80);
-//    ServicePaiment cp = new ServicePaiment() ;
-//    cp.getOneById(3);
+    PAIMENT p1 = new PAIMENT (8425,"KATIPATI",8235,80);
+    PAIMENT p2 = new PAIMENT (8425,"yassmine",8235,80);
+    ServicePaiment cp = new ServicePaiment() ;
+    cp.ajouter(p1);
       
 
 
