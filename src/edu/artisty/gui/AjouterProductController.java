@@ -350,6 +350,7 @@ infoAlert.showAndWait();
    searchField = new TextField();
         Button searchButton = new Button("Search");
         resultLabel = new Label();
+        resultLabel.setStyle("-fx-background-color: white;");
 searchButton.setStyle("-fx-background-color: white;");
         // Set the action for the search button
         searchButton.setOnAction(eve -> {
@@ -360,7 +361,7 @@ searchButton.setStyle("-fx-background-color: white;");
             Request request = new Request.Builder()
                     .url("https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q="+productName+"/%20grande&pageNumber=1&pageSize=10&autoCorrect=true")
                     .get()
-                    .addHeader("X-RapidAPI-Key", "5161459c8bmshf008d3701904ef8p1af662jsn661edee646ab")
+                    .addHeader("X-RapidAPI-Key", "8be467020dmsh61fb6c2142fa03bp1d5682jsncacdbbe2c9dd")
                     .addHeader("X-RapidAPI-Host", "contextualwebsearch-websearch-v1.p.rapidapi.com")
                     .build();
 

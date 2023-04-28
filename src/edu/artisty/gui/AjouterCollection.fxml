@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -21,7 +22,7 @@
             <Font size="14.0" />
          </font></Button>
       <Button fx:id="AfficheBtn" layoutX="422.0" layoutY="19.0" mnemonicParsing="false" onAction="#AfficheCollection" prefHeight="26.0" prefWidth="149.0" style="-fx-background-radius: 15px;" styleClass="login-btn" stylesheets="@../../../css/dashboardDesign.css" text="Afficher Collection" textFill="#2c3e50" />
-      <TableView fx:id="collectionTable" layoutX="14.0" layoutY="269.0" onMouseClicked="#getSelected" prefHeight="164.0" prefWidth="434.0">
+      <TableView fx:id="collectionTable" layoutX="14.0" layoutY="422.0" onMouseClicked="#getSelected" prefHeight="164.0" prefWidth="434.0">
          <columns>
             <TableColumn fx:id="NomCol" prefWidth="128.33331298828125" text=" Nom Collection" />
             <TableColumn fx:id="refProd" prefWidth="123.66668701171875" text="Reference Produit" />
@@ -42,5 +43,6 @@
             <Font name="Cambria Math" size="23.0" />
          </font>
       </Label>
+      <ListView fx:id="ColList" layoutX="17.0" layoutY="260.0" prefHeight="141.0" prefWidth="393.0" />
    </children>
 </AnchorPane>

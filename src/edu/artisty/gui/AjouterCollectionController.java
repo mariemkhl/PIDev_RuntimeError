@@ -5,12 +5,17 @@
  */
 package edu.artisty.gui;
 
+import API.MyData;
 import edu.artisty.entities.Collection;
 import edu.artisty.main.FXMain;
 import edu.artisty.services.CollectionService;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 import java.util.ResourceBundle;
 import static java.util.ServiceLoader.load;
@@ -29,6 +34,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -81,6 +88,15 @@ public class AjouterCollectionController implements Initializable {
     private TableColumn<Collection, Integer> idCollec;
     @FXML
     private TextField ifid;
+    @FXML
+    private ListView<Collection> ColList;
+    
+    
+    
+    
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        List<Collection> col = ColServ.getAll();
@@ -90,6 +106,48 @@ public class AjouterCollectionController implements Initializable {
         refProd.setCellValueFactory(new PropertyValueFactory<>("id_p"));
         NomProd.setCellValueFactory(new PropertyValueFactory<>("nom_p"));
         collectionTable.setItems(listCollection);
+        
+         
+//        ColList.setCellFactory(listView -> new ListCell<MyData>() {
+//            
+//            protected void updateItem(MyData item, boolean empty) {
+//                super.updateItem(item, empty);
+//
+//                if (item != null) {
+//                    setText(item.getColumn1() + " " + item.getColumn2());
+//                } else {
+//                    setText(null);
+//                }
+//            }
+//                  });
+        
+        
+        
+//        ObservableList<Collection> data = FXCollections.observableArrayList();
+//        try {
+//            // Connect to the database
+//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/artisty", "root", "");
+//
+//            // Execute the query
+//            Statement stmt = conn.createStatement();
+//            ResultSet rs = stmt.executeQuery("SELECT * FROM collection²");
+//
+//            // Add the data to the list view
+//            while (rs.next()) {
+//                MyData item = new MyData(rs.getString("nom_col"), rs.getString("nom_col"));
+//                ObservableList<Collection> data1 = FXCollections.observableArrayList((java.util.Collection<? extends Collection>) item);
+//            }
+//
+//            // Close the database connection
+//            conn.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        // Set the data in the list view
+//        ColList.setItems(data);
+        
+        
          
     }
       
